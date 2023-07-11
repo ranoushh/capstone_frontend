@@ -1,18 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route exact path='/students' element={<Students />} />
-        <Route exact path='/campuses' element={<Campuses />} />
-        <Route path="/campuses/:campusId" Component={SingleCampus} />
-        <Route path="/student/:studentId" Component={SingleStudent} />
-        <Route path='/student' element={<AddStudent />} />
-        <Route path='/campus' element={<AddCampus />} />
-        <Route path="/student/:studentId" element={<EditStudent />} />
-        <Route path="/campus/:campusId" element={<EditCampus />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/tests" element={<Test />} />
+        <Route path="/quizs" element={<Quiz />} />
+        <Route path="/lessons" element={<Lessons />} />
+        <Route path="/lesson/:lessonId" element={<SingleLesson />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </Router>
   );
