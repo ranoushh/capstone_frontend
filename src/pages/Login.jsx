@@ -13,15 +13,56 @@ const RegistrationAndLoginPage = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (isRegistering) {
-      console.log('Registering user:', { username, password });
-    } else {
-      console.log('Logging in user:', { username, password });
-    }
+    const userData = { username, password };
 
+    if (isRegistering) {
+      try {
+        // Perform registration logic by sending a POST request to the backend
+        const response = await fetch('/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        });
+
+        if (response.ok) {
+          console.log('User registered successfully');
+          // Redirect to login page or perform other actions
+        } else {
+          console.error('Registration failed');
+          // Handle registration error
+        }
+      } catch (error) {
+        console.error('Error occurred during registration:', error);
+        // Handle registration error
+      }
+    } else {
+      try {
+        // Perform login logic by sending a POST request to the backend
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        });
+
+        if (response.ok) {
+          console.log('User logged in successfully');
+          // Redirect to user profile or perform other actions
+        } else {
+          console.error('Login failed');
+          // Handle login error
+        }
+      } catch (error) {
+        console.error('Error occurred during login:', error);
+        // Handle login error
+      }
+    }
   };
 
   return (
@@ -41,7 +82,7 @@ const RegistrationAndLoginPage = () => {
         <button type="submit">{isRegistering ? 'Register' : 'Login'}</button>
       </form>
       <p>
-        {isRegistering ? 'Already have an account?' : 'Don\'t have an account?'}
+        {isRegistering ? 'Already have an account?' : "Don't have an account?"}
         <button onClick={() => setIsRegistering(!isRegistering)}>
           {isRegistering ? 'Login' : 'Register'}
         </button>
