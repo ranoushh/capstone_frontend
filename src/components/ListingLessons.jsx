@@ -6,22 +6,18 @@ export default function ListingLessons(props) { //CSS
     return props.list.length > 0 ? (
         props.list.map((item) => {
             return (
-                <div className="campus-grid">
-                    <div className="container-campus" key={item.id}>
-                        <div className="campus-pic">
-                            <img src={item.imageUrl} alt={item.name} />
-                        </div>
+                <div className="lesson-grid">
+                    <div className="container-lesson" key={item.id}>
                         <div className="div-card-name">
-                            <Link className="card-link" to={`/campuses/${item.id}`}>
+                            <Link className="card-link" to={`/lessons/${item.id}`}>
                                 <h1 className="item-name">{item.name}</h1>
                             </Link>
                         </div>
-                        <button onClick={() => props.handleRemoveCampus(item.id)}>X</button>
                     </div>
                 </div>
             );
         })
     ) : (
-        <h1 className="info-message">There are no campuses registered</h1>
+        <h1 className="info-message">There are no lessons here</h1>
     );
 }
