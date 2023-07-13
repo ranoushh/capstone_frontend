@@ -20,7 +20,7 @@ function Lessons() {
 
   return (
     <div>
-      <Navigation />
+      {/* <Navigation /> */}
       <ListingLessons list={allLessons} />
     </div>
   );
