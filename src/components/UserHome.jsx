@@ -1,6 +1,6 @@
 import React from "react";
 import Navigation from "./Navigation";
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
 
 function UserHome() {
@@ -14,8 +14,8 @@ function UserHome() {
   );
 }
 
-UserHome.PropTypes = {
-  email: PropTypes.string,
+UserHome.propTypes = {
+    email: PropTypes.string
 };
 
 export default UserHome;
