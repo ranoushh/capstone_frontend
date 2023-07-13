@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 
 const RegistrationAndLoginPage = () => {
@@ -92,3 +93,16 @@ const RegistrationAndLoginPage = () => {
 };
 
 export default RegistrationAndLoginPage;
+=======
+import React from "react";
+
+function Login() {
+  return (
+    <div>
+       This is Login.
+    </div>
+  );
+}
+
+export default Login;
+>>>>>>> 7211d6502103404ed127c3bc12a620568d18e8c9
