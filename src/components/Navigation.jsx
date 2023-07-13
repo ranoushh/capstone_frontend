@@ -1,10 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
-function Navigation() {
+
+function Navigation () {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => !!state.user.id);
+
+  function handleLogOut(event){
+    event.preventDefault();
+    dispatch(logout());
+    navigate("/login");
+  };
+
   return (
     <div>
+      <h1>Language Learning App</h1>
       <nav>
+        {isLoggedIn ? (
+          <div>
+            <Link to ="/home">Home</Link>
+            <Link onClick={handleLogOut}> Logout</Link>
+          </div>
+        ) : (
+          <div>
+            <Link to ="/login">Login</Link>
+            <Link to ="/signup">Signup</Link>
+          </div>
+        )};
+
+      </nav>
+      {/* <nav>
         <ul>
           <li className="img-container">
             Language Learning
@@ -33,9 +61,9 @@ function Navigation() {
             <Link to="/profile">profile</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </div>
   );
-}
+};
 
 export default Navigation;
