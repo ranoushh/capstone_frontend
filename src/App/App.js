@@ -4,7 +4,7 @@ import Chat from '../pages/Chat';
 import Home from '../pages/Home';
 // import Login from '../pages/Login';
 import Profile from '../pages/Profile'
-import Test from '../pages/Test'
+import Test from '../pages/test/Test'
 import Quiz from '../pages/Quiz'
 import Lessons from '../pages/Lessons'
 import SingleLesson from '../pages/SingleLesson'
@@ -16,6 +16,7 @@ import {ProtectedRoute} from "../Utils/Auth";
 import { HomePage, Navigation } from '../components';
 import { Login } from '../components/AuthForm';
 import UserHome from '../components/UserHome';
+import Achievements from '../pages/Achievements';
 
 
 console.log("here");
@@ -40,6 +41,7 @@ function App() {
           <Route path="/languages" element={<Languages />} />
           <Route path="/language/:languageId" element={<SingleLanguage />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/achievements" element={<Achievements />} />
         </Routes>
       </div>
     </Router>
