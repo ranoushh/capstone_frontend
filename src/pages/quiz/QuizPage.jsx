@@ -23,6 +23,7 @@ function QuizPage() {
     setCompletedQuiz(result);
   };
 
+  const renderQuiz = () => {
   if (!selectedQuiz && !completedQuiz) {
     return <QuizList quizzes={quizzes} onQuizSelect={handleQuizSelect} />;
   } else if (selectedQuiz && !completedQuiz) {
@@ -32,6 +33,23 @@ function QuizPage() {
   } else {
     return null;
   }
+  };
+
+  return (
+    <div>
+      <h1>Quiz Page</h1>
+      {renderQuiz()}
+
+      {completedQuiz && (
+        <div>
+          <h2>Quiz Result</h2>
+          <p>Score: {completedQuiz.score}</p>
+          <p>Correct Answers: {completedQuiz.correctAnswers}</p>
+          <p>Total Questions: {completedQuiz.totalQuestions}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default QuizPage;
