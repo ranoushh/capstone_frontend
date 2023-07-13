@@ -9,8 +9,8 @@ export default function ListingLessons(props) { //CSS
                 <div className="lesson-grid">
                     <div className="container-lesson" key={item.id}>
                         <div className="div-card-name">
-                            <Link className="card-link" to={`/lessons/${item.id}`}>
-                                <h1 className="item-name">{item.name}</h1>
+                            <Link className="card-link" to={`/lesson/${item.id}`}>
+                                <h1 className="item-name">{item.lessonName}</h1>
                             </Link>
                         </div>
                     </div>
