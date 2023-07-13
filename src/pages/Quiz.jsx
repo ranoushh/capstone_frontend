@@ -4,7 +4,7 @@ import Navigation from "../components/Navigation";
 function Quiz() {
   return (
     <div>
-      <Navigation/>
+      {/* <Navigation/> */}
        This is Quiz.
     </div>
   );
