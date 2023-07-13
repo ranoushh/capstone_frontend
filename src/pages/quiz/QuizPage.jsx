@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchQuizzes } from "../Redux/quizzes/quizzes.actions";
 import QuizList from "../QuizList";
 import Quiz from "../Quiz";
-import QuizResult from "../QuizResult";
 
 function QuizPage() {
   const dispatch = useDispatch();

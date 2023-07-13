@@ -4,7 +4,7 @@ import Chat from '../pages/Chat';
 import Home from '../pages/Home';
 // import Login from '../pages/Login';
 import Profile from '../pages/Profile'
-import Test from '../pages/Test'
+import Test from '../pages/test/Test'
 import Quiz from '../pages/Quiz'
 import Lessons from '../pages/Lessons'
 import SingleLesson from '../pages/SingleLesson'
