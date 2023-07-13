@@ -1,14 +1,17 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Chat from '../pages/Chat';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
+import Home from '../components/UserHome';
+import { Login } from '../components/AuthForm';
 import Profile from '../pages/Profile'
 import Test from '../pages/Test'
 import Quiz from '../pages/Quiz'
 import Lessons from '../pages/Lessons'
 import SingleLesson from '../pages/SingleLesson'
 import Leaderboard from '../pages/Leaderboard'
+// import Signup from '../components/AuthForm'
+import { Signup } from '../components/AuthForm';
+import {ProtectedRoute} from "../Utils/Auth";
 
 console.log("here");
 function App() {
@@ -16,8 +19,11 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route element = {<ProtectedRoute/>}>
+            <Route path="/" element={<Home />} />
+          </Route>
+          <Route path="/login" element={<Login name = "login" displayName = "Login" />} />
+          <Route path="/signup" element={< Signup name = "signup" displayName = "Signup" />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/tests" element={<Test />} />
