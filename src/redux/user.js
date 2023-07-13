@@ -7,6 +7,7 @@ const REMOVE_USER = "REMOVE_USER";
 //initial state
 const defaultUser = {};
 
+
 //action creator
 const getUser = (user) => ({ type: GET_USER, user});
 const removeUser = (user) => ({ type: REMOVE_USER, user});
@@ -59,5 +60,7 @@ export default function userReducer(state = defaultUser, action){
             return {...state, defaultUser: action.payload };
         case REMOVE_USER: 
             return {...state, defaultUser: action.payload};
-    }
+        default: 
+            return state;
+    };
 };
