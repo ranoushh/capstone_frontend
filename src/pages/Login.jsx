@@ -68,7 +68,7 @@ const Login = () => {
 
   return (
     <div>
-        <Navigation/>
+        {/* <Navigation/> */}
       <h2>{isRegistering ? 'User Registration' : 'User Login'}</h2>
       <form onSubmit={handleSubmit}>
         <label>
