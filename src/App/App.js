@@ -9,6 +9,8 @@ import Quiz from '../pages/Quiz'
 import Lessons from '../pages/Lessons'
 import SingleLesson from '../pages/SingleLesson'
 import Leaderboard from '../pages/Leaderboard'
+import Languages from '../pages/Languages';
+import SingleLanguage from '../pages/SingleLanguage';
 import { Signup } from '../components/AuthForm';
 import {ProtectedRoute} from "../Utils/Auth";
 import { HomePage, Navigation } from '../components';
@@ -28,13 +30,15 @@ function App() {
           </Route> */}
           {/* <Route path="/login" element={<Login name = "login" displayName = "Login" />} />
           <Route path="/signup" element={< Signup name = "signup" displayName = "Signup" />} /> */}
-          <Route path = "/" element = {<Home/> }/>
+          <Route path="/" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/tests" element={<Test />} />
           <Route path="/quizzes" element={<Quiz />} />
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/lesson/:lessonId" element={<SingleLesson />} />
+          <Route path="/languages" element={<Languages />} />
+          <Route path="/language/:languageId" element={<SingleLanguage />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </div>
