@@ -4,7 +4,7 @@ import Navigation from "../components/Navigation";
 function Profile() {
   return (
     <div>
-      <Navigation/>
+      {/* <Navigation/> */}
        This is Profile.
     </div>
   );
