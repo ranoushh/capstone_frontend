@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 import Navigation from "../components/Navigation";
 import ListingLessons from "../components/ListingLessons";
-import {useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllLessonsThunk } from "../redux/lessons/lessons.actions";
 
 function Lessons() {
-  const allLessons = useSelector((state) => state.campuses.allCampuses);
+  const allLessons = useSelector((state) => state.lessons.allLessons);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     console.log("FETCH ALL LESSONS FIRING IN USEEFFECT");
     fetchAllLessons();
   }, []);
 
   function fetchAllLessons() {
-    console.log("RUNNING DISPATCH FROM FETCHALLCAMPUSES");
+    console.log("RUNNING DISPATCH FROM FETCHALLLESSONS");
     return dispatch(fetchAllLessonsThunk());
   }
 
