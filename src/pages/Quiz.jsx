@@ -1,13 +1,13 @@
 import React from "react";
 import Navigation from "../components/Navigation";
 
-function Leaderboard() {
+function Quiz() {
   return (
     <div>
       <Navigation/>
-       This is Leaderboard.
+       This is Quiz.
     </div>
   );
 }
 
-export default Leaderboard;
+export default Quiz;
