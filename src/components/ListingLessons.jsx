@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-export default function ListingLessons() { //CSS
+export default function ListingLessons(props) { //CSS
     console.log("LIST LESSONS COMPONENT");
     return props.list.length > 0 ? (
         props.list.map((item) => {

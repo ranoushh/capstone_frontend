@@ -6,7 +6,7 @@ function Chat() {
     console.log("chat")
   return (
     <div>
-      <Navigation/>
+      {/* <Navigation/> */}
        This is Chat.
         <li>
             <Link to="/">HOME</Link>
