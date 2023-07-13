@@ -1,6 +1,6 @@
 import QuizzesActionType from "./quizzes.types";
 
-const INITIAL_QUIZ_STATE = {
+export const INITIAL_QUIZ_STATE = {
     allQuiz: [],
     singleQuiz: {},
 }
