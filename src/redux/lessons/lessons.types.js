@@ -1,5 +1,5 @@
 const LessonsActionType = {
-    FETCH_ALL_STUDENTS: "LESSONS",
-    FETCH_SINGLE_STUDENT: "FETCH_SINGLE_LESSON",
+    FETCH_ALL_LESSONS: "ALL_LESSONS",
+    FETCH_SINGLE_LESSON: "FETCH_SINGLE_LESSON",
 }
 export default LessonsActionType;
