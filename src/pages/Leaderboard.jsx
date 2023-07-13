@@ -4,7 +4,7 @@ import Navigation from "../components/Navigation";
 function Leaderboard() {
   return (
     <div>
-      <Navigation/>
+      {/* <Navigation/> */}
        This is Leaderboard.
     </div>
   );

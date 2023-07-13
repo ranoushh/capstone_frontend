@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "./Navigation";
+import Navigation from "../components/Navigation";
 import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
 

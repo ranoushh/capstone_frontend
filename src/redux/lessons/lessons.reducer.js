@@ -1,15 +1,17 @@
 import LessonsActionType from "./lessons.types";
 
 export const INITIAL_STUDENTS_STATE = {
-    allStudents: [],
-    singleStudent: {},
+    allLessons: [],
+    singleLesson: {},
 }
 
 const lessonsReducer = (state = INITIAL_STUDENTS_STATE, { type, payload }) => {
-    console.log('STUDENTREDUCER IS HANDLING FETCH ALL STUDENTS ACTION')
+    console.log('LESSONREDUCER IS HANDLING FETCH ALL LESSONS ACTION')
     switch (type) {
-        case LessonsActionType.FETCH_ALL_STUDENTS:
-            return { ...state, allStudents: payload };
+        case LessonsActionType.FETCH_ALL_LESSONS:
+            return { ...state, allLessons: payload };
+        case LessonsActionType.FETCH_SINGLE_LESSON:
+            return { ...state, singleLesson: payload };
         default:
             return state;
     }
