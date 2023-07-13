@@ -1,8 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
-const Navigation = () => {
+
+function Navigation () {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => !!state.user.id);
@@ -19,13 +21,13 @@ const Navigation = () => {
       <nav>
         {isLoggedIn ? (
           <div>
-            <LinkButton to ="/home">Home</LinkButton>
-            <LinkButton onClick={handleLogOut}> Logout</LinkButton>
+            <Link to ="/home">Home</Link>
+            <Link onClick={handleLogOut}> Logout</Link>
           </div>
         ) : (
           <div>
-            <LinkButton to ="/login">Login</LinkButton>
-            <LinkButton to ="/signup">Signup</LinkButton>
+            <Link to ="/login">Login</Link>
+            <Link to ="/signup">Signup</Link>
           </div>
         )};
 
