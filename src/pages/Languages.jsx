@@ -15,8 +15,10 @@ function Languages() {
 
   function fetchAllLanguages() {
     console.log("RUNNING DISPATCH FROM FETCHALLLANGUAGES");
-    return dispatch(fetchAllLanguagesThunk);
+    return dispatch(fetchAllLanguagesThunk());
   }
+
+  
 
   return (
     <div>
