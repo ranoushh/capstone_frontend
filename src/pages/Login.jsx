@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
+import Navigation from '../components/Navigation';
 
-const RegistrationAndLoginPage = () => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
@@ -68,6 +68,7 @@ const RegistrationAndLoginPage = () => {
 
   return (
     <div>
+        <Navigation/>
       <h2>{isRegistering ? 'User Registration' : 'User Login'}</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -92,17 +93,4 @@ const RegistrationAndLoginPage = () => {
   );
 };
 
-export default RegistrationAndLoginPage;
-=======
-import React from "react";
-
-function Login() {
-  return (
-    <div>
-       This is Login.
-    </div>
-  );
-}
-
 export default Login;
->>>>>>> 7211d6502103404ed127c3bc12a620568d18e8c9
