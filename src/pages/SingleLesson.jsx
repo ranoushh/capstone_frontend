@@ -4,7 +4,7 @@ import Navigation from "../components/Navigation";
 function SingleLesson() {
   return (
     <div>
-      <Navigation/>
+      {/* <Navigation/> */}
        This is SingleLesson.
     </div>
   );
