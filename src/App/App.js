@@ -12,11 +12,13 @@ import Leaderboard from '../pages/Leaderboard'
 // import Signup from '../components/AuthForm'
 import { Signup } from '../components/AuthForm';
 import {ProtectedRoute} from "../Utils/Auth";
+import { Navigation } from '../components';
 
 console.log("here");
 function App() {
   return (
     <Router>
+      <Navigation/>
       <div>
         <Routes>
           <Route element = {<ProtectedRoute/>}>
