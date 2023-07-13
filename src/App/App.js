@@ -9,11 +9,12 @@ import Quiz from '../pages/Quiz'
 import Lessons from '../pages/Lessons'
 import SingleLesson from '../pages/SingleLesson'
 import Leaderboard from '../pages/Leaderboard'
-// import { Signup } from '../components/AuthForm';
-// import {ProtectedRoute} from "../Utils/Auth";
-// import { HomePage, Navigation } from '../components';
-// import { Login } from '../components/AuthForm';
-// import UserHome from '../components/UserHome';
+import { Signup } from '../components/AuthForm';
+import {ProtectedRoute} from "../Utils/Auth";
+import { HomePage, Navigation } from '../components';
+import { Login } from '../components/AuthForm';
+import UserHome from '../components/UserHome';
+import Achievements from '../pages/Achievements';
 
 
 console.log("here");
@@ -36,6 +37,7 @@ function App() {
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/lesson/:lessonId" element={<SingleLesson />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/achievements" element={<Achievements />} />
         </Routes>
       </div>
     </Router>
