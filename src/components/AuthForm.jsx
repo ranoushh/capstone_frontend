@@ -45,4 +45,10 @@ function AuthForm ({ name, displayName }) {
     );
 };
 
-export default AuthForm;
+AuthForm.PropTypes = {
+    name: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired
+};
+
+export const Login = AuthForm;
+export const Signup = AuthForm;
