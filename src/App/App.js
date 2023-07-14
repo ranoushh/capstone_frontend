@@ -4,8 +4,6 @@ import Chat from '../pages/Chat';
 import Home from '../pages/Home';
 // import Login from '../pages/Login';
 import Profile from '../pages/Profile'
-import Test from '../pages/test/Test'
-import Quiz from '../pages/quiz/Quiz'
 import Lessons from '../pages/Lessons'
 import SingleLesson from '../pages/SingleLesson'
 import Leaderboard from '../pages/Leaderboard'
@@ -34,8 +32,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/tests" element={<Test />} />
-          <Route path="/quizzes" element={<Quiz />} />
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/lesson/:lessonId" element={<SingleLesson />} />
           <Route path="/languages" element={<Languages />} />
