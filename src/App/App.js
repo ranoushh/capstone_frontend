@@ -4,13 +4,15 @@ import Chat from '../pages/Chat';
 import Home from '../pages/Home';
 // import Login from '../pages/Login';
 import Profile from '../pages/Profile'
-import Test from '../pages/test/Test'
-import Quiz from '../pages/quiz/Quiz'
 import Lessons from '../pages/Lessons'
 import SingleLesson from '../pages/SingleLesson'
 import Leaderboard from '../pages/Leaderboard'
 import Languages from '../pages/Languages';
 import SingleLanguage from '../pages/SingleLanguage';
+import Quizzes from '../pages/Quizzes';
+import SingleQuiz from '../pages/SingleQuiz';
+import Tests from '../pages/Tests';
+import SingleTest from '../pages/SingleTest';
 import { Signup } from '../components/AuthForm';
 import {ProtectedRoute} from "../Utils/Auth";
 import { HomePage, Navigation } from '../components';
@@ -34,12 +36,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/tests" element={<Test />} />
-          <Route path="/quizzes" element={<Quiz />} />
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/lesson/:lessonId" element={<SingleLesson />} />
           <Route path="/languages" element={<Languages />} />
           <Route path="/language/:languageId" element={<SingleLanguage />} />
+          <Route path="/quizzes" element={<Quizzes />} />
+          <Route path="/quiz/:quizId" element={<SingleQuiz />} />
+          <Route path="/tests" element={<Tests />} />
+          <Route path="/test/:testId" element={<SingleTest />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/achievements" element={<Achievements />} />
         </Routes>

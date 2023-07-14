@@ -1,7 +1,7 @@
 import QuizzesActionType from "./quizzes.types";
 
 export const INITIAL_QUIZ_STATE = {
-    allQuiz: [],
+    allQuizzes: [],
     singleQuiz: {},
 }
 
