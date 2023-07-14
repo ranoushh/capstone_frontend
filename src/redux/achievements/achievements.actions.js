@@ -2,12 +2,12 @@ import axios from "axios";
 import achievementActionTypes from "./achievements.types";
 
 export const fetchAllAchievements = (payload) => ({
-    type: achievementActionTypes.FETCH_ALL_ACHIEVEMENTS, //action  type
+    type: achievementActionTypes.fetch_all_achievements, //action  type
     payload: payload, //data to be sent w/ action this is the data taken from thunk
 });
 
 export const fetchSingleAchievement = (payload) => ({
-    type: achievementActionTypes.FETCH_SINGLE_ACHIEVEMENT, //action  type
+    type: achievementActionTypes.fetch_single_achievement, //action  type
     payload: payload, //data to be sent w/ action this is the data taken from thunk
 });
 
