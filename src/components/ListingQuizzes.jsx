@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link } from "react-router-dom";
+
 export default function ListingQuizzes(props) {
     console.log("LIST OF QUIZZES COMPONENT");
   
@@ -9,6 +12,7 @@ export default function ListingQuizzes(props) {
       filteredQuizzes.map((item) => {
         return (
           <div className="quiz-grid" key={item.id}>
+            <h1>Anything</h1>
             <div className="container-lesson">
               <div className="div-card-name">
                 <Link className="card-link" to={`/quiz/${item.id}`}>
