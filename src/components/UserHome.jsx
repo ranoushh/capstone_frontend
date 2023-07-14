@@ -9,7 +9,7 @@ function UserHome() {
   return (
     <div>
       <h1>Welcome, {email} </h1> 
-        <Navigation/>
+        {/* <Navigation/> */}
     </div>
   );
 }
