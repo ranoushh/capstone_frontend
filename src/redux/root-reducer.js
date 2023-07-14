@@ -6,8 +6,8 @@ import achievementReducer from './achievements/achievements.reducers';
 
 const rootReducer = combineReducers({
     lessons: lessonsReducer,
-    userReducer: userReducer,
-    achievementReducer: achievementReducer
+    users: userReducer,
+    achievements: achievementReducer
 }); 
 
 export default rootReducer;

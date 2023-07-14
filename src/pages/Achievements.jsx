@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAchievementsThunk } from "../redux/achievements/achievements.actions";
 
 function Achievements() {
-  const allAchievements = useSelector((state) => state.achievements.allAchievements);
+  const allAchievements = useSelector((state) => state.achievements?.allAchievements);
   const dispatch = useDispatch();
+  console.log((useSelector(state => state)));
 
   useEffect(() => {
     console.log("FETCH ALL Achievements FIRING IN USEEFFECT");
@@ -20,9 +21,11 @@ function Achievements() {
     <div>
        <h1>Achievements </h1>
        <ul>
-        {allAchievements.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
+        {allAchievements && allAchievements.length > 0 ? 
+          (allAchievements.map((item, index) => (
+          <li key={index}>{item.achievementName}</li>
+          ))) : ("Loading")
+        };
       </ul>
     </div>
   );
