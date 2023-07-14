@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 
 export default function ListingLessons(props) { //CSS
     console.log("LIST LESSONS COMPONENT");
-    return props.list.length > 0 ? (
-        props.list.map((item) => {
+     if (!props.list) {
+       return <h1 className="info-message">There are no lessons here</h1>;
+     }
+      const filteredLessons = props.list.filter((lesson) => {
+        return lesson.languageId === props.languageId;
+      });
+    return filteredLessons.length > 0 ? (
+        filteredLessons.map((item) => {
             return (
                 <div className="lesson-grid">
                     <div className="container-lesson" key={item.id}>
