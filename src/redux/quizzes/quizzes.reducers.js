@@ -8,9 +8,9 @@ export const INITIAL_QUIZ_STATE = {
 const quizzesReducer = (state = INITIAL_QUIZ_STATE, { type, payload }) => {
     console.log('QUIZ REDUCER IS HANDLING FETCH ALL QUIZ ACTION')
     switch (type) {
-        case QuizActionType.FETCH_ALL_QUIZZES:
+        case QuizzesActionType.FETCH_ALL_QUIZZES:
             return { ...state, allQuizzes: payload };
-        case QuizActionType.FETCH_SINGLE_QUIZ:
+        case QuizzesActionType.FETCH_SINGLE_QUIZ:
             return { ...state, singleQuiz: payload };
         default:
             return state;
