@@ -7,9 +7,9 @@ import achievementReducer from './achievements/achievements.reducers';
 
 const rootReducer = combineReducers({
     lessons: lessonsReducer,
-    userReducer: userReducer,
-    achievementReducer: achievementReducer,
-  languages: languageReducer
+    users: userReducer,
+    achievements: achievementReducer,
+    languages: languageReducer
 }); 
 
 export default rootReducer;
