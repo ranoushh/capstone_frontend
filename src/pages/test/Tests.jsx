@@ -4,15 +4,21 @@ import { fetchTests } from "../Redux/Tests/Tests.actions";
 import TestList from "../TestList";
 import Test from "../Test";
 
-function TestPage() {
+function Tests() {
   const dispatch = useDispatch();
   const [selectedTest, setSelectedTest] = useState(null);
   const [completedTest, setCompletedTest] = useState(null);
-  const tests = useSelector((state) => state.tests);
+  const Tests = useSelector((state) => state.tests);
 
   useEffect(() => {
-    dispatch(fetchTests());
-  }, [dispatch]);
+    console.log("FETCH ALL TESTS FIRING IN USE EFFECT");
+    fetchAllTests();
+  }, []);
+
+  function fetchAllTests() {
+    console.log("RUNNING DISPATCH FROM FETCHALLTESTS");
+    return dispatch(fetchAllTestsThunk());
+  }
 
   const handleTestSelect = (test) => {
     setSelectedTest(test);
@@ -22,11 +28,11 @@ function TestPage() {
     setCompletedTest(result);
   };
 
-  const renderTest = () => {
+  const renderAllTests = () => {
   if (!selectedTest && !completedTest) {
-    return <TestList tests={tests} onTestSelect={handleTestSelect} />;
+    return <TestList tests={Tests} onTestSelect={handleTestSelect} />;
   } else if (selectedTest && !completedTest) {
-    return <Test Test={selectedTest} onComplete={handleTestComplete} />;
+    return <Test test={selectedTest} onComplete={handleTestComplete} />;
   } else if (!selectedTest && completedTest) {
     return <TestResult result={completedTest} />;
   } else {
@@ -36,8 +42,8 @@ function TestPage() {
 
   return (
     <div>
-      <h1>Test Page</h1>
-      {renderTest()}
+      <h1>Tests Page</h1>
+      {renderAllTests()}
 
       {completedTest && (
         <div>
@@ -51,4 +57,4 @@ function TestPage() {
   );
 }
 
-export default TestPage;
+export default Tests;
