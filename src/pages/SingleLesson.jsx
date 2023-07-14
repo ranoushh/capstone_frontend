@@ -26,7 +26,7 @@ function SingleLesson() {
 
   const handleNoClick = () => {
     // Additional logic to handle marking the flashcard as incomplete or adding it back to the list
-    // You can also implement navigation to the next flashcard here
+    // implement navigation to the next flashcard here
     if (currentCard === flashcards.length - 1) {
       // Restart from the beginning if there are no more cards
       setCurrentCard(0);
