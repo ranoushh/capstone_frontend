@@ -14,7 +14,7 @@ export const fetchAllQuizzesThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCH_ALL_QUIZZES_THUNK is firing");
-      const response = await axios.get("http://localhost:8080/api/quizzes");
+      const response = await axios.get("http://localhost:8080/api/quiz");
       console.log("FETCH_ALL_QUIZZES_THUNK completed");
       dispatch(fetchAllQuizzes(response.data));
     } catch (error) {
@@ -35,8 +35,8 @@ export const fetchSingleQuiz = (payload) => {
 export const fetchSingleQuizThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log("FETCH_SINGLE_quiz_THUNK is firing");
-      const response = await axios.get(`http://localhost:8080/api/quizzes/${id}`);
+      console.log("FETCH_SINGLE_QUIZ_THUNK is firing");
+      const response = await axios.get(`http://localhost:8080/api/quiz/${id}`);
       console.log("FETCH_SINGLE_QUIZ_THUNK completed");
       dispatch(fetchSingleQuiz(response.data));
     } catch (error) {
