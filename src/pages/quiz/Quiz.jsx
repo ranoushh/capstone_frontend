@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 //
 function Quiz({ quiz, onComplete }) {
   const [userAnswers, setUserAnswers] = useState({});
