@@ -9,6 +9,8 @@ import SingleLesson from '../pages/SingleLesson'
 import Leaderboard from '../pages/Leaderboard'
 import Languages from '../pages/Languages';
 import SingleLanguage from '../pages/SingleLanguage';
+import Quizzes from '../pages/Quizzes';
+import SingleQuiz from '../pages/SingleQuiz';
 import { Signup } from '../components/AuthForm';
 import {ProtectedRoute} from "../Utils/Auth";
 import { HomePage, Navigation } from '../components';
@@ -36,6 +38,8 @@ function App() {
           <Route path="/lesson/:lessonId" element={<SingleLesson />} />
           <Route path="/languages" element={<Languages />} />
           <Route path="/language/:languageId" element={<SingleLanguage />} />
+          <Route path="/quizzes" element={<Quizzes />} />
+          <Route path="/quiz/:quizId" element={<SingleQuiz />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/achievements" element={<Achievements />} />
         </Routes>
