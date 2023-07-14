@@ -11,12 +11,12 @@ const achievementReducer = (state=Initial_State, {type, payload}) => {
     // console.log(allAchievements);
     //logs which action is being used
     switch(type){
-        case achievementActionTypes.FETCH_ALL_ACHIEVEMENTS:
+        case achievementActionTypes.fetch_all_achievements:
             //putting payload from fetch into the initial empty array
             console.log(payload);
             return{...state, allAchievements: payload};
 
-        case achievementActionTypes.FETCH_SINGLE_ACHIEVEMENT:
+        case achievementActionTypes.fetch_single_achievement:
             return { ...state, singleAchievement: payload };
         default:
             return state;
