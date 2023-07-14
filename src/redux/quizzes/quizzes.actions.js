@@ -35,7 +35,7 @@ export const fetchSingleQuiz = (payload) => {
 export const fetchSingleQuizThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log("FETCH_SINGLE_quiz_THUNK is firing");
+      console.log("FETCH_SINGLE_QUIZ_THUNK is firing");
       const response = await axios.get(`http://localhost:8080/api/quiz/${id}`);
       console.log("FETCH_SINGLE_QUIZ_THUNK completed");
       dispatch(fetchSingleQuiz(response.data));

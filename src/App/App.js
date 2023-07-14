@@ -11,6 +11,8 @@ import Languages from '../pages/Languages';
 import SingleLanguage from '../pages/SingleLanguage';
 import Quizzes from '../pages/Quizzes';
 import SingleQuiz from '../pages/SingleQuiz';
+import Tests from '../pages/Tests';
+import SingleTest from '../pages/SingleTest';
 import { Signup } from '../components/AuthForm';
 import {ProtectedRoute} from "../Utils/Auth";
 import { HomePage, Navigation } from '../components';
@@ -40,6 +42,8 @@ function App() {
           <Route path="/language/:languageId" element={<SingleLanguage />} />
           <Route path="/quizzes" element={<Quizzes />} />
           <Route path="/quiz/:quizId" element={<SingleQuiz />} />
+          <Route path="/tests" element={<Tests />} />
+          <Route path="/test/:testId" element={<SingleTest />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/achievements" element={<Achievements />} />
         </Routes>
