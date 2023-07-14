@@ -1,11 +1,11 @@
 import axios from "axios";
-import testsActionType from "./tests.types";
+import TestsActionType from "./tests.types";
 
 // Fetching all tests
-export const fetchAlltests = (payload) => {
+export const fetchAllTests = (payload) => {
   console.log("FETCH ALL TESTS ACTION");
   return {
-    type: testsActionType.FETCH_ALL_TESTS,
+    type: TestsActionType.FETCH_ALL_TESTS,
     payload: payload,
   };
 };
@@ -14,7 +14,7 @@ export const fetchAllTestsThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCH_ALL_TESTS_THUNK is firing");
-      const response = await axios.get("http://localhost:8080/api/tests");
+      const response = await axios.get("http://localhost:8080/api/test");
       console.log("FETCH_ALL_TESTS_THUNK completed");
       dispatch(fetchAllTests(response.data));
     } catch (error) {
@@ -27,7 +27,7 @@ export const fetchAllTestsThunk = () => {
 export const fetchSingleTest = (payload) => {
   console.log("FETCH SINGLE TEST ACTION");
   return {
-    type: testsActionType.FETCH_SINGLE_TEST,
+    type: TestsActionType.FETCH_SINGLE_TEST,
     payload: payload,
   };
 };
@@ -36,7 +36,8 @@ export const fetchSingleTestThunk = (id) => {
   return async (dispatch) => {
     try {
       console.log("FETCH_SINGLE_TEST_THUNK is firing");
-      const response = await axios.get(`http://localhost:8080/api/tests/${id}`);
+      const response = await axios.get(`http://localhost:8080/api/test/${id}`);
+      console.log("Test", response.data);
       console.log("FETCH_SINGLE_TEST_THUNK completed");
       dispatch(fetchSingleTest(response.data));
     } catch (error) {
