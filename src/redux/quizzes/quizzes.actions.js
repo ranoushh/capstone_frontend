@@ -3,7 +3,7 @@ import QuizzesActionType from "./quizzes.types";
 
 // Fetching all quizzes
 export const fetchAllQuizzes = (payload) => {
-  console.log("FETCH ALL quizzes ACTION");
+  console.log("FETCH ALL QUIZZES ACTION");
   return {
     type: QuizzesActionType.FETCH_ALL_QUIZZES,
     payload: payload,
