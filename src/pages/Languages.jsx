@@ -8,6 +8,8 @@ function Languages() {
   const allLanguages = useSelector((state) => state.languages.allLanguages);
   const dispatch = useDispatch();
 
+  console.log((useSelector(state => state)));
+  
   useEffect(() => {
     console.log("FETCH ALL LESSONS FIRING IN USEEFFECT");
     fetchAllLanguages();
