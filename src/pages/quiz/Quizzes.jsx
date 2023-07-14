@@ -4,15 +4,21 @@ import { fetchQuizzes } from "../Redux/quizzes/quizzes.actions";
 import QuizList from "../QuizList";
 import Quiz from "../Quiz";
 
-function QuizPage() {
+function Quizzes() {
   const dispatch = useDispatch();
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [completedQuiz, setCompletedQuiz] = useState(null);
   const quizzes = useSelector((state) => state.quizzes);
 
   useEffect(() => {
-    dispatch(fetchQuizzes());
-  }, [dispatch]);
+    console.log("FETCH ALL QUIZZES FIRING IN USE EFFECT");
+    fetchAllQuizzes();
+  }, []);
+
+  function fetchAllQuizzes() {
+    console.log("RUNNING DISPATCH FROM FETCHALLQUIZZES");
+    return dispatch(fetchAllQuizzesThunk());
+  }
 
   const handleQuizSelect = (quiz) => {
     setSelectedQuiz(quiz);
@@ -22,7 +28,7 @@ function QuizPage() {
     setCompletedQuiz(result);
   };
 
-  const renderQuiz = () => {
+  const renderAllQuizzes = () => {
   if (!selectedQuiz && !completedQuiz) {
     return <QuizList quizzes={quizzes} onQuizSelect={handleQuizSelect} />;
   } else if (selectedQuiz && !completedQuiz) {
@@ -36,8 +42,8 @@ function QuizPage() {
 
   return (
     <div>
-      <h1>Quiz Page</h1>
-      {renderQuiz()}
+      <h1>Quizzes Page</h1>
+      {renderAllQuizzes()}
 
       {completedQuiz && (
         <div>
@@ -51,4 +57,4 @@ function QuizPage() {
   );
 }
 
-export default QuizPage;
+export default Quizzes;
