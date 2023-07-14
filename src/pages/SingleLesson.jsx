@@ -8,45 +8,77 @@ function SingleLesson() {
   const dispatch = useDispatch();
   const singleLesson = useSelector((state) => state.lessons.singleLesson);
   const [showFlashcard, setShowFlashcard] = useState(true);
+  const [flip, setFlip] = useState(false);
+  const [currentCard, setCurrentCard] = useState(0);
 
   useEffect(() => {
     dispatch(fetchSingleLessonThunk(lessonId));
   }, [dispatch, lessonId]);
 
   const handleYesClick = () => {
-    setShowFlashcard(false);
     // Additional logic to handle removing the flashcard from the list or marking it as completed
+    setCurrentCard(currentCard + 1);
+    setFlip(false);
   };
 
   const handleNoClick = () => {
     // Additional logic to handle marking the flashcard as incomplete or adding it back to the list
     // You can also implement navigation to the next flashcard here
+    setCurrentCard(currentCard + 1);
+    setFlip(false);
   };
 
+  const handleFlipClick = () => {
+    setFlip(!flip);
+  };
+
+  const flashcards = [
+    {
+      question: "What is 3 + 3?",
+      answer: "6"
+    },
+    {
+      question: "What is four + four?",
+      answer: "8"
+    },
+    {
+      question: "What is six * six?",
+      answer: "36"
+    }
+  ];
+
+  const flashcard = flashcards[currentCard];
+
   return (
-    <div className="flashcard-container">
-      {showFlashcard && (
-        <div className="flashcard">
-          <div className="front">
-            <h1 className="lesson-title">Lesson</h1>
-          </div>
-          <div className="back">
-            {singleLesson ? (
-              <>
-                <h2 className="lesson-name">{singleLesson.lessonName}</h2>
-                <p className="lesson-description">Description: {singleLesson.description}</p>
-                <p className="lesson-content">Content: {singleLesson.content}</p>
-              </>
-            ) : (
-              <p className="info-message">No lesson information currently</p>
-            )}
+    <div>
+      <h1 className="lesson-title">Lesson</h1>
+      <h2 className="lesson-name">{singleLesson?.lessonName}</h2>
+      <div className="flashcard-details">{singleLesson?.lessonDescription}
+      </div>
+      <div className="flashcard-container">
+        {showFlashcard && (
+          <div className="flashcard" onClick={handleFlipClick}>
+            <div className={`card ${flip ? "flip" : ""}`}>
+              <div className="front">
+                <div className="flashcard-question">{flashcard.question}</div>
+              </div>
+              <div className="back">
+                <div className="flashcard-content">
+                  <div className="flashcard-answer">{flashcard.answer}</div>
+                </div>
+              </div>
+            </div>
             <div className="button-container">
-              <button className="yes-button" onClick={handleYesClick}>Yes</button>
-              <button className="no-button" onClick={handleNoClick}>No</button>
+              <button className="yes-button" onClick={handleYesClick}>
+                Yes
+              </button>
+              <button className="no-button" onClick={handleNoClick}>
+                No
+              </button>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
