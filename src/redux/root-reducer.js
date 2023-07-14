@@ -3,7 +3,7 @@ import userReducer from './user';
 import lessonsReducer from './lessons/lessons.reducer';
 import languageReducer from './languages/languages.reducer';
 import achievementReducer from './achievements/achievements.reducers';
-import quizzesReducer from './quizzes/quizzes.reducers';
+import quizzesReducer from './quizzes/quizzes.reducer';
 import testsReducer from './tests/tests.reducer';
 
 //import each reducer made 
