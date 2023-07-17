@@ -12,8 +12,8 @@ export default function ListingLessons(props) { //CSS
     return filteredLessons.length > 0 ? (
         filteredLessons.map((item) => {
             return (
-                <div className="lesson-grid">
-                    <div className="container-lesson" key={item.id}>
+                <div className="item-grid">
+                    <div className="container-item" key={item.id}>
                         <div className="div-card-name">
                             <Link className="card-link" to={`/lesson/${item.id}`}>
                                 <h1 className="item-name">{item.lessonName}</h1>

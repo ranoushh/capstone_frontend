@@ -1,0 +1,5 @@
+const QuizQuestionActionType = {
+  FETCH_ALL_QUIZQUESTION: "FETCH_ALL_QUIZQUESTION",
+  FETCH_SINGLE_QUIZQUESTION: "FETCH_SINGLE_QUIZQUESTION",
+};
+export default QuizQuestionActionType;

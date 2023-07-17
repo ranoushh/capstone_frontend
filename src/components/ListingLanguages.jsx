@@ -6,8 +6,8 @@ export default function ListingLanguages(props) {
   return props.list.length > 0 ? (
     props.list.map((item) => {
       return (
-        <div className="language-grid">
-          <div className="container-lesson" key={item.id}>
+        <div className="item-grid">
+          <div className="container-item" key={item.id}>
             <div className="div-card-name">
               <Link className="card-link" to={`/language/${item.id}`}>
                 <h1 className="item-name">{item.languageName}</h1>
