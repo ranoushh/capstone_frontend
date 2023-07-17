@@ -1,0 +1,5 @@
+const TestQuestionActionType = {
+  FETCH_ALL_TESTQUESTION: "FETCH_ALL_TESTQUESTION",
+  FETCH_SINGLE_TESTQUESTION: "FETCH_SINGLE_TESTQUESTION",
+};
+export default TestQuestionActionType;
