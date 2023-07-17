@@ -17,6 +17,7 @@ function SingleQuiz() {
     dispatch(fetchSingleQuizThunk(quizId));
     dispatch(fetchAllQuizQuestionThunk());
   }, [dispatch, quizId]);
+  
 
   return (
     <div>
