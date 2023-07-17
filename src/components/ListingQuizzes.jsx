@@ -10,8 +10,8 @@ export default function ListingQuizzes(props) {
   return filteredQuizzes.length > 0 ? (
     filteredQuizzes.map((item) => {
       return (
-        <div className="quiz-grid">
-          <div className="container-quiz" key={item.id}>
+        <div className="item-grid">
+          <div className="container-item" key={item.id}>
             <div className="div-card-name">
               <Link className="card-link" to={`/quiz/${item.id}`}>
                 <h1 className="item-name">{item.quizName}</h1>
