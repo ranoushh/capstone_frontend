@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { fetchSingleQuizThunk } from "../redux/quizzes/quizzes.actions";
 import ListingQuizQuestion from "../components/ListingQuizQuestion";
 import { fetchAllQuizQuestionThunk } from "../redux/quizQuestion/quizQuestion.actions";
+import "../style/flashcard.css";
 
 function SingleQuiz() {
   const { quizId } = useParams();
@@ -21,12 +22,10 @@ function SingleQuiz() {
 
   return (
     <div>
-      <h1 className="quiz-title">Quiz</h1>
-
       {singleQuiz ? (
         <div>
           <h2 className="quiz-title">{singleQuiz.quizName}</h2>
-          <p className="paragraph-img">Difficulty: {singleQuiz.difficulty}</p>
+          <p className="quiz-level">Difficulty: {singleQuiz.difficulty}</p>
           <ListingQuizQuestion list={quizQuestion} quizId={singleQuiz.id} />
         </div>
       ) : (
