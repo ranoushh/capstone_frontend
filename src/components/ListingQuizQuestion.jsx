@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function ListingQuizQuestion(props) {
   //CSS
@@ -10,8 +9,8 @@ export default function ListingQuizQuestion(props) {
   return filteredQuizQuestion.length > 0 ? (
     filteredQuizQuestion.map((item) => {
       return (
-        <div className="quiz-grid">
-          <div className="container-quiz" key={item.id}>
+        <div className="item-grid">
+          <div className="container-item" key={item.id}>
             <div className="div-card-name">
               <h1 className="item-name">Question: {item.question}</h1>
               <h2>Choice: {item.quizChoice}</h2>
@@ -21,6 +20,6 @@ export default function ListingQuizQuestion(props) {
       );
     })
   ) : (
-    <h1 className="info-message">There are no QuizQuestion here</h1>
+    <h1 className="info-message">There are no Quiz Question here</h1>
   );
 }
