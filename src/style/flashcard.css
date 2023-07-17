@@ -1,0 +1,77 @@
+.flashcard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top: -8%;
+}
+
+.flashcard {
+  position: relative;
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.flashcard-front input[type="text"] {
+  width: 50%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.flashcard-front button {
+  padding: 8px 16px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.flashcard-back {
+  display: none;
+}
+
+.flashcard.show-answer .flashcard-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.alert-message {
+  color: red;
+}
+
+.congrats-message {
+  color: green;
+}
+
+.score-message {
+  margin-top: 20px;
+}
