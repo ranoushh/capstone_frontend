@@ -19,7 +19,10 @@ import { HomePage, Navigation } from '../components';
 import { Login } from '../components/AuthForm';
 import UserHome from '../components/UserHome';
 import Achievements from '../pages/Achievements';
+import io from 'socket.io-client'
 
+//establish connection with backend
+const socket = io.connect(`http://localhost:8080`);
 
 console.log("here");
 function App() {
