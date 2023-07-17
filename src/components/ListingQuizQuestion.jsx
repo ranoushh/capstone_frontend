@@ -75,9 +75,6 @@ const handleAnswerSubmit = () => {
                 </p>
               )}
             </div>
-            <div className="flashcard-back">
-              <h2>Answer: {currentCard.correctChoice}</h2>
-            </div>
           </div>
           <div className="navigation-buttons">
             <button onClick={handlePrevCard} disabled={currentCardIndex === 0}>
