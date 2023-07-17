@@ -10,13 +10,29 @@ function SingleLesson() {
   const [flip, setFlip] = useState(false);
   const [currentCard, setCurrentCard] = useState(0);
   const [completedCards, setCompletedCards] = useState([]);
-  const flashcardsString =
-    '[{"question": "What is 3 + 3?", "answer": "6"}, {"question": "What is four + four?", "answer": "8"}, {"question": "What is six * six?", "answer": "36"}]';
-  const flashcards = JSON.parse(flashcardsString);
+  const [flashcards, setFlashcards] = useState([]); // Use useState hook to initialize flashcards
 
   useEffect(() => {
-    dispatch(fetchSingleLessonThunk(lessonId));
-  }, [dispatch, lessonId]);
+    dispatch(fetchSingleLessonThunk(lessonId))
+      .then(() => {
+        console.log("Fetched singleLesson:", singleLesson);
+        if (singleLesson && singleLesson.content) {
+          try {
+            const parsedFlashcards = JSON.parse(singleLesson.content);
+            console.log("Parsed flashcards:", parsedFlashcards);
+            setFlashcards(parsedFlashcards);
+          } catch (error) {
+            console.error("Error parsing flashcards:", error);
+            // Handle the error appropriately, such as showing an error message to the user.
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching singleLesson:", error);
+        // Handle the error appropriately, such as showing an error message to the user.
+      });
+  }, [dispatch, lessonId, singleLesson]);
+  console.log("Flascards: " + flashcards);
 
   const handleYesClick = () => {
     // Additional logic to handle removing the flashcard from the list or marking it as completed
@@ -28,7 +44,6 @@ function SingleLesson() {
     // Additional logic to handle marking the flashcard as incomplete or adding it back to the list
     // implement navigation to the next flashcard here
     if (currentCard === flashcards.length - 1) {
-      // Restart from the beginning if there are no more cards
       setCurrentCard(0);
       setCompletedCards([]);
     } else {
@@ -52,11 +67,11 @@ function SingleLesson() {
         <div className="flashcard" onClick={handleFlipClick}>
           <div className={`card ${flip ? "flip" : ""}`}>
             <div className="front">
-              <div className="flashcard-question">{flashcard.question}</div>
+              <div className="flashcard-question">{flashcard?.question}</div>
             </div>
             <div className="back">
               <div className="flashcard-content">
-                <div className="flashcard-answer">{flashcard.answer}</div>
+                <div className="flashcard-answer">{flashcard?.answer}</div>
               </div>
             </div>
           </div>
