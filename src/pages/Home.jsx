@@ -1,6 +1,7 @@
 import React from "react";
 // import Navigation from "../components/Navigation";
 import '../styling/HomeStyling.css';
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -12,6 +13,10 @@ function Home() {
                   {/* <Navigation/> */}
             {/* </div>
           </div> */}
+
+          <h4>Not a User? </h4>
+          <h4>Already a User? </h4>
+          <p></p>
         </div>
     </div>
   );
