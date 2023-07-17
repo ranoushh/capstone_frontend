@@ -6,6 +6,7 @@ import achievementReducer from "./achievements/achievements.reducers";
 import quizzesReducer from "./quizzes/quizzes.reducer";
 import testsReducer from "./tests/tests.reducer";
 import quizQuestionReducer from "./quizQuestion/quizQuestion.reducer";
+import testQuestionReducer from "./testQuestion/testQuestion.reducer";
 
 //import each reducer made
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   quizzes: quizzesReducer,
   tests: testsReducer,
   quizQuestion: quizQuestionReducer,
+  testQuestion: testQuestionReducer,
 });
 
 export default rootReducer;
