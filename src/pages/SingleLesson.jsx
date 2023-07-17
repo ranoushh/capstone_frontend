@@ -10,33 +10,35 @@ function SingleLesson() {
   const [flip, setFlip] = useState(false);
   const [currentCard, setCurrentCard] = useState(0);
   const [completedCards, setCompletedCards] = useState([]);
-  const [flashcards, setFlashcards] = useState([]); // Use useState hook to initialize flashcards
+  const [flashcards, setFlashcards] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchSingleLessonThunk(lessonId))
-      .then(() => {
-        console.log("Fetched singleLesson:", singleLesson);
-        if (singleLesson && singleLesson.content) {
-          try {
-            const parsedFlashcards = JSON.parse(singleLesson.content);
-            console.log("Parsed flashcards:", parsedFlashcards);
-            setFlashcards(parsedFlashcards);
-          } catch (error) {
-            console.error("Error parsing flashcards:", error);
-            // Handle the error appropriately, such as showing an error message to the user.
-          }
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching singleLesson:", error);
+    dispatch(fetchSingleLessonThunk(lessonId));
+  }, [dispatch, lessonId]);
+
+  useEffect(() => {
+    if (singleLesson && singleLesson.content) {
+      try {
+        setFlashcards(JSON.parse(singleLesson.content));
+      } catch (error) {
+        console.error("Error parsing flashcards:", error);
         // Handle the error appropriately, such as showing an error message to the user.
-      });
-  }, [dispatch, lessonId, singleLesson]);
-  console.log("Flascards: " + flashcards);
+      }
+    }
+  }, [singleLesson]);
 
   const handleYesClick = () => {
-    // Additional logic to handle removing the flashcard from the list or marking it as completed
-    setCurrentCard(currentCard + 1);
+    // Remove the current flashcard from the array
+    setFlashcards((prevFlashcards) =>
+      prevFlashcards.filter((_, index) => index !== currentCard)
+    );
+
+    // Additional logic to handle marking the flashcard as completed or adding it to the completedCards list
+
+    // Move to the next flashcard
+    setCurrentCard((prevCard) => (prevCard + 1) % flashcards.length);
+
+    // Reset flip to the front side of the flashcard
     setFlip(false);
   };
 
@@ -47,16 +49,14 @@ function SingleLesson() {
       setCurrentCard(0);
       setCompletedCards([]);
     } else {
-      setCurrentCard(currentCard + 1);
+      setCurrentCard((prevCard) => prevCard + 1);
     }
     setFlip(false);
   };
 
-  const handleFlipClick = () => {
-    setFlip(!flip);
-  };
-
-  const flashcard = flashcards[currentCard];
+  // Ensure that flashcard and flashcards array are not empty before accessing their properties
+  const flashcard = flashcards[currentCard] ?? {};
+  const options = flashcard.options ?? [];
 
   return (
     <div>
@@ -64,25 +64,26 @@ function SingleLesson() {
       <h2 className="lesson-name">{singleLesson?.lessonName}</h2>
       <div className="flashcard-details">{singleLesson?.lessonDescription}</div>
       <div className="flashcard-container">
-        <div className="flashcard" onClick={handleFlipClick}>
+        <div className="flashcard" onClick={() => setFlip(!flip)}>
           <div className={`card ${flip ? "flip" : ""}`}>
             <div className="front">
-              <div className="flashcard-question">{flashcard?.question}</div>
-            </div>
-            <div className="back">
-              <div className="flashcard-content">
-                <div className="flashcard-answer">{flashcard?.answer}</div>
+              {flashcard?.question}
+              <div className="flashcard-options">
+                {options.map((option) => {
+                  return <div className="flashcard-option">{option}</div>;
+                })}
               </div>
             </div>
+            <div className="back">{flashcard?.answer}</div>
           </div>
-          <div className="button-container">
-            <button className="yes-button" onClick={handleYesClick}>
-              Yes
-            </button>
-            <button className="no-button" onClick={handleNoClick}>
-              No
-            </button>
-          </div>
+        </div>
+        <div className="button-container">
+          <button className="yes-button" onClick={handleYesClick}>
+            Yes
+          </button>
+          <button className="no-button" onClick={handleNoClick}>
+            No
+          </button>
         </div>
       </div>
     </div>
