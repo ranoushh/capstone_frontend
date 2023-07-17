@@ -44,10 +44,10 @@ import { useNavigate } from "react-router-dom";
 //     );
 // };
 
-AuthForm.propTypes = {
-    name: PropTypes.string.isRequired,
-    displayName: PropTypes.string.isRequired
-};
+// AuthForm.propTypes = {
+//     name: PropTypes.string.isRequired,
+//     displayName: PropTypes.string.isRequired
+// };
 
 // export const Login = AuthForm;
 // export const Signup = AuthForm;
