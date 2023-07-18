@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { fetchSingleLessonThunk } from "../redux/lessons/lessons.actions";
-import TermList from "../components/TermList";
+import "../styling/LessonStyle.css"; // Import the CSS for the SingleLesson component
 
-function SingleLesson() {
+const SingleLesson = () => {
   const { lessonId } = useParams();
   const dispatch = useDispatch();
   const singleLesson = useSelector((state) => state.lessons.singleLesson);
@@ -12,6 +12,7 @@ function SingleLesson() {
   const [currentCard, setCurrentCard] = useState(0);
   const [completedCards, setCompletedCards] = useState([]);
   const [flashcards, setFlashcards] = useState([]);
+  const [termList, setTermList] = useState([]);
 
   useEffect(() => {
     dispatch(fetchSingleLessonThunk(lessonId));
@@ -21,9 +22,10 @@ function SingleLesson() {
     if (singleLesson && singleLesson.content) {
       try {
         setFlashcards(JSON.parse(singleLesson.content));
+        setTermList(JSON.parse(singleLesson.content));
       } catch (error) {
         console.error("Error parsing flashcards:", error);
-        // Handle the error appropriately, such as showing an error message to the user.
+        // Handle the error appropriately,
       }
     }
   }, [singleLesson]);
@@ -55,12 +57,11 @@ function SingleLesson() {
     setFlip(false);
   };
 
-  // Ensure that flashcard and flashcards array are not empty before accessing their properties
   const flashcard = flashcards[currentCard] ?? {};
   const options = flashcard.options ?? [];
 
   return (
-    <div>
+    <div className="single-lesson">
       <h1 className="lesson-title">Lesson</h1>
       <h2 className="lesson-name">{singleLesson?.lessonName}</h2>
       <div className="flashcard-details">{singleLesson?.lessonDescription}</div>
@@ -70,8 +71,12 @@ function SingleLesson() {
             <div className="front">
               {flashcard?.question}
               <div className="flashcard-options">
-                {options.map((option) => {
-                  return <div className="flashcard-option">{option}</div>;
+                {options.map((option, index) => {
+                  return (
+                    <div key={index} className="flashcard-option">
+                      {option}
+                    </div>
+                  );
                 })}
               </div>
             </div>
@@ -87,9 +92,28 @@ function SingleLesson() {
           </button>
         </div>
       </div>
-      <TermList flashcards={flashcards} />
+      {flashcards.length === 0 && (
+        <div className="empty-flashcards">
+          No flashcards available. Do you want to try the quiz?
+          <Link className="card-link" to={`/quiz/${singleLesson.id}`}>
+            Go to Quiz
+          </Link>
+        </div>
+      )}
+      <div className="term-list-container">
+        <h2 className="term-list-title">Term List</h2>
+        <ul className="term-list-items">
+          {termList.map((term, index) => (
+            <li key={index} className="term-list-item">
+            <span className="term-list-question">{term.question}</span>
+            <span className="term-list-separator">-</span>
+            <span className="term-list-answer">{term.answer}</span>
+          </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
-}
+};
 
 export default SingleLesson;
