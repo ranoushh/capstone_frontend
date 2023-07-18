@@ -133,11 +133,13 @@ function Profile() {
             </span>
             {images.map((image) => (
               <div className= "img-container" key={image.id}>
-                <img className="avatarPics"
-                src={image.src} 
-                alt={image.alt} 
-                title={image.title} />
-                <p>{image.title}</p>
+                <button className="avatarButton">
+                  <img className="avatarPics"
+                  src={image.src} 
+                  alt={image.alt} 
+                  title={image.title} />
+                  <p>{image.title}</p>
+                </button>
               </div>
             ))}
           </div>
