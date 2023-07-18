@@ -115,7 +115,7 @@
 
 /* popup window */
 .popup-content { 
-  background-color: #fff;
+  background-color: #fc9241;
   width: 280px;
   height: 400px;
   padding: 20px;
@@ -134,7 +134,7 @@
 .avatarPics {
   width: 150px;
   height: 150px;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-left: 15px;
 }
 
