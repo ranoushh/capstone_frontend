@@ -113,14 +113,13 @@
   align-items: center;
 }
 
-/* popup window */
 .popup-content { 
   background-color: #fc9241;
-  width: 280px;
-  height: 400px;
-  padding: 20px;
+  width: 380em;
+  height: 25em;
+  padding: 20em;
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10em rgba(0, 0, 0, 0.2);
 }
 
 .close {
@@ -134,8 +133,12 @@
 .avatarPics {
   width: 150px;
   height: 150px;
-  margin-top: 25px;
-  margin-left: 15px;
+  margin-top: -2px;
+  margin-left: -2px;
+}
+
+.avatarPics:hover { /* hover for the avatar selection popup*/
+  filter: brightness(70%); 
 }
 
 .img-container {
@@ -145,6 +148,9 @@
 
 .avatarButton {
     display: inline-block;
-    margin-right: 10px;
+    margin-top: 25px;
+    margin-left: 15px;
+    width: 150px;
+    height: 150px;
     
 }
