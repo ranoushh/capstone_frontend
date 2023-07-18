@@ -26,18 +26,10 @@ function SingleLanguage() {
 
   return (
     <div>
-      <h1 className="language-title">Language</h1>
+      <h1 className="language-title">Language: {singleLanguage.languageName}</h1>
 
       {singleLanguage ? (
         <div>
-          <h2 className="Language-title">{singleLanguage.languageName}</h2>
-          <p className="paragraph-img">
-            Difficulty: {singleLanguage.difficulty}
-          </p>
-          <p className="paragraph-img">
-            Description: {singleLanguage.description}
-          </p>
-          <p className="paragraph-img">Category: {singleLanguage.category}</p>
           <h2>Lesson</h2>
           <ListingLessons list={lessons} languageId={singleLanguage.id} />
           <h2>Test</h2>
