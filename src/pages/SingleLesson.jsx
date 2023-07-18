@@ -21,11 +21,11 @@ const SingleLesson = () => {
   useEffect(() => {
     if (singleLesson && singleLesson.content) {
       try {
-        setFlashcards(JSON.parse(singleLesson.content));
-        setTermList(JSON.parse(singleLesson.content));
+        const parsedFlashcards = JSON.parse(singleLesson.content);
+        setFlashcards(parsedFlashcards);
+        setTermList(parsedFlashcards);
       } catch (error) {
         console.error("Error parsing flashcards:", error);
-        // Handle the error appropriately,
       }
     }
   }, [singleLesson]);
@@ -62,8 +62,8 @@ const SingleLesson = () => {
 
   return (
     <div className="single-lesson">
-      <h1 className="lesson-title">Lesson</h1>
-      <h2 className="lesson-name">{singleLesson?.lessonName}</h2>
+      <h1 className="title">Lesson #{singleLesson?.id}</h1>
+      <h2 className="title">{singleLesson?.lessonName}</h2>
       <div className="flashcard-details">{singleLesson?.lessonDescription}</div>
       <div className="flashcard-container">
         <div className="flashcard" onClick={() => setFlip(!flip)}>
@@ -94,21 +94,21 @@ const SingleLesson = () => {
       </div>
       {flashcards.length === 0 && (
         <div className="empty-flashcards">
-          No flashcards available. Do you want to try the quiz?
-          <Link className="card-link" to={`/quiz/${singleLesson.id}`}>
+          No flashcards available. Do you want to try the quiz?{" "}
+          <Link className="quiz-link" to={`/quiz/${singleLesson.id}`}>
             Go to Quiz
           </Link>
         </div>
       )}
       <div className="term-list-container">
-        <h2 className="term-list-title">Term List</h2>
+        <h2 className="title">Term List</h2>
         <ul className="term-list-items">
           {termList.map((term, index) => (
             <li key={index} className="term-list-item">
-            <span className="term-list-question">{term.question}</span>
-            <span className="term-list-separator">-</span>
-            <span className="term-list-answer">{term.answer}</span>
-          </li>
+              <span className="term-list-question">{term.question}</span>
+              <span className="term-list-separator">-</span>
+              <span className="term-list-answer">{term.answer}</span>
+            </li>
           ))}
         </ul>
       </div>

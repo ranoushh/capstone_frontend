@@ -106,17 +106,19 @@
   
   /* TermList */
   .term-list-container {
-    margin-top: 30px;
+    margin-top: 20px;
     background-color: #f7f7f7;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .term-list-title {
+  .title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 16px;
+    justify-content: center;
+    display: flex;
   }
   
   .term-list {
@@ -146,7 +148,7 @@
   
   /* Empty flashcards message */
   .empty-flashcards {
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 18px;
     text-align: center;
     color: #888;
@@ -155,7 +157,5 @@
   .quiz-link {
     color: #007bff;
     text-decoration: none;
-    font-weight: bold;
     margin-left: 8px;
   }
-  
