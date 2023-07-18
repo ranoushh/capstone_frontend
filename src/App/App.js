@@ -19,6 +19,7 @@ import { HomePage, Navigation } from '../components';
 import { Login } from '../components/AuthForm';
 import UserHome from '../components/UserHome';
 import Achievements from '../pages/Achievements';
+import AddFriend from '../pages/AddFriend';
 import io from 'socket.io-client'
 
 //establish connection with backend
@@ -49,6 +50,7 @@ function App() {
           <Route path="/test/:testId" element={<SingleTest />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/achievements" element={<Achievements />} />
+          <Route path="/addfriend" element={<AddFriend />} />
         </Routes>
       </div>
     </Router>
