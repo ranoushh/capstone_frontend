@@ -12,7 +12,10 @@ export default function ListingTestQuestion(props) {
     (TestQuestion) => TestQuestion.testId === testId
   );
   const currentCard = filteredTestQuestion[currentCardIndex];
-
+  const [userAnswers, setUserAnswers] = useState(
+    new Array(filteredTestQuestion.length).fill("")
+  );
+  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
   const handleInputChange = (e) => {
     setUserAnswer(e.target.value);
   };
@@ -28,23 +31,31 @@ export default function ListingTestQuestion(props) {
       setIsAnswerCorrect(false);
     }
 
+    const newUserAnswers = [...userAnswers];
+    newUserAnswers[currentCardIndex] = userAnswer;
+    setUserAnswers(newUserAnswers);
+    setIsAnswerSubmitted(true);
+
     setTimeout(() => {
       setCurrentCardIndex((prevIndex) => prevIndex + 1);
       setIsAnswerCorrect(null);
       setUserAnswer("");
+      setIsAnswerSubmitted(false);
     }, 1500);
   };
 
   const handleNextCard = () => {
-    setCurrentCardIndex((prevIndex) => prevIndex + 1);
     setIsAnswerCorrect(null);
-    setUserAnswer("");
+    setUserAnswer(userAnswers[currentCardIndex + 1] || "");
+    setIsAnswerSubmitted(false);
+    setCurrentCardIndex((prevIndex) => prevIndex + 1);
   };
 
   const handlePrevCard = () => {
-    setCurrentCardIndex((prevIndex) => prevIndex - 1);
     setIsAnswerCorrect(null);
-    setUserAnswer("");
+    setUserAnswer(userAnswers[currentCardIndex - 1] || "");
+    setIsAnswerSubmitted(userAnswers[currentCardIndex - 1] !== "");
+    setCurrentCardIndex((prevIndex) => prevIndex - 1);
   };
 
   return (
@@ -63,8 +74,11 @@ export default function ListingTestQuestion(props) {
                 placeholder="Enter your answer"
                 value={userAnswer}
                 onChange={handleInputChange}
+                readOnly={isAnswerSubmitted}
               />
-              <button onClick={handleAnswerSubmit}>Submit</button>
+              <button onClick={handleAnswerSubmit} disabled={isAnswerSubmitted}>
+                Submit
+              </button>
               {isAnswerCorrect === false && (
                 <p className="alert-message">Incorrect answer!</p>
               )}

@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "../components/Navigation";
 import { useState, useEffect} from "react";
-import "/Users/aminatacisse/capstone_frontend/src/styling/ProfileCard.css";
+import "../styling/ProfileCard.css";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useSelector, useDispatch} from "react-redux";
