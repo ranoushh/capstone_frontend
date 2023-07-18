@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import "../style/singleLanguage.css";
 
 export default function ListingLessons(props) { //CSS
     console.log("LIST LESSONS COMPONENT");
@@ -10,20 +11,16 @@ export default function ListingLessons(props) { //CSS
         return lesson.languageId === props.languageId;
       });
     return filteredLessons.length > 0 ? (
-        filteredLessons.map((item) => {
-            return (
-                <div className="item-grid">
-                    <div className="container-item" key={item.id}>
-                        <div className="div-card-name">
-                            <Link className="card-link" to={`/lesson/${item.id}`}>
-                                <h1 className="item-name">{item.lessonName}</h1>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            );
-        })
+      <div className="item-grid">
+        {filteredLessons.map((item) => (
+          <Link key={item.id} className="card-link" to={`/lesson/${item.id}`}>
+            <div className="container-item">
+              <h2 className="item-name">{item.lessonName}</h2>
+            </div>
+          </Link>
+        ))}
+      </div>
     ) : (
-        <h1 className="info-message">There are no lessons here</h1>
+      <h1 className="info-message">There are no lessons here</h1>
     );
 }
