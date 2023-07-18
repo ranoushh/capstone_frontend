@@ -19,7 +19,10 @@ import { HomePage, Navigation } from '../components';
 import { Login } from '../components/AuthForm';
 import UserHome from '../components/UserHome';
 import Achievements from '../pages/Achievements';
+import io from 'socket.io-client'
 
+//establish connection with backend
+const socket = io.connect(`http://localhost:8080`);
 
 console.log("here");
 function App() {
@@ -34,7 +37,7 @@ function App() {
           {/* <Route path="/login" element={<Login name = "login" displayName = "Login" />} />
           <Route path="/signup" element={< Signup name = "signup" displayName = "Signup" />} /> */}
           <Route path="/" element={<Home />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/chat" element={<Chat socket={socket} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/lesson/:lessonId" element={<SingleLesson />} />

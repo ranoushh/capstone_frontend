@@ -4,7 +4,7 @@
 // import auth from "../redux/store";
 // import { useNavigate } from "react-router-dom";
 
-// //handles both authorization and login/signup 
+// //handles both authorization and login/signup
 // function AuthForm ({ name, displayName }) {
 //     const dispatch = useDispatch();
 //     const navigate = useNavigate();
@@ -12,17 +12,16 @@
 
 //     function handleSubmit(event){
 //         event.preventDefault();
-//         const formName = name; 
+//         const formName = name;
 //         const email = event.target.email.value;
 //         const password = event.target.password.value;
 //         dispatch(auth(email, password, formName));
 //         navigate("/home");
 //     };
 
-
 //     return (
 //         <div>
-//             <form onSubmit = {handleSubmit}name = {name}> 
+//             <form onSubmit = {handleSubmit}name = {name}>
 //             <div>
 //                 <label htmlFor="email">
 //                     <small >Email</small>
