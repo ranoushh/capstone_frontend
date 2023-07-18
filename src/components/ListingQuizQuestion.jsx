@@ -55,10 +55,10 @@ const handleAnswerSubmit = () => {
         <>
           <div className="flashcard">
             <div className="flashcard-front">
-              <h1 className="item-name">
+              <h1 className="items-name">
                 {currentCardIndex + 1}. {currentCard.question}
               </h1>
-              <h2 className="item-name">{currentCard.quizChoice}</h2>
+              <h2 className="items-name">{currentCard.quizChoice}</h2>
               <input
                 type="text"
                 placeholder="Enter your answer"

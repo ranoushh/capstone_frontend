@@ -1,19 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../style/language.css";
 
 export default function ListingLanguages(props) {
   console.log("LIST LANGUAGES COMPONENT");
   return props.list.length > 0 ? (
     props.list.map((item) => {
       return (
-        <div className="item-grid">
-          <div className="container-item" key={item.id}>
-            <div className="div-card-name">
-              <Link className="card-link" to={`/language/${item.id}`}>
-                <h1 className="item-name">{item.languageName}</h1>
-              </Link>
+        <div className="language-grid">
+          <Link
+            className="language-link"
+            key={item.id}
+            to={`/language/${item.id}`}
+          >
+            <div className="container-language">
+              <h1 className="language-name">{item.languageName}</h1>
             </div>
-          </div>
+          </Link>
         </div>
       );
     })
