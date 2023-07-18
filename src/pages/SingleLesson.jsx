@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchSingleLessonThunk } from "../redux/lessons/lessons.actions";
+import TermList from "../components/TermList";
 
 function SingleLesson() {
   const { lessonId } = useParams();
@@ -86,6 +87,7 @@ function SingleLesson() {
           </button>
         </div>
       </div>
+      <TermList flashcards={flashcards} />
     </div>
   );
 }
