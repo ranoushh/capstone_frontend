@@ -10,7 +10,7 @@
 .test-level, .quiz-level{
   font-size: 1.5rem;
  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- margin-top: -2%;
+ margin-top: 1%;
  margin-bottom: 5%;
  color: gray;
   text-align: center;
@@ -26,7 +26,7 @@
 
 .flashcard {
   position: relative;
-  width: 50%;
+  width: 53%;
   height: 50%;
   background-color: #fcfcfc;
   border-radius: 8px;
@@ -109,10 +109,12 @@
 .score-message {
  font-size: 2rem;
  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  margin-top: 20px;
+  margin-top: -2%;
+  margin-bottom: 1%;
 }
 
-.item-name{
-  font-size: 1.5rem;
+.items-name{
+ font-size: 1.5rem;
  font-family:'Courier New', Courier, monospace;
+ padding-bottom: 3%;
 }
