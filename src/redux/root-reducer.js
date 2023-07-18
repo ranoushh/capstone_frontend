@@ -7,6 +7,7 @@ import quizzesReducer from "./quizzes/quizzes.reducer";
 import testsReducer from "./tests/tests.reducer";
 import quizQuestionReducer from "./quizQuestion/quizQuestion.reducer";
 import testQuestionReducer from "./testQuestion/testQuestion.reducer";
+import avatarReducer from "./avatars/avatars.reducer";
 
 //import each reducer made
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   tests: testsReducer,
   quizQuestion: quizQuestionReducer,
   testQuestion: testQuestionReducer,
+  avatars: avatarReducer,
 });
 
 export default rootReducer;

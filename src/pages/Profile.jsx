@@ -4,70 +4,34 @@ import { useState, useEffect} from "react";
 import "../styling/ProfileCard.css";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { useSelector, useDispatch} from "react-redux";
+import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
 
-
-// function SVGRenderer({ svgData }) {
-//   return (
-//     <div
-//       dangerouslySetInnerHTML={{
-//         __html: svgData,
-//       }}
-//     />
-//   );
-// }
 
 function Profile() {
+  const dispatch = useDispatch();
   const [avatar, setAvatar] = useState();
   const [showPopup, setShowPopup] = useState(false);
+  const allAvatars = useSelector((state) => state.avatars.allAvatars);
 
-  const images = [
-    {
-      id: 1,
-      src: "https://api.dicebear.com/6.x/fun-emoji/svg?seed=Felix&backgroundColor=fc8941",
-      alt: "Image 1",
-    },
-    {
-      id: 2,
-      src: "https://api.dicebear.com/6.x/fun-emoji/svg?backgroundType=gradientLinear&mouth=smileTeeth&eyes=wink",
-      alt: "Image 2",
-    },
-    {
-      id: 3,
-      src: "https://api.dicebear.com/6.x/fun-emoji/svg?backgroundColor=fcee2d&mouth=tongueOut&eyes=tearDrop",
-      alt: "Image 3",
-    },
-    {
-      id: 4,
-      src: "https://api.dicebear.com/6.x/fun-emoji/svg?backgroundColor=5de8fa&mouth=kissHeart&eyes=wink",
-      alt: "Image 4",
-    },
-    {
-      id: 5,
-      src: "https://api.dicebear.com/6.x/fun-emoji/svg?backgroundColor=f83a3a&mouth=shout&eyes=glasses&translateY=-25",
-      alt: "Image 5",
-    },
-    {
-      id: 6,
-      src: "https://api.dicebear.com/6.x/fun-emoji/svg?backgroundColor=bd7bf3&mouth=pissed&eyes=shades&translateX=-25",
-      alt: "Image 6",
-    },
-    {
-      id: 7,
-      src: "https://api.dicebear.com/6.x/fun-emoji/svg?backgroundColor=52cf5d&mouth=drip&eyes=sleepClose&rotate=270",
-      alt: "Image 7",
-    },
-    {
-      id: 8,
-      src: "https://api.dicebear.com/6.x/fun-emoji/svg?backgroundColor=e0218a&mouth=cute&eyes=cute",
-      alt: "Image 8",
-    }
-  ];
+  useEffect(() => {
+    console.log("FETCH ALL AVATARS FIRING IN USEEFFECT");
+    fetchAllAvatars();
+    
+  }, []);
 
+  function fetchAllAvatars() {
+    console.log("RUNNING DISPATCH FROM FETCHALLAVATARS");
+    return dispatch(fetchAllAvatarsThunk());
+  };
+
+console.log(allAvatars);
 
   function handleClick() {
     setShowPopup(true);
   };
   
+
 
   return (
     <div>
@@ -131,14 +95,13 @@ function Profile() {
             <span className="close" onClick={() => setShowPopup(false)}>
               &times;
             </span>
-            {images.map((image) => (
-              <div className= "img-container" key={image.id}>
+            {allAvatars.map((item, image) => (
+              <div className= "img-container" key={image}>
                 <button className="avatarButton">
-                  <img className="avatarPics"
-                  src={image.src} 
-                  alt={image.alt} 
-                  title={image.title} />
-                  <p>{image.title}</p>
+                  <div>
+                  <img className= "avatarPics" src= {item.imageURL}>
+                </img>
+                </div>
                 </button>
               </div>
             ))}
