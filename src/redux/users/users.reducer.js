@@ -2,7 +2,6 @@ import UsersActionType from "./users.types";
 
 export const INITIAL_USERS_STATE = {
     allUsers: [],
-    singleUser: {},
 }
 
 const usersReducer = (state = INITIAL_USERS_STATE, { type, payload }) => {
