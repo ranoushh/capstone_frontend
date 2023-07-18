@@ -113,13 +113,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    justify-content: center;
-    display: flex;
-  }
   
   .term-list {
     list-style: none;

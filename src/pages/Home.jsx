@@ -9,7 +9,7 @@ function Home() {
       <div className="header">
         {/* <div className="nav">
           <div className=""> */}
-                <h1>Language Learning</h1> 
+                <h1 className="title">Language Learning</h1> 
                   {/* <Navigation/> */}
             {/* </div>
           </div> */}

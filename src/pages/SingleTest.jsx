@@ -24,7 +24,7 @@ function SingleTest() {
 
       {singleTest ? (
         <div>
-          <h2 className="test-title">{singleTest.testName}</h2>
+          <h2 className="title">{singleTest.testName}</h2>
           <p className="test-level">Difficulty: {singleTest.difficulty}</p>
           <ListingTestQuestion list={testQuestion} testId={singleTest.id} />
         </div>
