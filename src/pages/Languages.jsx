@@ -25,6 +25,7 @@ function Languages() {
   return (
     <div>
       {/* <Navigation /> */}
+      <h1 className="title">Languages</h1>
       <ListingLanguages list={allLanguages} />
     </div>
   );

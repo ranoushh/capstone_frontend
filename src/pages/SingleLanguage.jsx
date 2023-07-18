@@ -26,7 +26,7 @@ function SingleLanguage() {
 
   return (
     <div>
-      <h1 className="language-title">Language: {singleLanguage.languageName}</h1>
+      <h1 className="title">Language: {singleLanguage.languageName}</h1>
 
       {singleLanguage ? (
         <div>
