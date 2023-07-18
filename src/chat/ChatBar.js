@@ -2,6 +2,11 @@ import React from 'react';
 
 // sidebar showing active users
 function ChatBar (){
+
+  function handleSubmit(){
+    
+  };
+
   return (
     <div className="chat__sidebar">
       <h2>APP NAME</h2>
@@ -14,6 +19,7 @@ function ChatBar (){
           <p>User 2</p>
           <p>User 3</p>
           <p>User 4</p> */}
+          <button onClick={handleSubmit}>Learning Bot</button>
         </div>
       </div>
     </div>
