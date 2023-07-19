@@ -1,8 +1,8 @@
-// import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import PropTypes from "prop-types";
-// import auth from "../redux/store";
-// import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
+import auth from "../redux/store";
+import { useNavigate } from "react-router-dom";
 
 // //handles both authorization and login/signup
 // function AuthForm ({ name, displayName }) {
