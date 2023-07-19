@@ -44,3 +44,27 @@ export const fetchSingleQuizThunk = (id) => {
     }
   };
 };
+
+export const addQuiz = (payload) => {
+  console.log("ADD QUIZ ACTION");
+  return {
+    type: QuizzesActionType.ADD_QUIZ,
+    payload: payload,
+  };
+};
+
+export const addQuizThunk = (newQuiz) => {
+  return async (dispatch) => {
+    try {
+      console.log("ADD_QUIZ_THUNK is firing");
+      const response = await axios.post(
+        "http://localhost:8080/api/quiz",
+        newQuiz
+      );
+      console.log("ADD_QUIZ_THUNK completed");
+      dispatch(addQuiz(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
