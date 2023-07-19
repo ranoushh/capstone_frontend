@@ -67,7 +67,7 @@ const SingleLesson = () => {
       <div className="flashcard-details">{singleLesson?.lessonDescription}</div>
       <div className="flashcard-container">
         <div className="flashcard" onClick={() => setFlip(!flip)}>
-          <div className={`card ${flip ? "flip" : ""}`}>
+          <div className={`cardflash ${flip ? "flip" : ""}`}>
             <div className="front">
               {flashcard?.question}
               <div className="flashcard-options">

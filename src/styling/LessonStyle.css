@@ -1,92 +1,94 @@
-
 .lesson-grid {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-  }
-  
-  .container-lesson {
+}
+
+.container-lesson {
     width: 300px;
     background-color: #EBE6E8;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .div-card-name {
+}
+
+.div-card-name {
     padding: 20px;
-  }
-  
-  .card-link {
+}
+
+.card-link {
     text-decoration: none;
     color: #000;
-  }
-  
-  .item-name {
+}
+
+.item-name {
     font-size: 18px;
     margin-bottom: 10px;
-  }
-  
- /* Flashcard */
+}
+
+/* Flashcard */
 .flashcard-container {
     display: flex;
-    flex-direction: column; /* Change the flex direction to column */
+    flex-direction: column;
+    /* Change the flex direction to column */
     justify-content: center;
     align-items: center;
-  }
-  
-  .flashcard {
+}
+
+.flashcard {
     width: 50%;
     height: 200px;
     perspective: 1000px;
-  }
-  
-  .card {
+}
+
+.cardflash {
     position: relative;
     width: 100%;
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
     cursor: pointer;
-  }
-  
-  .front,
-  .back {
+}
+
+.front,
+.back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 8px;
-  }
-  
-  .front {
+    justify-content: center;
+    text-align: center;
+}
+
+.front {
     background-color: #EBE6E8;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-  }
-  
-  .back {
+}
+
+.back {
     background-color: #EBE6E8;
     transform: rotateY(180deg);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-  }
-  
-  .flip {
+}
+
+.flip {
     transform: rotateY(180deg);
-  }
-  
-  .button-container {
+}
+
+.button-container {
     margin-top: 16px;
     display: flex;
     justify-content: center;
-  }
-  
-  .yes-button,
-  .no-button {
+}
+
+.yes-button,
+.no-button {
     margin: 0 8px;
     padding: 24px 48px;
     background-color: #EBE6E8;
@@ -94,61 +96,61 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 15px;
-  }
-  
-  .no-button:hover {
+}
+
+.no-button:hover {
     background-color: rgb(255, 211, 211);
-  }
-  
-  .yes-button:hover {
+}
+
+.yes-button:hover {
     background-color: rgb(218, 255, 218);
-  }
-  
-  /* TermList */
-  .term-list-container {
+}
+
+/* TermList */
+.term-list-container {
     margin-top: 20px;
     background-color: #f7f7f7;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  .term-list {
+}
+
+
+.term-list {
     list-style: none;
     padding: 0;
-  }
-  
-  .term-list-item {
+}
+
+.term-list-item {
     font-size: 18px;
     margin-bottom: 8px;
     display: flex;
     align-items: center;
-  }
-  
-  .term-list-question {
+}
+
+.term-list-question {
     flex: 1;
-  }
-  
-  .term-list-separator {
+}
+
+.term-list-separator {
     margin: 0 8px;
     color: #888;
-  }
-  
-  .term-list-answer {
+}
+
+.term-list-answer {
     flex: 1;
-  }
-  
-  /* Empty flashcards message */
-  .empty-flashcards {
+}
+
+/* Empty flashcards message */
+.empty-flashcards {
     margin-top: 10px;
     font-size: 18px;
     text-align: center;
     color: #888;
-  }
-  
-  .quiz-link {
+}
+
+.quiz-link {
     color: #007bff;
     text-decoration: none;
     margin-left: 8px;
-  }
+}
