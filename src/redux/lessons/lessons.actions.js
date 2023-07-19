@@ -65,3 +65,24 @@ export const addLessonThunk = (newLesson) => {
     }
   };
 };
+
+export const editLesson = (payload) => {
+  return {
+    type: LessonsActionType.EDIT_LESSON,
+    payload: payload,
+  };
+};
+
+export const editLessonThunk = (lesson) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/lessons/${lesson.id}`,
+        lesson
+      );
+      dispatch(editLesson(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
