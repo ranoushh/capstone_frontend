@@ -44,3 +44,24 @@ export const fetchSingleLessonThunk = (id) => {
     }
   };
 };
+
+export const addLesson = (payload) => {
+  return {
+    type: LessonsActionType.ADD_LESSON,
+    payload: payload,
+  };
+};
+
+export const addLessonThunk = (newLesson) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/lessons",
+        newLesson
+      );
+      dispatch(addLesson(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};

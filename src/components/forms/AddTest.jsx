@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
-const AddQuiz = ({ onSubmit, languageId }) => {
+const AddTest = ({ onSubmit, languageId }) => {
   const navigate = useNavigate();
-  const [newQuiz, setnewQuiz] = useState({});
+  const [newTest, setnewTest] = useState({});
 
   const HandleInputChange = (event) => {
-    setnewQuiz({
-      ...newQuiz,
+    setnewTest({
+      ...newTest,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(newQuiz);
+    onSubmit(newTest);
     navigate(`/language/${languageId}`);
   };
 
   return (
     <div className="forms">
-      <h1 className="form-header">Quiz Info</h1>
+      <h1 className="form-header">Test Info</h1>
       <form onSubmit={handleSubmit}>
-        <label>Quiz Name:</label>
+        <label>Test Name:</label>
         <input
           type="text"
-          name="quizName"
-          value={newQuiz.quizName}
+          name="testName"
+          value={newTest.testName}
           onChange={HandleInputChange}
           required
         />
@@ -35,7 +35,7 @@ const AddQuiz = ({ onSubmit, languageId }) => {
         <input
           type="text"
           name="difficulty"
-          value={newQuiz.difficulty}
+          value={newTest.difficulty}
           onChange={HandleInputChange}
           required
         />
@@ -44,15 +44,15 @@ const AddQuiz = ({ onSubmit, languageId }) => {
         <input
           type="number"
           name="languageId"
-          value={newQuiz.languageId}
+          value={newTest.languageId}
           onChange={HandleInputChange}
         />
 
         <button className="submitbtn" type="submit">
-          Add Quiz
+          Add Test
         </button>
       </form>
     </div>
   );
 };
-export default AddQuiz;
+export default AddTest;

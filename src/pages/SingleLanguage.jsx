@@ -9,7 +9,6 @@ import ListingQuizzes from "../components/ListingQuizzes";
 import { fetchAllQuizzesThunk } from "../redux/quizzes/quizzes.actions";
 import ListingTests from "../components/ListingTests";
 import { fetchAllTestsThunk } from "../redux/tests/tests.actions";
-import AddQuiz from "../components/forms/AddQuiz";
 
 function SingleLanguage() {
   const { languageId } = useParams();
@@ -36,8 +35,14 @@ function SingleLanguage() {
       {singleLanguage ? (
         <div>
           <h2>Lesson</h2>
+          <Link to={`/language/${languageId}/lesson/add`}>
+            <button class="add-btn">Add Lesson</button>
+          </Link>
           <ListingLessons list={lessons} languageId={singleLanguage.id} />
           <h2>Test</h2>
+          <Link to={`/language/${languageId}/test/add`}>
+            <button class="add-btn">Add Test</button>
+          </Link>
           <ListingTests list={tests} languageId={singleLanguage.id} />
           <h2>Quiz</h2>
           <Link to={`/language/${languageId}/quiz/add`}>
