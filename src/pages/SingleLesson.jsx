@@ -63,7 +63,7 @@ const SingleLesson = () => {
   return (
     <div className="single-lesson">
       <h1 className="title">Lesson #{singleLesson?.id}</h1>
-      <h2 className="lesson-name">{singleLesson?.lessonName}</h2>
+      <h2 className="subheading">{singleLesson?.lessonName}</h2>
       <div className="flashcard-details">{singleLesson?.lessonDescription}</div>
       <div className="flashcard-container">
         <div className="flashcard" onClick={() => setFlip(!flip)}>
