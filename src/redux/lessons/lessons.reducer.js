@@ -22,6 +22,11 @@ const lessonsReducer = (state = INITIAL_STUDENTS_STATE, { type, payload }) => {
         ),
         singleLesson: payload,
       };
+    case LessonsActionType.DELETE_LESSON:
+      return {
+        ...state,
+        allLessons: state.allLessons.filter((lesson) => lesson.id !== payload),
+      };
     default:
       return state;
   }
