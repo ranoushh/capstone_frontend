@@ -20,7 +20,8 @@ import { Login } from '../components/AuthForm';
 import UserHome from '../components/UserHome';
 import Achievements from '../pages/Achievements';
 import AddFriend from '../pages/AddFriend';
-import io from 'socket.io-client'
+import io from 'socket.io-client';
+import AddQuizPage from '../pages/AddQuizPage';
 
 //establish connection with backend
 const socket = io.connect(`http://localhost:8080`);
@@ -51,6 +52,10 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/addfriend" element={<AddFriend />} />
+          <Route
+            path="/language/:languageId/quiz/add"
+            element={<AddQuizPage />}
+          />
         </Routes>
       </div>
     </Router>
