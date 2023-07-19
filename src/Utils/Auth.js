@@ -1,10 +1,21 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Outlet, Navigate } from "react-router-dom";
+import { me } from "../redux/user";
 
-export const ProtectedRoute = () => {
-    const registeredUser = useSelector((state) => !!state.user.id);
-    return registeredUser ? <Outlet/> : <Navigate to = "/login" />;
-};
+export default function ProtectedRoute({ isLoggedIn }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(me());
+  }, [dispatch]);
 
-// checks if state has user id, if it does we do Outlet, lets us render child
-// component, otherwise just navigate to login page
+  console.log("protected is logged in ", isLoggedIn);
+  if(isLoggedIn){
+    console.log("if true reached");
+   return <Outlet/>
+  }else{
+    console.log("else false reached")
+    return <Navigate to="/login" />
+  }
+  // return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
+}
