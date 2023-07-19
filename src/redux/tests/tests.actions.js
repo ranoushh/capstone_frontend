@@ -45,3 +45,24 @@ export const fetchSingleTestThunk = (id) => {
     }
   };
 };
+
+export const addTest = (payload) => {
+  return {
+    type: TestsActionType.ADD_TEST,
+    payload: payload,
+  };
+};
+
+export const addTestThunk = (newTest) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/test",
+        newTest
+      );
+      dispatch(addTest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
