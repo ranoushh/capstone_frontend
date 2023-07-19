@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Navigation from "../components/Navigation";
 import { fetchAllUsersThunk } from "../redux/users/users.actions";
+import '../styling/LeaderboardStyle.css';
 
 function Leaderboard() {
   const allUsers = useSelector((state) => state.users.allUsers);
@@ -18,15 +18,33 @@ function Leaderboard() {
   }, []);
 
   return (
-    <div>
+    <div className="leaderboard-container">
       <h1 className="title">Leaderboard</h1>
-      <ul>
-        {allUsers && allUsers.length > 0 ? (
-          allUsers.map((item, index) => <li key={index}>{item.email}</li>)
-        ) : (
-          <h2 className="info-message">There are no users here</h2>
-        )}
-      </ul>
+      {allUsers && allUsers.length > 0 ? (
+        allUsers.slice(0, 10).map((user, index) => (
+          <div
+            key={index}
+            className={`user-card ${index < 3 ? "top-user-card" : "other-user-card"}`}
+          >
+            <div className="user-info">
+              {index < 3 ? (
+                <span className="top-user-rank">{index + 1}</span>
+              ) : (
+                <span className="user-rank">{index + 1}</span>
+              )}
+              <span className="user-name">{user.name}</span>
+              <span className="user-score">{user.score} points</span>
+            </div>
+            <img
+              className="user-avatar"
+              src={user.avatar}
+              alt={`${user.name}'s avatar`}
+            />
+          </div>
+        ))
+      ) : (
+        <h2 className="info-message">There are no users here</h2>
+      )}
     </div>
   );
 }
