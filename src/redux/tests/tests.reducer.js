@@ -12,8 +12,16 @@ const testsReducer = (state = INITIAL_TESTS_STATE, { type, payload }) => {
         return { ...state, allTests: payload };
       case TestsActionType.FETCH_SINGLE_TEST:
         return { ...state, singleTest: payload };
-      case TestsActionType.ADD_QUIZ:
+      case TestsActionType.ADD_TEST:
         return { ...state, allTests: [...state.allTests, payload] };
+      case TestsActionType.EDIT_TEST:
+        return {
+          ...state,
+          allTests: state.allTests.map((test) =>
+            test.id === payload.id ? payload : test
+          ),
+          singleTest: payload,
+        };
       default:
         return state;
     }

@@ -24,6 +24,7 @@ import io from 'socket.io-client';
 import AddQuizPage from '../pages/AddQuizPage';
 import AddTestPage from '../pages/AddTestPage';
 import AddLessonPage from '../pages/AddLessonPage';
+import EditTestPage from '../pages/EditTestPage';
 
 //establish connection with backend
 const socket = io.connect(`http://localhost:8080`);
@@ -65,6 +66,10 @@ function App() {
           <Route
             path="/language/:languageId/lesson/add"
             element={<AddLessonPage />}
+          />
+          <Route
+            path="/language/:languageId/test/edit/:id"
+            element={<EditTestPage />}
           />
         </Routes>
       </div>
