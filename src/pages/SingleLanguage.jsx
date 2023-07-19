@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchSingleLanguageThunk } from "../redux/languages/languages.actions";
@@ -24,17 +25,29 @@ function SingleLanguage() {
     dispatch(fetchAllQuizzesThunk());
   }, [dispatch, languageId]);
 
+
   return (
     <div>
-      <h1 className="language-title">Language: {singleLanguage.languageName}</h1>
+      <h1 className="language-title">
+        Language: {singleLanguage.languageName}
+      </h1>
 
       {singleLanguage ? (
         <div>
           <h2>Lesson</h2>
+          <Link to={`/language/${languageId}/lesson/add`}>
+            <button class="add-btn">Add Lesson</button>
+          </Link>
           <ListingLessons list={lessons} languageId={singleLanguage.id} />
           <h2>Test</h2>
+          <Link to={`/language/${languageId}/test/add`}>
+            <button class="add-btn">Add Test</button>
+          </Link>
           <ListingTests list={tests} languageId={singleLanguage.id} />
           <h2>Quiz</h2>
+          <Link to={`/language/${languageId}/quiz/add`}>
+            <button class="add-btn">Add Quiz</button>
+          </Link>
           <ListingQuizzes list={quizzes} languageId={singleLanguage.id} />
         </div>
       ) : (
