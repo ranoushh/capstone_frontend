@@ -66,3 +66,24 @@ export const addTestThunk = (newTest) => {
     }
   };
 };
+
+export const editTest = (payload) => {
+  return {
+    type: TestsActionType.EDIT_TEST,
+    payload: payload,
+  };
+};
+
+export const editTestThunk = (test) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/test/${test.id}`,
+        test
+      );
+      dispatch(editTest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
