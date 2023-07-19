@@ -12,16 +12,16 @@ export default function ListingTests(props) {
     return Tests.languageId === props.languageId;
   });
 
-const handleDelete = (testId) => {
-  dispatch(deleteTestThunk(testId))
-    .then(() => {
-      // Reload the page after deleting the test
-      window.location.reload();
-    })
-    .catch((error) => {
-      console.error("Error deleting test:", error);
-    });
-};
+  const handleDelete = (testId) => {
+    dispatch(deleteTestThunk(testId))
+      .then(() => {
+        // Reload the page after deleting the test
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error deleting test:", error);
+      });
+  };
 
   return filteredTests.length > 0 ? (
     <div className="item-grid">
