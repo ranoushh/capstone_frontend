@@ -87,3 +87,23 @@ export const editTestThunk = (test) => {
     }
   };
 };
+
+export const deleteTest = (payload) => {
+  return {
+    type: TestsActionType.DELETE_TEST,
+    payload: payload,
+  };
+};
+
+export const deleteTestThunk = (testId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/test/${testId}`
+      );
+      dispatch(deleteTest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
