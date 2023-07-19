@@ -1,41 +1,50 @@
 import React, { useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
-const AddQuiz = ({ onSubmit, languageId }) => {
+const AddLesson = ({ onSubmit, languageId }) => {
   const navigate = useNavigate();
-  const [newQuiz, setnewQuiz] = useState({});
+  const [newLesson, setnewLesson] = useState({});
 
   const HandleInputChange = (event) => {
-    setnewQuiz({
-      ...newQuiz,
+    setnewLesson({
+      ...newLesson,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(newQuiz);
+    onSubmit(newLesson);
     navigate(`/language/${languageId}`);
   };
 
   return (
     <div className="forms">
-      <h1 className="form-header">Quiz Info</h1>
+      <h1 className="form-header">Lesson Info</h1>
       <form onSubmit={handleSubmit}>
-        <label>Quiz Name:</label>
+        <label>Lesson Name:</label>
         <input
           type="text"
-          name="quizName"
-          value={newQuiz.quizName}
+          name="lessonName"
+          value={newLesson.lessonName}
           onChange={HandleInputChange}
           required
         />
 
-        <label>Difficulty:</label>
+        <label>Description:</label>
         <input
           type="text"
-          name="difficulty"
-          value={newQuiz.difficulty}
+          name="description"
+          value={newLesson.description}
+          onChange={HandleInputChange}
+          required
+        />
+
+        <label>Content:</label>
+        <input
+          type="text"
+          name="content"
+          value={newLesson.content}
           onChange={HandleInputChange}
           required
         />
@@ -44,15 +53,15 @@ const AddQuiz = ({ onSubmit, languageId }) => {
         <input
           type="number"
           name="languageId"
-          value={newQuiz.languageId}
+          value={newLesson.languageId}
           onChange={HandleInputChange}
         />
 
         <button className="submitbtn" type="submit">
-          Add Quiz
+          Add Lesson
         </button>
       </form>
     </div>
   );
 };
-export default AddQuiz;
+export default AddLesson;
