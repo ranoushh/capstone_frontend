@@ -68,3 +68,24 @@ export const addQuizThunk = (newQuiz) => {
     }
   };
 };
+
+export const editQuiz = (payload) => {
+  return {
+    type: QuizzesActionType.EDIT_QUIZ,
+    payload: payload,
+  };
+};
+
+export const editQuizThunk = (quiz) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/quiz/${quiz.id}`,
+        quiz
+      );
+      dispatch(editQuiz(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
