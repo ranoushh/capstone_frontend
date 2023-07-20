@@ -3,5 +3,6 @@ const QuizzesActionType = {
   FETCH_SINGLE_QUIZ: "FETCH_SINGLE_QUIZ",
   ADD_QUIZ: "ADD_QUIZ",
   EDIT_QUIZ: "EDIT_QUIZ",
+  DELETE_QUIZ: "DELETE_QUIZ",
 };
 export default QuizzesActionType;
