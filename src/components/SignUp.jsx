@@ -45,6 +45,7 @@ export default function SignUp() {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      
       <a href="http://localhost:8080/auth/google">Sign up with Google</a>
     </div>
   );
