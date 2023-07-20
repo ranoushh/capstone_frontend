@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import ListingLanguages from "../components/ListingLanguages";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllLanguagesThunk } from "../redux/languages/languages.actions";
+import "../style/language.css";
 
 function Languages() {
   const allLanguages = useSelector((state) => state.languages.allLanguages);
@@ -25,6 +26,8 @@ function Languages() {
   return (
     <div>
       {/* <Navigation /> */}
+      <h1 className="title">Languages</h1>
+      <h2 className="subheading">Pick a language to learn from</h2>
       <ListingLanguages list={allLanguages} />
     </div>
   );
