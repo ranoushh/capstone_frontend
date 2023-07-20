@@ -1,4 +1,8 @@
-const UsersActionType = {
+const UserActionType = {
     FETCH_ALL_USERS: "FETCH_ALL_USERS",
-}
-export default UsersActionType;
+    FETCH_SINGLE_USER: "FETCH_SINGLE_USER",
+    REMOVE_USER: "REMOVE_USER",
+    UPDATE_USER: "UPDATE_USER",
+  };
+
+export default UserActionType;

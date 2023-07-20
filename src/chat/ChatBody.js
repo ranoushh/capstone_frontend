@@ -1,10 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useSelector } from "react-redux"
 
 //containing the sent messages and the header
 function ChatBody ({messages}){
   const navigate = useNavigate();
+  const username = useSelector((state) => state.user.username);
 
   const handleLeaveChat = () => {
     // localStorage.removeItem('userName');
@@ -24,7 +25,7 @@ function ChatBody ({messages}){
       <div className="message__container">
         {/* instead of localstorage get user etc, we need to check with our registered users table : needs oauth setup*/}
         {messages.map((message) =>
-          message.name === localStorage.getItem('userName') ? (
+          message.name === username ? (
             <div className="message__chats" key={message.id}>
               <p className="sender__name">You</p>
               <div className="message__sender">
@@ -41,9 +42,9 @@ function ChatBody ({messages}){
           )
         )}
 
-        <div className="message__status">
+        {/* <div className="message__status">
           <p>Someone is typing...</p>
-        </div>
+        </div> */}
       </div>
 
             {/*  example*/}
