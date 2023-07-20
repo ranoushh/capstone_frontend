@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleTestThunk } from "../redux/tests/tests.actions";
-import ListingTestQuestion from "../components/ListingTestQuestion";
-import { fetchAllTestQuestionThunk } from "../redux/testQuestion/testQuestion.actions";
+import { fetchSingleTestThunk } from "../../redux/tests/tests.actions";
+import ListingTestQuestion from "../../components/Listing/ListingTestQuestion";
+import { fetchAllTestQuestionThunk } from "../../redux/testQuestion/testQuestion.actions";
 import "../style/flashcard.css";
 import { Link } from "react-router-dom";
 
@@ -11,9 +11,9 @@ function SingleTest() {
   const { testId } = useParams();
   const dispatch = useDispatch();
   const singleTest = useSelector((state) => state.tests.singleTest);
-   const testQuestion = useSelector(
-     (state) => state.testQuestion.allTestQuestion
-   );
+  const testQuestion = useSelector(
+    (state) => state.testQuestion.allTestQuestion
+  );
 
   useEffect(() => {
     dispatch(fetchSingleTestThunk(testId));

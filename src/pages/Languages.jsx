@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // import Navigation from "../components/Navigation";
-import ListingLanguages from "../components/ListingLanguages";
+import ListingLanguages from "../components/Listing/ListingLanguages";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllLanguagesThunk } from "../redux/languages/languages.actions";
 import "../style/language.css";

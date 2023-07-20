@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import AddQuiz from "../components/forms/AddQuiz";
-import { addQuizThunk } from "../redux/quizzes/quizzes.actions";
+import AddQuiz from "../../components/forms/AddQuiz";
+import { addQuizThunk } from "../../redux/quizzes/quizzes.actions";
 import { useParams } from "react-router-dom";
 
 const AddQuizPage = () => {

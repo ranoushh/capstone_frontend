@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // import Navigation from "../components/Navigation";
-import ListingLessons from "../components/ListingLessons";
+import ListingLessons from "../components/Listing/ListingLessons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllLessonsThunk } from "../redux/lessons/lessons.actions";
 
