@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import usersReducer from "./users/users.reducer";
+import userReducer from "./user";
 import lessonsReducer from "./lessons/lessons.reducer";
 import languageReducer from "./languages/languages.reducer";
 import achievementReducer from "./achievements/achievements.reducers";
@@ -8,12 +8,13 @@ import testsReducer from "./tests/tests.reducer";
 import quizQuestionReducer from "./quizQuestion/quizQuestion.reducer";
 import testQuestionReducer from "./testQuestion/testQuestion.reducer";
 import avatarReducer from "./avatars/avatars.reducer";
+import usersReducerCrud from "./users/users.reducer";
 
 //import each reducer made
 
 const rootReducer = combineReducers({
   lessons: lessonsReducer,
-  users: usersReducer,
+  user: userReducer,
   achievements: achievementReducer,
   languages: languageReducer,
   quizzes: quizzesReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   quizQuestion: quizQuestionReducer,
   testQuestion: testQuestionReducer,
   avatars: avatarReducer,
+  usersCrud: usersReducerCrud
 });
 
 export default rootReducer;

@@ -1,22 +1,25 @@
 import React from "react";
-import Navigation from "../components/Navigation";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
-function UserHome() {
-  const email = useSelector((state) => state.user.email);
+/**
+ * COMPONENT
+ */
+const UserHome = () => {
+  const username = useSelector((state) => state.user.username);
 
   return (
     <div>
-      <h1>Welcome, {email} </h1> 
-        {/* <Navigation/> */}
+      <h3>Welcome, {username}</h3>
     </div>
   );
-}
+};
 
+/**
+ * PROP TYPES
+ */
 UserHome.propTypes = {
-    email: PropTypes.string
+  username: PropTypes.string,
 };
 
 export default UserHome;
-
