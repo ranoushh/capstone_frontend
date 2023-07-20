@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signup } from "../redux/user";
+import { signup } from "../../redux/user";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ export default function SignUp() {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      
+
       <a href="http://localhost:8080/auth/google">Sign up with Google</a>
     </div>
   );

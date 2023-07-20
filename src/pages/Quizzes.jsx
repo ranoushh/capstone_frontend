@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // import Navigation from "../components/Navigation";
-import ListingQuizzes from "../components/ListingQuizzes";
+import ListingQuizzes from "../components/Listing/ListingQuizzes";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllQuizzesThunk } from "../redux/quizzes/quizzes.actions";
 
@@ -13,10 +13,10 @@ function Quizzes() {
     return dispatch(fetchAllQuizzesThunk());
   }
 
-    useEffect(() => {
-      console.log("FETCH ALL QUIZZES FIRING IN USEEFFECT");
-      fetchAllQuizzes();
-    }, []);
+  useEffect(() => {
+    console.log("FETCH ALL QUIZZES FIRING IN USEEFFECT");
+    fetchAllQuizzes();
+  }, []);
 
   return (
     <div>

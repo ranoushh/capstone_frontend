@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { fetchSingleLessonThunk } from "../redux/lessons/lessons.actions";
+import { fetchSingleLessonThunk } from "../../redux/lessons/lessons.actions";
 import "../styling/LessonStyle.css"; // Import the CSS for the SingleLesson component
 
 const SingleLesson = () => {

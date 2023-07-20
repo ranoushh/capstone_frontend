@@ -1,27 +1,27 @@
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import './App.css';
-import Chat from '../pages/Chat';
-import Home from '../pages/Home';
-import Profile from '../pages/Profile'
-import Lessons from '../pages/Lessons'
-import SingleLesson from '../pages/SingleLesson'
-import Leaderboard from '../pages/Leaderboard'
-import Languages from '../pages/Languages';
-import SingleLanguage from '../pages/SingleLanguage';
-import Quizzes from '../pages/Quizzes';
-import SingleQuiz from '../pages/SingleQuiz';
-import Tests from '../pages/Tests';
-import SingleTest from '../pages/SingleTest';
-import ProtectedRoute  from "../Utils/Auth";
-import { HomePage, Navigation } from '../components';
-import Achievements from '../pages/Achievements';
-import AddFriend from '../pages/AddFriend';
-import io from 'socket.io-client';
-import AddQuizPage from "../pages/AddQuizPage";
-import AddTestPage from "../pages/AddTestPage";
-import AddLessonPage from "../pages/AddLessonPage";
+import "./App.css";
+import Chat from "../pages/Chat";
+import Home from "../pages/Home";
+import Profile from "../pages/Profile";
+import Lessons from "../pages/Lessons";
+import SingleLesson from "../pages/Single/SingleLesson";
+import Leaderboard from "../pages/Leaderboard";
+import Languages from "../pages/Languages";
+import SingleLanguage from "../pages/Single/SingleLanguage";
+import Quizzes from "../pages/Quizzes";
+import SingleQuiz from "../pages/Single/SingleQuiz";
+import Tests from "../pages/Tests";
+import SingleTest from "../pages/Single/SingleTest";
+import ProtectedRoute from "../Utils/Auth";
+import { HomePage, Navigation } from "../components";
+import Achievements from "../pages/Achievements";
+import AddFriend from "../pages/Add/AddFriend";
+import io from "socket.io-client";
+import AddQuizPage from "../pages/Add/AddQuizPage";
+import AddTestPage from "../pages/Add/AddTestPage";
+import AddLessonPage from "../pages/Add/AddLessonPage";
 import EditTestPage from "../pages/EditTestPage";
 import EditQuizPage from "../pages/EditQuizPage";
 import EditLessonPage from "../pages/EditLessonPage";
@@ -33,22 +33,21 @@ import { Login, NavBar, SignUp, UserHome } from "../components";
 //establish connection with backend
 const socket = io.connect(`http://localhost:8080`);
 
-
 console.log("here");
 function App() {
   const isLoggedIn = useSelector((state) => !!state.user.id);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
-    const fetchMe = async() => {
-      dispatch (await me());
+    const fetchMe = async () => {
+      dispatch(await me());
       setLoading(false);
     };
     fetchMe();
   }, [dispatch, isLoggedIn]);
 
-  if(loading) {
-    return <div>Loading </div>
+  if (loading) {
+    return <div>Loading </div>;
   }
   // const isLoggedIn = true;
   console.log("isloggingin" + isLoggedIn);
@@ -83,6 +82,7 @@ function App() {
           <Route path="/language/:languageId/lesson/edit/:id" element={<EditLessonPage />}/>
           <Route path="/test/:testId/testQuestion/add" element={<AddTestQuestionPage />} />
           <Route path="/quiz/:quizId/quizQuestion/add" element={<AddQuizQuestionPage />} />
+          {/* </Route> */}
         </Routes>
       
     </Router>
@@ -90,4 +90,3 @@ function App() {
 }
 
 export default App;
-
