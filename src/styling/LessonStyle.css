@@ -40,7 +40,7 @@
     perspective: 1000px;
   }
   
-  .card {
+  .cardflash {
     position: relative;
     width: 100%;
     height: 100%;
@@ -56,6 +56,8 @@
     height: 100%;
     backface-visibility: hidden;
     border-radius: 8px;
+    justify-content: center;
+  text-align: center;
   }
   
   .front {
@@ -113,13 +115,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    justify-content: center;
-    display: flex;
-  }
   
   .term-list {
     list-style: none;
@@ -159,3 +154,17 @@
     text-decoration: none;
     margin-left: 8px;
   }
+
+  .subheading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #db3a79;
+    font-style: italic;
+    font-family: "Courier New", monospace; /* Replace with your desired font-family */
+  }
+  
+  

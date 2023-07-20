@@ -24,7 +24,7 @@ function SingleQuiz() {
     <div>
       {singleQuiz ? (
         <div>
-          <h2 className="quiz-title">{singleQuiz.quizName}</h2>
+          <h2 className="title">{singleQuiz.quizName}</h2>
           <p className="quiz-level">Difficulty: {singleQuiz.difficulty}</p>
           <ListingQuizQuestion list={quizQuestion} quizId={singleQuiz.id} />
         </div>
