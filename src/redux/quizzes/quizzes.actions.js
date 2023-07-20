@@ -89,3 +89,23 @@ export const editQuizThunk = (quiz) => {
     }
   };
 };
+
+export const deleteQuiz = (payload) => {
+  return {
+    type: QuizzesActionType.DELETE_QUIZ,
+    payload: payload,
+  };
+};
+
+export const deleteQuizThunk = (quizId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/quiz/${quizId}`
+      );
+      dispatch(deleteQuiz(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
