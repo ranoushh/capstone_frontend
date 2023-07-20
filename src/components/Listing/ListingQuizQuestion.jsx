@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../style/flashcard.css";
+import "../../style/flashcard.css";
 
 export default function ListingQuizQuestion(props) {
   console.log("LIST QUIZQUESTION COMPONENT");
