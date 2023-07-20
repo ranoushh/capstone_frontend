@@ -2,37 +2,38 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../style/singleLanguage.css";
 import { useParams } from "react-router";
-import { deleteLessonThunk } from "../redux/lessons/lessons.actions";
+import { deleteTestThunk } from "../../redux/tests/tests.actions";
 import { useDispatch } from "react-redux";
 
-export default function ListingLessons(props) {
+export default function ListingTests(props) {
   const dispatch = useDispatch();
   const { languageId } = useParams();
-  const filteredLessons = props.list.filter((lesson) => {
-    return lesson.languageId === props.languageId;
+  const filteredTests = props.list.filter((Tests) => {
+    return Tests.languageId === props.languageId;
   });
 
-  const handleDelete = (lessonId) => {
-    dispatch(deleteLessonThunk(lessonId))
+  const handleDelete = (testId) => {
+    dispatch(deleteTestThunk(testId))
       .then(() => {
+        // Reload the page after deleting the test
         window.location.reload();
       })
       .catch((error) => {
-        console.error("Error deleting lesson:", error);
+        console.error("Error deleting test:", error);
       });
   };
 
-  return filteredLessons.length > 0 ? (
+  return filteredTests.length > 0 ? (
     <div className="item-grid">
-      {filteredLessons.map((item) => (
+      {filteredTests.map((item) => (
         <div>
-          <Link key={item.id} className="card-link" to={`/lesson/${item.id}`}>
+          <Link key={item.id} className="card-link" to={`/test/${item.id}`}>
             <div className="container-item">
-              <h2 className="item-name">{item.lessonName}</h2>
+              <h2 className="item-name">{item.testName}</h2>
             </div>
           </Link>
           <Link
-            to={`/language/${languageId}/lesson/edit/${item.id}`}
+            to={`/language/${languageId}/test/edit/${item.id}`}
             className="text"
           >
             <button className="edit-btn">Edit</button>
@@ -48,6 +49,6 @@ export default function ListingLessons(props) {
       ))}
     </div>
   ) : (
-    <h1 className="info-message">There are no lessons here</h1>
+    <h1 className="info-message">There are no Tests here</h1>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import AddTest from "../components/forms/AddTest";
-import { addTestThunk } from "../redux/tests/tests.actions";
+import AddTest from "../../components/forms/AddTest";
+import { addTestThunk } from "../../redux/tests/tests.actions";
 import { useParams } from "react-router-dom";
 
 const AddTestPage = () => {
