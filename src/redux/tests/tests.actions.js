@@ -45,3 +45,65 @@ export const fetchSingleTestThunk = (id) => {
     }
   };
 };
+
+export const addTest = (payload) => {
+  return {
+    type: TestsActionType.ADD_TEST,
+    payload: payload,
+  };
+};
+
+export const addTestThunk = (newTest) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/test",
+        newTest
+      );
+      dispatch(addTest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const editTest = (payload) => {
+  return {
+    type: TestsActionType.EDIT_TEST,
+    payload: payload,
+  };
+};
+
+export const editTestThunk = (test) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/test/${test.id}`,
+        test
+      );
+      dispatch(editTest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const deleteTest = (payload) => {
+  return {
+    type: TestsActionType.DELETE_TEST,
+    payload: payload,
+  };
+};
+
+export const deleteTestThunk = (testId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/test/${testId}`
+      );
+      dispatch(deleteTest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};

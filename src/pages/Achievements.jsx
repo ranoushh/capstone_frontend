@@ -19,7 +19,7 @@ function Achievements() {
 
   return (
     <div>
-       <h1>Achievements </h1>
+       <h1 className="title">Achievements </h1>
        <ul>
         {allAchievements && allAchievements.length > 0 ? 
           (allAchievements.map((item, index) => (

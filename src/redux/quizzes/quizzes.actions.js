@@ -44,3 +44,68 @@ export const fetchSingleQuizThunk = (id) => {
     }
   };
 };
+
+export const addQuiz = (payload) => {
+  console.log("ADD QUIZ ACTION");
+  return {
+    type: QuizzesActionType.ADD_QUIZ,
+    payload: payload,
+  };
+};
+
+export const addQuizThunk = (newQuiz) => {
+  return async (dispatch) => {
+    try {
+      console.log("ADD_QUIZ_THUNK is firing");
+      const response = await axios.post(
+        "http://localhost:8080/api/quiz",
+        newQuiz
+      );
+      console.log("ADD_QUIZ_THUNK completed");
+      dispatch(addQuiz(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const editQuiz = (payload) => {
+  return {
+    type: QuizzesActionType.EDIT_QUIZ,
+    payload: payload,
+  };
+};
+
+export const editQuizThunk = (quiz) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/quiz/${quiz.id}`,
+        quiz
+      );
+      dispatch(editQuiz(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const deleteQuiz = (payload) => {
+  return {
+    type: QuizzesActionType.DELETE_QUIZ,
+    payload: payload,
+  };
+};
+
+export const deleteQuizThunk = (quizId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/quiz/${quizId}`
+      );
+      dispatch(deleteQuiz(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
