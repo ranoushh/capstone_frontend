@@ -22,6 +22,11 @@ const quizzesReducer = (state = INITIAL_QUIZ_STATE, { type, payload }) => {
           ),
           singleQuiz: payload,
         };
+      case QuizzesActionType.DELETE_QUIZ:
+        return {
+          ...state,
+          allQuizzes: state.allQuizzes.filter((quiz) => quiz.id !== payload),
+        };
       default:
         return state;
     }
