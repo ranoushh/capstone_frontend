@@ -5,6 +5,7 @@ import { fetchSingleQuizThunk } from "../../redux/quizzes/quizzes.actions";
 import ListingQuizQuestion from "../../components/Listing/ListingQuizQuestion";
 import { fetchAllQuizQuestionThunk } from "../../redux/quizQuestion/quizQuestion.actions";
 import "../style/flashcard.css";
+import { Link } from "react-router-dom";
 
 function SingleQuiz() {
   const { quizId } = useParams();
@@ -25,6 +26,9 @@ function SingleQuiz() {
         <div>
           <h2 className="title">{singleQuiz.quizName}</h2>
           <p className="quiz-level">Difficulty: {singleQuiz.difficulty}</p>
+          <Link to={`/quiz/${quizId}/quizQuestion/add`}>
+            <button class="add-btn">Add Quiz Question</button>
+          </Link>
           <ListingQuizQuestion list={quizQuestion} quizId={singleQuiz.id} />
         </div>
       ) : (

@@ -12,6 +12,8 @@ const quizQuestionReducer = (state = INITIAL_QUIZ_STATE, { type, payload }) => {
       return { ...state, allQuizQuestion: payload };
     case QuizQuestionActionType.FETCH_SINGLE_QUIZQUESTION:
       return { ...state, singleQuizQuestion: payload };
+    case QuizQuestionActionType.ADD_QUIZ_QUESTION:
+      return { ...state, newQuizQuestion: [...state.allQuizQuestion, payload] };
     default:
       return state;
   }
