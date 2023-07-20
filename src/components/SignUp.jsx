@@ -6,7 +6,7 @@ import { signup } from "../redux/user";
 export default function SignUp() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.users.error);
+  const error = useSelector((state) => state.user.error);
 
   const handleSubmit = (event) => {
     event.preventDefault();

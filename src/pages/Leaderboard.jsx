@@ -4,7 +4,7 @@ import { fetchAllUsersThunk } from "../redux/users/users.actions";
 import '../styling/LeaderboardStyle.css';
 
 function Leaderboard() {
-  const allUsers = useSelector((state) => state.users.allUsers);
+  const allUsers = useSelector((state) => state.user.allUsers);
   const dispatch = useDispatch();
 
   function fetchAllUsers() {
