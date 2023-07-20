@@ -44,3 +44,15 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+.add-btn:hover {
+  background-color: #218838;
+}
+
+.add-btn:focus {
+  outline: none;
+}
+
+.add-btn:active {
+  background-color: #1e7e34;
+}
