@@ -24,7 +24,9 @@ import AddTestPage from "../pages/Add/AddTestPage";
 import AddLessonPage from "../pages/Add/AddLessonPage";
 import EditTestPage from "../pages/EditTestPage";
 import EditQuizPage from "../pages/EditQuizPage";
-import EditLessonPage from "../pages/Edit/EditLessonPage";
+import EditLessonPage from "../pages/EditLessonPage";
+import AddTestQuestionPage from "../pages/AddTestQuestionPage";
+import AddQuizQuestionPage from "../pages/AddQuizQuestionPage";
 import { me } from "../redux/user";
 import { Login, NavBar, SignUp, UserHome } from "../components";
 
@@ -58,46 +60,31 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         {/* <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}> */}
-        <Route path="/home" element={<UserHome />} />
-        <Route path="/chat" element={<Chat socket={socket} />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/lessons" element={<Lessons />} />
-        <Route path="/lesson/:lessonId" element={<SingleLesson />} />
-        <Route path="/languages" element={<Languages />} />
-        <Route path="/language/:languageId" element={<SingleLanguage />} />
-        <Route path="/quizzes" element={<Quizzes />} />
-        <Route path="/quiz/:quizId" element={<SingleQuiz />} />
-        <Route path="/tests" element={<Tests />} />
-        <Route path="/test/:testId" element={<SingleTest />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/achievements" element={<Achievements />} />
-        <Route path="/addfriend" element={<AddFriend />} />
-        <Route
-          path="/language/:languageId/quiz/add"
-          element={<AddQuizPage />}
-        />
-        <Route
-          path="/language/:languageId/test/add"
-          element={<AddTestPage />}
-        />
-        <Route
-          path="/language/:languageId/lesson/add"
-          element={<AddLessonPage />}
-        />
-        <Route
-          path="/language/:languageId/quiz/edit/:id"
-          element={<EditQuizPage />}
-        />
-        <Route
-          path="/language/:languageId/test/edit/:id"
-          element={<EditTestPage />}
-        />
-        <Route
-          path="/language/:languageId/lesson/edit/:id"
-          element={<EditLessonPage />}
-        />
-        {/* </Route> */}
-      </Routes>
+          <Route path="/home" element={<UserHome />} />
+          <Route path="/chat" element={<Chat socket={socket} />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/lessons" element={<Lessons />} />
+          <Route path="/lesson/:lessonId" element={<SingleLesson />} />
+          <Route path="/languages" element={<Languages />} />
+          <Route path="/language/:languageId" element={<SingleLanguage />} />
+          <Route path="/quizzes" element={<Quizzes />} />
+          <Route path="/quiz/:quizId" element={<SingleQuiz />} />
+          <Route path="/tests" element={<Tests />} />
+          <Route path="/test/:testId" element={<SingleTest />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/addfriend" element={<AddFriend />} />
+          <Route path="/language/:languageId/quiz/add" element={<AddQuizPage />}/>
+          <Route path="/language/:languageId/test/add" element={<AddTestPage />} />
+          <Route path="/language/:languageId/lesson/add" element={<AddLessonPage />}/>
+          <Route path="/language/:languageId/quiz/edit/:id" element={<EditQuizPage />}/>
+          <Route path="/language/:languageId/test/edit/:id" element={<EditTestPage />}/>
+          <Route path="/language/:languageId/lesson/edit/:id" element={<EditLessonPage />}/>
+          <Route path="/test/:testId/testQuestion/add" element={<AddTestQuestionPage />} />
+          <Route path="/quiz/:quizId/quizQuestion/add" element={<AddQuizQuestionPage />} />
+          {/* </Route> */}
+        </Routes>
+      
     </Router>
   );
 }

@@ -5,6 +5,7 @@ import { fetchSingleTestThunk } from "../../redux/tests/tests.actions";
 import ListingTestQuestion from "../../components/Listing/ListingTestQuestion";
 import { fetchAllTestQuestionThunk } from "../../redux/testQuestion/testQuestion.actions";
 import "../style/flashcard.css";
+import { Link } from "react-router-dom";
 
 function SingleTest() {
   const { testId } = useParams();
@@ -25,6 +26,9 @@ function SingleTest() {
         <div>
           <h2 className="title">{singleTest.testName}</h2>
           <p className="test-level">Difficulty: {singleTest.difficulty}</p>
+          <Link to={`/test/${testId}/testQuestion/add`}>
+            <button class="add-btn">Add Test Question</button>
+          </Link>
           <ListingTestQuestion list={testQuestion} testId={singleTest.id} />
         </div>
       ) : (

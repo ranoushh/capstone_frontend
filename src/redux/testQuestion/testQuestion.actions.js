@@ -48,3 +48,26 @@ export const fetchSingleTestQuestionThunk = (id) => {
     }
   };
 };
+
+export const addTestQuestion = (payload) => {
+ console.log("ADD TESTQUESTION ACTION");
+  return {
+    type: TestQuestionActionType.ADD_TEST_QUESTION,
+    payload: payload,
+  };
+};
+
+export const addTestQuestionThunk = (newTestQuestion) => {
+  return async (dispatch) => {
+    try {
+      console.log("add_TESTQUESTION_THUNK is firing");
+      const response = await axios.post(
+        "http://localhost:8080/api/testQuestion",
+        newTestQuestion
+      );
+      dispatch(addTestQuestion(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
