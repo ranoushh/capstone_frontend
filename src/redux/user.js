@@ -1,67 +1,96 @@
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
-//action types
-const GET_USER = "GET_ USER";
+/**
+ * ACTION TYPES
+ */
+const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
 
-//initial state
+/**
+ * INITIAL STATE
+ */
 const defaultUser = {};
 
+/**
+ * ACTION CREATORS
+ */
+const getUser = (user) => ({ type: GET_USER, user });
+const removeUser = () => ({ type: REMOVE_USER });
 
-//action creator
-const getUser = (user) => ({ type: GET_USER, user});
-const removeUser = (user) => ({ type: REMOVE_USER, user});
-
-//thunks creator
-
-//gets user data
+/**
+ * THUNK CREATORS
+ */
 export const me = () => async (dispatch) => {
-    try {
-        const response = await axios.get(`http://localhost:8080/auth/me`);
-        dispatch(getUser(response.data || defaultUser));
-    } catch (error) {
-        console.error(error);
-    };
+  try {
+    const res = await axios.get("http://localhost:8080/auth/me", {
+      withCredentials: true,
+    });
+    console.log("ME RESPONSE", res.data);
+    dispatch(getUser(res.data || defaultUser));
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-//
-export const auth = (email, password, method) => async (dispatch) => {
-    let response;
-    try {
-        const response = await axios.get(`http://localhost:8080/auth/${method}`, {
-            email, password
-        });
-        
-    } catch (authError) {
-        return dispatch(getUser({error : authError}));
-    };
-
-    try {
-        dispatch(getUser(response.data));
-    } catch (dispatchOrHistorErr) {
-        console.error(dispatchOrHistorErr);
-    };
+export const login = (email, password) => async (dispatch) => {
+  let res;
+  try {
+    res = await axios.post(`http://localhost:8080/auth/login`, {
+      email,
+      password,
+    });
+  } catch (authError) {
+    return dispatch(getUser({ error: authError }));
+  }
+  try {
+    dispatch(getUser(res.data));
+    // history.push("/home");
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr);
+  }
 };
 
+export const signup = (email, password, username) => async (dispatch) => {
+  let res;
+  try {
+    res = await axios.post(`http://localhost:8080/auth/signup`, {
+      email,
+      password,
+      username
+    });
+  } catch (authError) {
+    return dispatch(getUser({ error: authError }));
+  }
 
+  try {
+    dispatch(getUser(res.data));
+    // history.push("/home");
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr);
+  }
+};
+
+// !! Not working or logging out of session
 export const logout = () => async (dispatch) => {
-    try {
-        await axios.get("http://localhost:8080/auth/logout");
-        dispatch(removeUser());
-    } catch (error) {
-        console.error(error);
-    };
+  try {
+    await axios.post("http://localhost:8080/auth/logout");
+    dispatch(removeUser());
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-//reducers 
-export default function userReducer(state = defaultUser, action){
-    console.log("PL", action);
-    switch(action.type){
-        case GET_USER:
-            return {...state, defaultUser: action.payload };
-        case REMOVE_USER: 
-            return {...state, defaultUser: action.payload};
-        default: 
-            return state;
-    };
-};
+/**
+ * REDUCER
+ */
+export default function userReducer(state = defaultUser, action) {
+  switch (action.type) {
+    case GET_USER:
+      return action.user;
+    case REMOVE_USER:
+      return defaultUser;
+    default:
+      return state;
+  }
+}

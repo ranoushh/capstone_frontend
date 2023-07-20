@@ -1,23 +1,29 @@
 import React from "react";
-import Navigation from "../components/Navigation";
+import axios from "axios";
 import { useState, useEffect} from "react";
 import "../styling/ProfileCard.css";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useSelector, useDispatch} from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
+// import { updateUserThunk , fetchAllUsersThunk} from "../redux/users/users.actions";
+import { me } from "../redux/user";
 
 
 function Profile() {
   const dispatch = useDispatch();
-  const [avatar, setAvatar] = useState();
+  const [selectedAvatar, setSelectedAvatar] = useState(); //set new avatar for user
+  const [user, setUser] = useState();
   const [showPopup, setShowPopup] = useState(false);
   const allAvatars = useSelector((state) => state.avatars.allAvatars);
+  const allUsers = useSelector((state) => state.user?.allUsers); //get all users
+
+  let updatedUser = {}; 
 
   useEffect(() => {
     console.log("FETCH ALL AVATARS FIRING IN USEEFFECT");
     fetchAllAvatars();
-    
+    fetchAllUsers();
   }, []);
 
   function fetchAllAvatars() {
@@ -25,18 +31,65 @@ function Profile() {
     return dispatch(fetchAllAvatarsThunk());
   };
 
-console.log(allAvatars);
+  function fetchAllUsers() {
+    console.log("RUNNING DISPATCH FROM FETCHALLUsers");
+    return dispatch(me());
+  };
 
+
+  console.log("USERS?" + allUsers);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(
+          `https://localhost:8080/api/users/1`
+        );
+        console.log(response);
+        setUser(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUser(); 
+  });
+
+// console.log(allAvatars);
+
+  // function handleClick() {
+  //   setShowPopup(true);
+  // };
+  
   function handleClick() {
     setShowPopup(true);
-  };
+  }
   
+  function handleClickAvatar(){
 
+  }
+  // function handleClickAvatar(event){
+  //   console.log("handle click avatar reached");
+  //   setAvatar(event.target.value);
+  //   updatedUser = {
+  //     ...allUsers.find((user) => user.id === parseInt(UserId)),
+  //     CampusId: currentCampus.id,
+  //   };
+  //   console.log(currentCampus);
+  // }
+
+  
 
   return (
     <div>
       {/* <Navigation/> */}
       This is Profile.
+      <p></p>
+      {allUsers && allUsers.length > 0 ? 
+          (allUsers.map((item, index) => (
+          <li key={index}>{item.email}</li>
+          ))) : ("Loading")
+        };
       <p></p>
       <button onClick = {handleClick}>
       <div className="body">
@@ -97,7 +150,7 @@ console.log(allAvatars);
             </span>
             {allAvatars.map((item, image) => (
               <div className= "img-container" key={image}>
-                <button className="avatarButton">
+                <button className="avatarButton" onClick={handleClickAvatar}>
                   <div>
                   <img className= "avatarPics" src= {item.imageURL}>
                 </img>
@@ -105,6 +158,7 @@ console.log(allAvatars);
                 </button>
               </div>
             ))}
+
           </div>
         </div>
       )}
