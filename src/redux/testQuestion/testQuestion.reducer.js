@@ -12,6 +12,8 @@ const testQuestionReducer = (state = INITIAL_TEST_STATE, { type, payload }) => {
       return { ...state, allTestQuestion: payload };
     case TestQuestionActionType.FETCH_SINGLE_TESTQUESTION:
       return { ...state, singleTestQuestion: payload };
+    case TestQuestionActionType.ADD_TEST_QUESTION:
+      return { ...state, newTestQuestion: [...state.allTestQuestion, payload] };
     default:
       return state;
   }

@@ -25,6 +25,8 @@ import AddLessonPage from "../pages/AddLessonPage";
 import EditTestPage from "../pages/EditTestPage";
 import EditQuizPage from "../pages/EditQuizPage";
 import EditLessonPage from "../pages/EditLessonPage";
+import AddTestQuestionPage from "../pages/AddTestQuestionPage";
+import AddQuizQuestionPage from "../pages/AddQuizQuestionPage";
 import { me } from "../redux/user";
 import { Login, NavBar, SignUp, UserHome } from "../components";
 
@@ -79,7 +81,8 @@ function App() {
           <Route path="/language/:languageId/quiz/edit/:id" element={<EditQuizPage />}/>
           <Route path="/language/:languageId/test/edit/:id" element={<EditTestPage />}/>
           <Route path="/language/:languageId/lesson/edit/:id" element={<EditLessonPage />}/>
-          {/* </Route> */}
+          <Route path="/test/:testId/testQuestion/add" element={<AddTestQuestionPage />} />
+          <Route path="/quiz/:quizId/quizQuestion/add" element={<AddQuizQuestionPage />} />
         </Routes>
       
     </Router>
