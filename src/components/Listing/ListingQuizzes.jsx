@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../style/singleLanguage.css";
 import { useParams } from "react-router";
 import { useDispatch } from "react-redux";
-import { deleteQuizThunk } from "../redux/quizzes/quizzes.actions";
+import { deleteQuizThunk } from "../../redux/quizzes/quizzes.actions";
 
 export default function ListingQuizzes(props) {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // import Navigation from "../components/Navigation";
-import ListingTests from "../components/ListingTests";
+import ListingTests from "../components/Listing/ListingTests";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllTestsThunk } from "../redux/tests/tests.actions";
 
