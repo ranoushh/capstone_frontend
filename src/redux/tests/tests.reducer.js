@@ -22,6 +22,13 @@ const testsReducer = (state = INITIAL_TESTS_STATE, { type, payload }) => {
           ),
           singleTest: payload,
         };
+      case TestsActionType.DELETE_TEST:
+        return {
+          ...state,
+          allTests: state.allTests.filter(
+            (test) => test.id !== payload
+          ),
+        };
       default:
         return state;
     }

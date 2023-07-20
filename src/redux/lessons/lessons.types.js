@@ -3,5 +3,6 @@ const LessonsActionType = {
   FETCH_SINGLE_LESSON: "FETCH_SINGLE_LESSON",
   ADD_LESSON: "ADD_LESSON",
   EDIT_LESSON: "EDIT_LESSON",
+  DELETE_LESSON: "DELETE_LESSON",
 };
 export default LessonsActionType;

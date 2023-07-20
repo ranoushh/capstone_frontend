@@ -86,3 +86,24 @@ export const editLessonThunk = (lesson) => {
     }
   };
 };
+
+export const deleteLesson = (payload) => {
+  return {
+    type: 
+    LessonsActionType.DELETE_LESSON,
+    payload: payload,
+  };
+};
+
+export const deleteLessonThunk = (lessonId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/lessons/${lessonId}`
+      );
+      dispatch(deleteLesson(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
