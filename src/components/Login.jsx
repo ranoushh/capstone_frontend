@@ -7,7 +7,7 @@ import UserHome from "./UserHome";
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.users.error);
+  const error = useSelector((state) => state.user.error);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,7 +15,7 @@ export default function Login() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     dispatch(login(email, password, name));
-    navigate("/home");
+   // navigate("/home");
   };
 
   return (

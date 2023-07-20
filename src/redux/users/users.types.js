@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // const UserActionType = {
 //     FETCH_ALL_USERS: "FETCH_ALL_USERS",
 //     FETCH_SINGLE_USER: "FETCH_SINGLE_USER",
@@ -7,9 +6,3 @@
 //   };
 
 // export default UserActionType;
-=======
-const UsersActionType = {
-    FETCH_ALL_USERS: "FETCH_ALL_USERS",
-}
-export default UsersActionType;
->>>>>>> main

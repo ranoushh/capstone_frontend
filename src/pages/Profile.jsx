@@ -16,7 +16,7 @@ function Profile() {
   const [user, setUser] = useState();
   const [showPopup, setShowPopup] = useState(false);
   const allAvatars = useSelector((state) => state.avatars.allAvatars);
-  const allUsers = useSelector((state) => state.users?.allUsers); //get all users
+  const allUsers = useSelector((state) => state.user?.allUsers); //get all users
 
   let updatedUser = {}; 
 
