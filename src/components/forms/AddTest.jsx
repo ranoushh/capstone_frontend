@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
-const AddTest = ({ onSubmit, languageId }) => {
+const AddTest = ({ onSubmit, languageId}) => {
   const navigate = useNavigate();
   const [newTest, setnewTest] = useState({});
 
