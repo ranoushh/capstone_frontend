@@ -27,6 +27,8 @@ import AddLessonPage from "../pages/AddLessonPage";
 import EditTestPage from "../pages/EditTestPage";
 import EditQuizPage from "../pages/EditQuizPage";
 import EditLessonPage from "../pages/EditLessonPage";
+import AddTestQuestionPage from "../pages/AddTestQuestionPage";
+import AddQuizQuestionPage from "../pages/AddQuizQuestionPage";
 
 //establish connection with backend
 const socket = io.connect(`http://localhost:8080`);
@@ -80,6 +82,14 @@ function App() {
           <Route
             path="/language/:languageId/lesson/edit/:id"
             element={<EditLessonPage />}
+          />
+          <Route
+            path="/test/:testId/testQuestion/add"
+            element={<AddTestQuestionPage />}
+          />
+          <Route
+            path="/quiz/:quizId/quizQuestion/add"
+            element={<AddQuizQuestionPage />}
           />
         </Routes>
       </div>
