@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../redux/user";
-import "../style/navbar.css"; // Import the CSS for NavBar styling
+import "../style/navbar.css";
 
 const LinkButton = ({ to, children, onClick }) => (
   <NavLink to={to} onClick={onClick}>

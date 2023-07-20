@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "./form.css";
+import "./form.css"; // Import the CSS for form styling
 import { useNavigate } from "react-router-dom";
+
 const AddTestQuestion = ({ onSubmit, testId }) => {
   const navigate = useNavigate();
-  const [newTestQuestion, setnewTestQuestion] = useState({});
+  const [newTestQuestion, setNewTestQuestion] = useState({});
 
   const handleInputChange = (event) => {
-    setnewTestQuestion({
+    setNewTestQuestion({
       ...newTestQuestion,
       [event.target.name]: event.target.value,
     });
@@ -17,14 +18,15 @@ const AddTestQuestion = ({ onSubmit, testId }) => {
     onSubmit(newTestQuestion);
     navigate(`/test/${testId}`);
   };
-console.log("Test question:", newTestQuestion.question);
+
   return (
-    <div>
-      <h2>Add Test Question</h2>
+    <div className="form-container">
+      <h2 className="form-title">Add Test Question</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Question:</label>
+        <div className="form-group">
+          <label className="form-label">Question:</label>
           <input
+            className="form-input"
             type="text"
             name="question"
             value={newTestQuestion.question}
@@ -32,9 +34,10 @@ console.log("Test question:", newTestQuestion.question);
             required
           />
         </div>
-        <div>
-          <label>Test Choice:</label>
+        <div className="form-group">
+          <label className="form-label">Test Choice:</label>
           <input
+            className="form-input"
             type="text"
             name="testChoice"
             value={newTestQuestion.testChoice}
@@ -42,9 +45,10 @@ console.log("Test question:", newTestQuestion.question);
             required
           />
         </div>
-        <div>
-          <label>Correct Choice:</label>
+        <div className="form-group">
+          <label className="form-label">Correct Choice:</label>
           <input
+            className="form-input"
             type="text"
             name="correctChoice"
             value={newTestQuestion.correctChoice}
@@ -52,23 +56,29 @@ console.log("Test question:", newTestQuestion.question);
             required
           />
         </div>
-        <div>
-          <label>Point Worth:</label>
+        <div className="form-group">
+          <label className="form-label">Point Worth:</label>
           <input
+            className="form-input"
             type="number"
             name="pointWorth"
             value={newTestQuestion.pointWorth}
             onChange={handleInputChange}
           />
-          <label>Test ID: </label>
+        </div>
+        <div className="form-group">
+          <label className="form-label">Test ID:</label>
           <input
+            className="form-input"
             type="number"
             name="testId"
             value={newTestQuestion.testId}
             onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Add Test Question</button>
+        <button className="form-button" type="submit">
+          Add Test Question
+        </button>
       </form>
     </div>
   );
