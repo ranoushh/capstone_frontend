@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../style/singleLanguage.css";
+import "../../style/singleLanguage.css";
 import { useParams } from "react-router";
 import { deleteTestThunk } from "../../redux/tests/tests.actions";
 import { useDispatch } from "react-redux";

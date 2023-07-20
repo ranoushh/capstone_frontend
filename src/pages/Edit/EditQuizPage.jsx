@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch } from "react-redux";
-import EditQuiz from "../components/forms/EditQuiz";
-import { fetchSingleQuizThunk } from "../redux/quizzes/quizzes.actions";
+import EditQuiz from "../../components/forms/EditQuiz";
+import { fetchSingleQuizThunk } from "../../redux/quizzes/quizzes.actions";
 
 const EditQuizPage = () => {
   const { id, languageId } = useParams();
