@@ -1,32 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
-import Chat from "../pages/Chat";
-// import Home from '../pages/Home';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import './App.css';
+import Chat from '../pages/Chat';
+import Home from '../pages/Home';
 // import Login from '../pages/Login';
-import Profile from "../pages/Profile";
-import Lessons from "../pages/Lessons";
-import SingleLesson from "../pages/SingleLesson";
-import Leaderboard from "../pages/Leaderboard";
-import Languages from "../pages/Languages";
-import SingleLanguage from "../pages/SingleLanguage";
-import Quizzes from "../pages/Quizzes";
-import SingleQuiz from "../pages/SingleQuiz";
-import Tests from "../pages/Tests";
-import SingleTest from "../pages/SingleTest";
-// import { Signup } from '../components/AuthForm';
-// import {ProtectedRoute} from "../Utils/Auth";
-// import { HomePage, Navigation } from '../components';
-// import { Login } from '../components/AuthForm';
-// import UserHome from '../components/UserHome';
-import Achievements from "../pages/Achievements";
-import AddFriend from "../pages/AddFriend";
-import io from "socket.io-client";
-import ProtectedRoute from "../Utils/Auth";
-import { me } from "../redux/user";
-import { Login, NavBar, SignUp, UserHome } from "../components";
-import LandingPage from "../pages/LandingPage";
+import Profile from '../pages/Profile'
+import Lessons from '../pages/Lessons'
+import SingleLesson from '../pages/SingleLesson'
+import Leaderboard from '../pages/Leaderboard'
+import Languages from '../pages/Languages';
+import SingleLanguage from '../pages/SingleLanguage';
+import Quizzes from '../pages/Quizzes';
+import SingleQuiz from '../pages/SingleQuiz';
+import Tests from '../pages/Tests';
+import SingleTest from '../pages/SingleTest';
+import { Signup } from '../components/AuthForm';
+import {ProtectedRoute} from "../Utils/Auth";
+import { HomePage, Navigation } from '../components';
+import { Login } from '../components/AuthForm';
+import UserHome from '../components/UserHome';
+import Achievements from '../pages/Achievements';
+import AddFriend from '../pages/AddFriend';
+import io from 'socket.io-client'
+
 //establish connection with backend
 const socket = io.connect(`http://localhost:8080`);
 
@@ -66,9 +61,32 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/addfriend" element={<AddFriend />} />
-        </Route>
-        {/* <Route path="/" element={<Home />} /> */}
-      </Routes>
+          <Route
+            path="/language/:languageId/quiz/add"
+            element={<AddQuizPage />}
+          />
+          <Route
+            path="/language/:languageId/test/add"
+            element={<AddTestPage />}
+          />
+          <Route
+            path="/language/:languageId/lesson/add"
+            element={<AddLessonPage />}
+          />
+          <Route
+            path="/language/:languageId/quiz/edit/:id"
+            element={<EditQuizPage />}
+          />
+          <Route
+            path="/language/:languageId/test/edit/:id"
+            element={<EditTestPage />}
+          />
+          <Route
+            path="/language/:languageId/lesson/edit/:id"
+            element={<EditLessonPage />}
+          />
+        </Routes>
+      </div>
     </Router>
   );
 }
