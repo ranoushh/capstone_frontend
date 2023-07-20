@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../style/singleLanguage.css";
+import { useParams } from "react-router";
 
 export default function ListingQuizzes(props) {
-  //CSS
-  console.log("LIST QUIZZES COMPONENT");
+  const { languageId } = useParams();
   const filteredQuizzes = props.list.filter((Quizzes) => {
     return Quizzes.languageId === props.languageId;
   });
@@ -14,6 +14,12 @@ export default function ListingQuizzes(props) {
           <Link key={item.id} className="card-link" to={`/quiz/${item.id}`}>
             <div className="container-item">
               <h2 className="item-name">{item.quizName}</h2>
+              <Link
+                to={`/language/${languageId}/quiz/edit/${item.id}`}
+                className="text"
+              >
+                <button className="edit-btn">Edit</button>
+              </Link>
             </div>
           </Link>
         ))}
