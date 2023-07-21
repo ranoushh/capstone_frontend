@@ -29,6 +29,7 @@ import AddQuizQuestionPage from "../pages/AddQuizQuestionPage";
 import { me } from "../redux/user";
 import { Login, NavBar, SignUp, UserHome } from "../components";
 import EditTestQuestionPage from "../pages/Edit/EditTestQuestionPage";
+import EditQuizQuestionPage from "../pages/Edit/EditQuizQuestionPage";
 
 //establish connection with backend
 const socket = io.connect(`http://localhost:8080`);
@@ -109,6 +110,10 @@ function App() {
         <Route
           path="/test/:testId/testQuestion/edit/:id"
           element={<EditTestQuestionPage />}
+        />
+        <Route
+          path="/quiz/:quizId/quizQuestion/edit/:id"
+          element={<EditQuizQuestionPage />}
         />
         {/* </Route> */}
       </Routes>

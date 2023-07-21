@@ -2,24 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./form.css";
-import { editTestQuestionThunk } from "../../redux/testQuestion/testQuestion.actions";
+import { editQuizQuestionThunk } from "../../redux/quizQuestion/quizQuestion.actions";
 
-const EditTestQuestion = ({ testId }) => {
-  const testQuestion = useSelector(
-    (state) => state.testQuestion.singleTestQuestion
+const EditQuizQuestion = ({ quizId }) => {
+  const quizQuestion = useSelector(
+    (state) => state.quizQuestion.singleQuizQuestion
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [editForm, seteditForm] = useState({});
 
   useEffect(() => {
-    seteditForm(testQuestion);
-  }, [testQuestion]);
+    seteditForm(quizQuestion);
+  }, [quizQuestion]);
 
   const handleEditSubmit = (event) => {
     event.preventDefault();
-    dispatch(editTestQuestionThunk(editForm));
-    navigate(`/test/${testId}`);
+    dispatch(editQuizQuestionThunk(editForm));
+    navigate(`/quiz/${quizId}`);
   };
 
   const HandleInputChange = (event) => {
@@ -31,7 +31,7 @@ const EditTestQuestion = ({ testId }) => {
 
   return (
     <div className="forms">
-      <h1 className={"form-header"}>Edit Test Question</h1>
+      <h1 className={"form-header"}>Edit Quiz Question</h1>
       <form onSubmit={handleEditSubmit}>
         <label>Question: </label>
         <input
@@ -40,11 +40,11 @@ const EditTestQuestion = ({ testId }) => {
           value={editForm.question || ""}
           onChange={HandleInputChange}
         />
-        <label>Test Choice:</label>
+        <label>Quiz Choice:</label>
         <input
           type="text"
-          name="testChoice"
-          value={editForm.testChoice || ""}
+          name="quizChoice"
+          value={editForm.quizChoice || ""}
           onChange={HandleInputChange}
         />
         <label>Correct Choice:</label>
@@ -61,11 +61,11 @@ const EditTestQuestion = ({ testId }) => {
           value={editForm.pointWorth || ""}
           onChange={HandleInputChange}
         />
-        <label>Test ID: </label>
+        <label>Quiz ID: </label>
         <input
           type="number"
-          name="testId"
-          value={editForm.testId || ""}
+          name="quizId"
+          value={editForm.quizId || ""}
           onChange={HandleInputChange}
         />
 
@@ -77,4 +77,4 @@ const EditTestQuestion = ({ testId }) => {
   );
 };
 
-export default EditTestQuestion;
+export default EditQuizQuestion;
