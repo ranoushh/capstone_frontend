@@ -15,6 +15,7 @@ const NavBar = ({ isLoggedIn }) => {
   const navigate = useNavigate();
 
   const handleLogOut = (event) => {
+    console.log("hit logout");
     event.preventDefault();
     dispatch(logout());
     navigate("/login");
