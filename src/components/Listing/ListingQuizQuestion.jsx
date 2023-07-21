@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../style/flashcard.css";
+import "../../style/flashcard.css";
+import { Link } from "react-router-dom";
 
 export default function ListingQuizQuestion(props) {
   console.log("LIST QUIZQUESTION COMPONENT");
@@ -84,6 +85,12 @@ export default function ListingQuizQuestion(props) {
                 )}
               </div>
             </div>
+            <Link
+              to={`/quiz/${quizId}/quizQuestion/edit/${currentCard.id}`}
+              className="text"
+            >
+              <button className="edit-btn">Edit</button>
+            </Link>
           </>
         ) : (
           <h1 className="info-message">
