@@ -4,14 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import Chat from "../pages/Chat";
 import Profile from "../pages/Profile";
-import Lessons from "../pages/Lessons";
 import SingleLesson from "../pages/Single/SingleLesson";
 import Leaderboard from "../pages/Leaderboard";
 import Languages from "../pages/Languages";
 import SingleLanguage from "../pages/Single/SingleLanguage";
-import Quizzes from "../pages/Quizzes";
 import SingleQuiz from "../pages/Single/SingleQuiz";
-import Tests from "../pages/Tests";
 import SingleTest from "../pages/Single/SingleTest";
 import ProtectedRoute from "../Utils/Auth";
 import { HomePage, Navigation } from "../components";
@@ -24,8 +21,8 @@ import AddLessonPage from "../pages/Add/AddLessonPage";
 import EditTestPage from "../pages/Edit/EditTestPage";
 import EditQuizPage from "../pages/Edit/EditQuizPage";
 import EditLessonPage from "../pages/Edit/EditLessonPage";
-import AddTestQuestionPage from "../pages/AddTestQuestionPage";
-import AddQuizQuestionPage from "../pages/AddQuizQuestionPage";
+import AddTestQuestionPage from "../pages/Add/AddTestQuestionPage";
+import AddQuizQuestionPage from "../pages/Add/AddQuizQuestionPage";
 import { me } from "../redux/user";
 import { Login, NavBar, SignUp, UserHome } from "../components";
 import EditTestQuestionPage from "../pages/Edit/EditTestQuestionPage";
@@ -64,13 +61,10 @@ function App() {
         <Route path="/home" element={<UserHome />} />
         <Route path="/chat" element={<Chat socket={socket} />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/lessons" element={<Lessons />} />
         <Route path="/lesson/:lessonId" element={<SingleLesson />} />
         <Route path="/languages" element={<Languages />} />
         <Route path="/language/:languageId" element={<SingleLanguage />} />
-        <Route path="/quizzes" element={<Quizzes />} />
         <Route path="/quiz/:quizId" element={<SingleQuiz />} />
-        <Route path="/tests" element={<Tests />} />
         <Route path="/test/:testId" element={<SingleTest />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/achievements" element={<Achievements />} />
