@@ -14,7 +14,7 @@ export const fetchAllUsersThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCH_ALL_USERS_THUNK is firing");
-      const response = await axios.get("http://localhost:8080/api/users");
+      const response = await axios.get("http://localhost:8080/api/users/allUsers");
       console.log("FETCH_ALL_USERS_THUNK completed");
       dispatch(fetchAllUsers(response.data));
     } catch (error) {
