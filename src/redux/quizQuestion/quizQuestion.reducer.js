@@ -14,6 +14,14 @@ const quizQuestionReducer = (state = INITIAL_QUIZ_STATE, { type, payload }) => {
       return { ...state, singleQuizQuestion: payload };
     case QuizQuestionActionType.ADD_QUIZ_QUESTION:
       return { ...state, newQuizQuestion: [...state.allQuizQuestion, payload] };
+    case QuizQuestionActionType.EDIT_QUIZ_QUESTION:
+      return {
+        ...state,
+        allQuizQuestion: state.allQuizQuestion.map((quizQuestion) =>
+          quizQuestion.id === payload.id ? payload : quizQuestion
+        ),
+        singleQuizQuestion: payload,
+      };
     default:
       return state;
   }

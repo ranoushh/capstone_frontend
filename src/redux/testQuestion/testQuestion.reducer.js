@@ -14,6 +14,14 @@ const testQuestionReducer = (state = INITIAL_TEST_STATE, { type, payload }) => {
       return { ...state, singleTestQuestion: payload };
     case TestQuestionActionType.ADD_TEST_QUESTION:
       return { ...state, newTestQuestion: [...state.allTestQuestion, payload] };
+    case TestQuestionActionType.EDIT_TEST_QUESTION:
+      return {
+        ...state,
+        allTestQuestion: state.allTestQuestion.map((testQuestion) =>
+          testQuestion.id === payload.id ? payload : testQuestion
+        ),
+        singleTestQuestion: payload,
+      };
     default:
       return state;
   }

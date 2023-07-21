@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import AddTestQuestion from "../components/forms/AddTestQuestion";
-import { addTestQuestionThunk } from "../redux/testQuestion/testQuestion.actions";
+import AddTestQuestion from "../../components/forms/AddTestQuestion";
+import { addTestQuestionThunk } from "../../redux/testQuestion/testQuestion.actions";
 
 const AddTestQuestionPage = () => {
   //dispatch the action to the store
