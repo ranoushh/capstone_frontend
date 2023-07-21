@@ -6,24 +6,24 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useSelector, useDispatch} from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
- //import { updateUserThunk , fetchAllUsersThunk} from "../redux/users/users.actions";
+// import { updateUserThunk , fetchAllUsersThunk} from "../redux/users/users.actions";
+import { updateUser } from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
 
 
 function Profile() {
   const dispatch = useDispatch();
   const [selectedAvatar, setSelectedAvatar] = useState(); //set new avatar for user
-  const [user, setUser] = useState();
+  const user = useSelector((state) => state.user);
   const [showPopup, setShowPopup] = useState(false);
   const allAvatars = useSelector((state) => state.avatars.allAvatars);
-  const allUsers = useSelector((state) => state.user?.allUsers); //get all users
-
-  let updatedUser = {}; 
+  const [updatedUser, setUpdatedUser] = useState();
+  
+  // let updatedUser = {}; 
 
   useEffect(() => {
-    console.log("FETCH ALL AVATARS FIRING IN USEEFFECT");
     fetchAllAvatars();
-    fetchAllUsers();
+    fetchMe();
   }, []);
 
   function fetchAllAvatars() {
@@ -31,65 +31,52 @@ function Profile() {
     return dispatch(fetchAllAvatarsThunk());
   };
 
-  function fetchAllUsers() {
-    console.log("RUNNING DISPATCH FROM FETCHALLUsers");
+  function fetchMe() {
+    console.log("RUNNING DISPATCH FROM FETCHMe");
     return dispatch(me());
   };
 
-
-  console.log("USERS?" + allUsers);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(
-          `https://localhost:8080/api/users/1`
-        );
-        console.log(response);
-        setUser(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchUser(); 
-  });
-
-console.log(allAvatars);
-
-  // function handleClick() {
-  //   setShowPopup(true);
-  // };
+  console.log("avatars" + allAvatars);
   
   function handleClick() {
     setShowPopup(true);
   }
   
-  function handleClickAvatar(){
+  useEffect(() => {
+    console.log("id of selected avatar: " + selectedAvatar);
+  }, [selectedAvatar]);
+
+
+  function handleClickAvatar(event) {
+    const selectedAvatarURL = event.target.src; // Get the selected avatar URL
+    console.log("SELECTED: " + selectedAvatarURL);
+
+    //find the id of selected avatar from array
+    for(let i=0; i<allAvatars.length; i++){
+      if(selectedAvatarURL===allAvatars[i].imageURL){
+        setSelectedAvatar(allAvatars[i].id);
+        console.log("id of selected avatar: " + selectedAvatar)
+      }
+    }
 
   }
-  // function handleClickAvatar(event){
-  //   console.log("handle click avatar reached");
-  //   setAvatar(event.target.value);
-  //   updatedUser = {
-  //     ...allUsers.find((user) => user.id === parseInt(UserId)),
-  //     CampusId: currentCampus.id,
-  //   };
-  //   console.log(currentCampus);
-  // }
 
-  
+  //update user 
+  useEffect(() => {
+    setUpdatedUser({
+      ...user,
+      avatarId: selectedAvatar,
+    });
+  }, [selectedAvatar, user]);
+
+  console.log("UPDATED USER" + updatedUser);
+  dispatch(updateUser(updatedUser));
+
 
   return (
     <div>
-      {/* <Navigation/> */}
       This is Profile.
       <p></p>
-      {allUsers && allUsers.length > 0 ? 
-          (allUsers.map((item, index) => (
-          <li key={index}>{item.email}</li>
-          ))) : ("Loading")
-        };
       <p></p>
       <button onClick = {handleClick}>
       <div className="body">
@@ -97,7 +84,7 @@ console.log(allAvatars);
           <div className="overlay"></div>
           <div className="circle">
             <svg 
-              href="http://www.w3.org/1999/xlink"
+              href={user.avatarId}
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
               viewBox="1855 26 66 77"
@@ -137,7 +124,7 @@ console.log(allAvatars);
               </g>
             </svg>
           </div>
-          <p>Your Name</p>
+          <p>{user.username}</p>
         </a>
       </div>
       </button>
