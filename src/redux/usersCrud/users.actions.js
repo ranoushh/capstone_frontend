@@ -60,7 +60,7 @@ export const updateUserThunk = (updatedUser) => {
     return async (dispatch) => {
       try {
         const response = await axios.put(
-          `http://localhost:8080/updateAvatar/${updatedUser.id}`,
+          `http://localhost:8080/api/users/updateAvatar/${updatedUser.id}`,
           updatedUser
         );
         console.log(response.data);
