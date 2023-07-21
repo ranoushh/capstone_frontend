@@ -36,6 +36,8 @@ function App() {
   const isLoggedIn = useSelector((state) => !!state.user.id);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+
+  
   useEffect(() => {
     const fetchMe = async () => {
       dispatch(await me());
