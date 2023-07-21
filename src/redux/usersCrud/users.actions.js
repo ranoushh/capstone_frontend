@@ -57,8 +57,10 @@ export const updateUser = (updatedUser) => {
 };
 
 export const updateUserThunk = (updatedUser) => {
+  console.log("REACHED UPDATE USER ")
     return async (dispatch) => {
       try {
+        console.log("REACHED UPDATE USER 2 ")
         const response = await axios.put(
           `http://localhost:8080/api/users/updateAvatar/${updatedUser.id}`,
           updatedUser

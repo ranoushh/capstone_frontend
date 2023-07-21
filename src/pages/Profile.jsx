@@ -17,9 +17,6 @@ function Profile() {
   const [showPopup, setShowPopup] = useState(false);
   const allAvatars = useSelector((state) => state.avatars.allAvatars);
   
-  // let updatedUser = {}; 
-
-  
 
   function fetchAllAvatars() {
     console.log("RUNNING DISPATCH FROM FETCHALLAVATARS");
@@ -36,32 +33,26 @@ function Profile() {
     fetchMe();
   }, []);
   
-  // console.log("avatars" + allAvatars);
   
   function handleClick() {
     setShowPopup(true);
   }
   
-
-
   function handleClickAvatar(event) {
     console.log("event target" + event.target.id);
     //find the id of selected avatar from array
+    const avatarID =  parseInt(event.target.id, 10) + 1;
+
     const updatedUser = {
       ...user,
-
-      avatarId: event.target.id,
-      
+      avatarId: avatarID,
     };
-    updateUserThunk(updatedUser);
-
+    dispatch(updateUserThunk(updatedUser));
+    console.log("updated user" + updatedUser.id)
     setShowPopup(false); 
-
-
-
   }
 
-
+  
   return (
     <div>
       This is Profile.
@@ -71,7 +62,7 @@ function Profile() {
   
       <div className="card">
   <div
-    style={{ backgroundImage: `(${user.avatarId.imageURL})` }}
+    // style={{ backgroundImage: `url(${user.avatarId})` }}
     className="bg"
   ></div>
   <div className="blob"></div>
