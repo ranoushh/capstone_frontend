@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleQuizThunk } from "../redux/quizzes/quizzes.actions";
-import ListingQuizQuestion from "../components/ListingQuizQuestion";
-import { fetchAllQuizQuestionThunk } from "../redux/quizQuestion/quizQuestion.actions";
-import "../style/flashcard.css";
+import { fetchSingleQuizThunk } from "../../redux/quizzes/quizzes.actions";
+import ListingQuizQuestion from "../../components/Listing/ListingQuizQuestion";
+import { fetchAllQuizQuestionThunk } from "../../redux/quizQuestion/quizQuestion.actions";
+import "../../style/flashcard.css";
 import { Link } from "react-router-dom";
 
 function SingleQuiz() {
@@ -19,7 +19,6 @@ function SingleQuiz() {
     dispatch(fetchSingleQuizThunk(quizId));
     dispatch(fetchAllQuizQuestionThunk());
   }, [dispatch, quizId]);
-  
 
   return (
     <div>

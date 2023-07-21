@@ -8,13 +8,13 @@ import testsReducer from "./tests/tests.reducer";
 import quizQuestionReducer from "./quizQuestion/quizQuestion.reducer";
 import testQuestionReducer from "./testQuestion/testQuestion.reducer";
 import avatarReducer from "./avatars/avatars.reducer";
-import usersReducerCrud from "./users/users.reducer";
+import usersReducerCrud from "./usersCrud/users.reducer";
 
 //import each reducer made
 
 const rootReducer = combineReducers({
   lessons: lessonsReducer,
-  user: userReducer,
+  user: userReducer, //oauth one
   achievements: achievementReducer,
   languages: languageReducer,
   quizzes: quizzesReducer,
@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   quizQuestion: quizQuestionReducer,
   testQuestion: testQuestionReducer,
   avatars: avatarReducer,
-  usersCrud: usersReducerCrud
+  usersCrud: usersReducerCrud, //fetch etc
 });
 
 export default rootReducer;

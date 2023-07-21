@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch } from "react-redux";
-import { fetchSingleTestThunk } from "../redux/tests/tests.actions";
-import EditTest from "../components/forms/EditTest";
+import { fetchSingleLessonThunk } from "../../redux/lessons/lessons.actions";
+import EditLesson from "../../components/forms/EditLesson";
 
-const EditTestPage = () => {
+const EditLessonPage = () => {
   const { id, languageId } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchSingleTestThunk(id));
+    dispatch(fetchSingleLessonThunk(id));
   }, [id, dispatch]);
 
   return (
     <div>
-      <EditTest languageId={languageId} />
+      <EditLesson languageId={languageId} />
     </div>
   );
 };
 
-export default EditTestPage;
+export default EditLessonPage;

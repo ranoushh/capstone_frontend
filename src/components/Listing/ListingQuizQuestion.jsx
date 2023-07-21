@@ -1,21 +1,23 @@
 import React, { useState } from "react";
-import "../style/flashcard.css";
+import "../../style/flashcard.css";
+import { Link } from "react-router-dom";
 
-export default function ListingTestQuestion(props) {
-  console.log("LIST TESTQUESTION COMPONENT");
+export default function ListingQuizQuestion(props) {
+  console.log("LIST QUIZQUESTION COMPONENT");
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const [userScore, setUserScore] = useState(0);
-  const { list, testId } = props;
-  const filteredTestQuestion = list.filter(
-    (TestQuestion) => TestQuestion.testId === testId
+  const { list, quizId } = props;
+  const filteredQuizQuestion = list.filter(
+    (QuizQuestion) => QuizQuestion.quizId === quizId
   );
-  const currentCard = filteredTestQuestion[currentCardIndex];
+  const currentCard = filteredQuizQuestion[currentCardIndex];
   const [userAnswers, setUserAnswers] = useState(
-    new Array(filteredTestQuestion.length).fill("")
+    new Array(filteredQuizQuestion.length).fill("")
   );
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
+
   const handleInputChange = (e) => {
     setUserAnswer(e.target.value);
   };
@@ -44,21 +46,22 @@ export default function ListingTestQuestion(props) {
     }, 1500);
   };
 
+
   return (
     <div>
-      <p className="test-length">
-        Number of Questions: {filteredTestQuestion.length}
+      <p className="quiz-length">
+        Number of Questions: {filteredQuizQuestion.length}
       </p>
       <div className="flashcard-container">
         <p className="score-message">Your score: {userScore} points</p>
-        {filteredTestQuestion.length > 0 && currentCard ? (
+        {filteredQuizQuestion.length > 0 && currentCard ? (
           <>
             <div className="flashcard">
               <div className="flashcard-front">
                 <h1 className="items-name">
                   {currentCardIndex + 1}. {currentCard.question}
                 </h1>
-                <h2 className="items-name">{currentCard.testChoice}</h2>
+                <h2 className="items-name">{currentCard.quizChoice}</h2>
                 <input
                   type="text"
                   placeholder="Enter your answer"
@@ -82,10 +85,16 @@ export default function ListingTestQuestion(props) {
                 )}
               </div>
             </div>
+            <Link
+              to={`/quiz/${quizId}/quizQuestion/edit/${currentCard.id}`}
+              className="text"
+            >
+              <button className="edit-btn">Edit</button>
+            </Link>
           </>
         ) : (
           <h1 className="info-message">
-            There are no Test Questions available
+            There are no Quiz Questions available
           </h1>
         )}
       </div>

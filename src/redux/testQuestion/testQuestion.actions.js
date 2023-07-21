@@ -71,3 +71,24 @@ export const addTestQuestionThunk = (newTestQuestion) => {
     }
   };
 };
+
+export const editTestQuestion = (payload) => {
+  return {
+    type: TestQuestionActionType.EDIT_TEST_QUESTION,
+    payload: payload,
+  };
+};
+
+export const editTestQuestionThunk = (testQuestion) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/testQuestion/${testQuestion.id}`,
+        testQuestion
+      );
+      dispatch(editTestQuestion(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};

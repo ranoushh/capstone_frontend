@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllUsersThunk } from "../redux/users/users.actions";
-import '../styling/LeaderboardStyle.css';
+import { fetchAllUsersThunk } from "../redux/usersCrud/users.actions";
+import "../styling/LeaderboardStyle.css";
 
 function Leaderboard() {
   const allUsers = useSelector((state) => state.usersCrud.allUsers);
@@ -24,7 +24,9 @@ function Leaderboard() {
         allUsers.slice(0, 10).map((user, index) => (
           <div
             key={index}
-            className={`user-card ${index < 3 ? "top-user-card" : "other-user-card"}`}
+            className={`user-card ${
+              index < 3 ? "top-user-card" : "other-user-card"
+            }`}
           >
             <div className="user-info">
               {index < 3 ? (

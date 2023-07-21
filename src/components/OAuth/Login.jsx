@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../redux/user";
+import { login } from "../../redux/user";
 import UserHome from "./UserHome";
 
 export default function Login() {
@@ -15,7 +15,7 @@ export default function Login() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     dispatch(login(email, password, name));
-   // navigate("/home");
+    navigate("/home");
   };
 
   return (

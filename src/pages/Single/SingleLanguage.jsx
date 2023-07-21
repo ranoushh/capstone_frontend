@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleLanguageThunk } from "../redux/languages/languages.actions";
-import ListingLessons from "../components/ListingLessons";
-import { fetchAllLessonsThunk } from "../redux/lessons/lessons.actions";
-import ListingQuizzes from "../components/ListingQuizzes";
-import { fetchAllQuizzesThunk } from "../redux/quizzes/quizzes.actions";
-import ListingTests from "../components/ListingTests";
-import { fetchAllTestsThunk } from "../redux/tests/tests.actions";
+import { fetchSingleLanguageThunk } from "../../redux/languages/languages.actions";
+import ListingLessons from "../../components/Listing/ListingLessons";
+import { fetchAllLessonsThunk } from "../../redux/lessons/lessons.actions";
+import ListingQuizzes from "../../components/Listing/ListingQuizzes";
+import { fetchAllQuizzesThunk } from "../../redux/quizzes/quizzes.actions";
+import ListingTests from "../../components/Listing/ListingTests";
+import { fetchAllTestsThunk } from "../../redux/tests/tests.actions";
 
 function SingleLanguage() {
   const { languageId } = useParams();
@@ -21,16 +21,13 @@ function SingleLanguage() {
   useEffect(() => {
     dispatch(fetchSingleLanguageThunk(languageId));
     dispatch(fetchAllLessonsThunk());
-    dispatch(fetchAllTestsThunk())
+    dispatch(fetchAllTestsThunk());
     dispatch(fetchAllQuizzesThunk());
   }, [dispatch, languageId]);
 
-
   return (
     <div>
-      <h1 className="title">
-        Let's learn {singleLanguage.languageName}!
-      </h1>
+      <h1 className="title">Let's learn {singleLanguage.languageName}!</h1>
 
       {singleLanguage ? (
         <div>
@@ -39,7 +36,7 @@ function SingleLanguage() {
             <button class="add-btn">Add Lesson</button>
           </Link>
           <ListingLessons list={lessons} languageId={singleLanguage.id} />
-          <h2 className="subheading" >Test</h2>
+          <h2 className="subheading">Test</h2>
           <Link to={`/language/${languageId}/test/add`}>
             <button class="add-btn">Add Test</button>
           </Link>
