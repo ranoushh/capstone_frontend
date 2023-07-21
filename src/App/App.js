@@ -19,6 +19,11 @@ import io from "socket.io-client";
 import AddQuizPage from "../pages/Add/AddQuizPage";
 import AddTestPage from "../pages/Add/AddTestPage";
 import AddLessonPage from "../pages/Add/AddLessonPage";
+// import EditTestPage from "../pages/Edit/EditTestPage";
+// import EditQuizPage from "../pages/Edit/EditQuizPage";
+// import EditLessonPage from "../pages/Edit/EditLessonPage";
+// import AddTestQuestionPage from "../pages/Add/AddTestQuestionPage";
+// import AddQuizQuestionPage from "../pages/Add/AddQuizQuestionPage";
 import EditTestPage from "../pages/Edit/EditTestPage";
 import EditQuizPage from "../pages/Edit/EditQuizPage";
 import EditLessonPage from "../pages/Edit/EditLessonPage";
@@ -37,6 +42,8 @@ function App() {
   const isLoggedIn = useSelector((state) => !!state.user.id);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+
+  
   useEffect(() => {
     const fetchMe = async () => {
       dispatch(await me());
