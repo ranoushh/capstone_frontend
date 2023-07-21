@@ -6,7 +6,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useSelector, useDispatch} from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
-// import { updateUserThunk , fetchAllUsersThunk} from "../redux/users/users.actions";
+ //import { updateUserThunk , fetchAllUsersThunk} from "../redux/users/users.actions";
 import { me } from "../redux/user";
 
 
@@ -55,7 +55,7 @@ function Profile() {
     fetchUser(); 
   });
 
-// console.log(allAvatars);
+console.log(allAvatars);
 
   // function handleClick() {
   //   setShowPopup(true);
