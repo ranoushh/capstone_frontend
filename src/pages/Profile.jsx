@@ -56,12 +56,8 @@ function Profile() {
     updateUserThunk(updatedUser);
 
     setShowPopup(false); 
-
-
-
   }
-
-
+  
   return (
     <div>
       This is Profile.
@@ -71,7 +67,7 @@ function Profile() {
   
       <div className="card">
   <div
-    style={{ backgroundImage: `(${user.avatarId.imageURL})` }}
+    // style={{ backgroundImage: `(${user.avatarId.imageURL})` }}
     className="bg"
   ></div>
   <div className="blob"></div>
