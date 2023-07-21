@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../style/language.css";
+import "../../style/language.css";
 
 export default function ListingLanguages(props) {
   console.log("LIST LANGUAGES COMPONENT");

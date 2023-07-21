@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { fetchSingleTestThunk } from "../../redux/tests/tests.actions";
 import ListingTestQuestion from "../../components/Listing/ListingTestQuestion";
 import { fetchAllTestQuestionThunk } from "../../redux/testQuestion/testQuestion.actions";
-import "../style/flashcard.css";
+import "../../style/flashcard.css";
 import { Link } from "react-router-dom";
 
 function SingleTest() {

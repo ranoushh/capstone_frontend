@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch } from "react-redux";
-import { fetchSingleTestThunk } from "../redux/tests/tests.actions";
-import EditTest from "../components/forms/EditTest";
+import { fetchSingleTestThunk } from "../../redux/tests/tests.actions";
+import EditTest from "../../components/forms/EditTest";
 
 const EditTestPage = () => {
   const { id, languageId } = useParams();
