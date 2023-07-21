@@ -66,7 +66,6 @@ export const updateUserThunk = (updatedUser) => {
           updatedUser
         );
         console.log(response.data);
-        console.log("Update Completed");
         dispatch(updateUser(response.data));
   
       } catch (error) {
