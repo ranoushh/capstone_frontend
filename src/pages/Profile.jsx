@@ -78,8 +78,9 @@ function Profile() {
       This is Profile.
       <p></p>
       <p></p>
-      <button onClick = {handleClick}>
-      <div className="body">
+      <button style= {{borderRadius: "10px"}}
+onClick = {handleClick}>
+      {/* <div className="body">
         <a className="card human-resources" href="#">
           <div className="overlay"></div>
           <div className="circle">
@@ -126,7 +127,12 @@ function Profile() {
           </div>
           <p>{user.username}</p>
         </a>
-      </div>
+      </div> */}
+      <div class="card">
+  <div class="bg"></div>
+  <div class="blob"></div>
+</div>
+
       </button>
 
       {showPopup && (
