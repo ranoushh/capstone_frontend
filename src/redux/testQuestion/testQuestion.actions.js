@@ -92,3 +92,24 @@ export const editTestQuestionThunk = (testQuestion) => {
     }
   };
 };
+
+
+export const deleteTestQuestion = (payload) => {
+  return {
+    type: TestQuestionActionType.DELETE_TEST_QUESTION,
+    payload: payload,
+  };
+};
+
+export const deleteTestQuestionThunk = (testQuestionId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/testQuestion/${testQuestionId}`
+      );
+      dispatch(deleteTestQuestion(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
