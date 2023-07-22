@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/user";
 import UserHome from "./UserHome";
+import "../../styling/LoginStyling.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -19,26 +20,34 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name="login">
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">Log In</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="http://localhost:8080/auth/google">Log in with Google</a>
+    <div className="login-body"> {/* Added login-body class */}
+      <div className="login-background"> {/* Added login-background class */}
+        <div className="shape login-shape:first-child" /> {/* Added login-shape class and adjusted for first child */}
+        <div className="shape login-shape:last-child" /> {/* Added login-shape class and adjusted for last child */}
+      </div>
+      <div className="login-form"> {/* Added login-form class */}
+        <form onSubmit={handleSubmit} name="login">
+          <div>
+            <label htmlFor="email">
+              <small>Email</small>
+            </label>
+            <input name="email" type="text" />
+          </div>
+          <div>
+            <label htmlFor="password">
+              <small>Password</small>
+            </label>
+            <input name="password" type="password" />
+          </div>
+          <div>
+            <button type="submit">Log In</button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      </div>
+      <div className="googleLogin"> {/* Moved the "Log in with Google" link inside this div */}
+        <a href="http://localhost:8080/auth/google">Log in with Google</a>
+      </div>
     </div>
   );
 }

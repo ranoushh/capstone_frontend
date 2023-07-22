@@ -4,11 +4,14 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { me } from "../../redux/user";
 import { useEffect } from "react";
+import "../../styling/HomeStyling.css";
+
 /**
  * COMPONENT
  */
 const UserHome = () => {
   const username = useSelector((state) => state.user.username);
+  const achievements = useSelector((state) => state.user.achievements);
   const dispatch = useDispatch();
  
   useEffect(() => {
@@ -23,7 +26,8 @@ const UserHome = () => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3 id= "home-greeting">Welcome, {username} !</h3>
+      <h4 id = "achievements-list">Your Progress {achievements} </h4>
     </div>
   );
 };
