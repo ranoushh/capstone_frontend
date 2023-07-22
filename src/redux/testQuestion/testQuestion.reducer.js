@@ -22,6 +22,13 @@ const testQuestionReducer = (state = INITIAL_TEST_STATE, { type, payload }) => {
         ),
         singleTestQuestion: payload,
       };
+    case TestQuestionActionType.DELETE_TEST_QUESTION:
+      return {
+        ...state,
+        allTestQuestion: state.allTestQuestion.filter(
+          (testQuestion) => testQuestion.id !== payload
+        ),
+      };
     default:
       return state;
   }
