@@ -19,13 +19,13 @@ function Achievements() {
 
   return (
     <div>
-       <h1 className="title">Achievements </h1>
-       <ul>
+      <h1 className="title">Achievements</h1>
+      <ul>
         {allAchievements && allAchievements.length > 0 ? 
           (allAchievements.map((item, index) => (
-          <li key={index}>{item.achievementName}</li>
+            <li key={index}>{item.achievementName}</li>
           ))) : ("Loading")
-        };
+        }
       </ul>
     </div>
   );
