@@ -20,32 +20,27 @@ export default function Login() {
   };
 
   return (
-    <div className="login-body"> {/* Added login-body class */}
-      <div className="login-background"> {/* Added login-background class */}
-        <div className="shape login-shape:first-child" /> {/* Added login-shape class and adjusted for first child */}
-        <div className="shape login-shape:last-child" /> {/* Added login-shape class and adjusted for last child */}
-      </div>
-      <div className="login-form"> {/* Added login-form class */}
-        <form onSubmit={handleSubmit} name="login">
-          <div>
-            <label htmlFor="email">
-              <small>Email</small>
-            </label>
-            <input name="email" type="text" />
-          </div>
-          <div>
-            <label htmlFor="password">
-              <small>Password</small>
-            </label>
-            <input name="password" type="password" />
-          </div>
-          <div>
-            <button type="submit">Log In</button>
-          </div>
-          {error && error.response && <div> {error.response.data} </div>}
-        </form>
-      </div>
-      <div className="googleLogin"> {/* Moved the "Log in with Google" link inside this div */}
+    <div className="container">
+      <form onSubmit={handleSubmit} name="login">
+        <div>
+          <label htmlFor="email">
+            <small>Email</small>
+          </label>
+          <input name="email" type="text" />
+        </div>
+        <div>
+          <label htmlFor="password">
+            <small>Password</small>
+          </label>
+          <input name="password" type="password" />
+        </div>
+        <div>
+          <button type="submit">Log In</button>
+        </div>
+        {error && error.response && <div> {error.response.data} </div>}
+      </form>
+      {/* Move the "Log in with Google" link here */}
+      <div className="googleLogin">
         <a href="http://localhost:8080/auth/google">Log in with Google</a>
       </div>
     </div>
