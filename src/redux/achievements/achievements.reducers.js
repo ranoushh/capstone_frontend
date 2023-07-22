@@ -7,7 +7,6 @@ export const Initial_State = {
 
 //reducer
 const achievementReducer = (state=Initial_State, {type, payload}) => {
-    console.log("PL", payload);
     // console.log(allAchievements);
     //logs which action is being used
     switch(type){
