@@ -1,13 +1,11 @@
 import React from "react";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import "../styling/ProfileCard.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
-// import { updateUserThunk , fetchAllUsersThunk} from "../redux/users/users.actions";
-import { updateUser, updateUserThunk } from "../redux/usersCrud/users.actions";
+import { updateUserThunk } from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
 
 function Profile() {
@@ -26,39 +24,46 @@ function Profile() {
     return dispatch(me());
   }
 
+  async function fetchUser() {
+    await fetchMe();
+  }
+
   useEffect(() => {
     fetchAllAvatars();
-    fetchMe();
+    fetchUser(); // Fetch user data once on initial mount
   }, []);
 
-  function handleClick() {
+  async function handleClick() {
     setShowPopup(true);
+    await fetchUser(); // Fetch user data when the popup is shown
   }
 
-  function handleClickAvatar(event) {
-    console.log("event target" + event.target.id);
-    //find the id of selected avatar from array
-    const avatarID = parseInt(event.target.id, 10) + 1;
-
+  async function handleClickAvatar(avatarId) {
     const updatedUser = {
       ...user,
-      avatarId: avatarID,
+      avatarId: avatarId,
     };
-    console.log("IMAGE URL" + user.avatarId?.imageURL);
     dispatch(updateUserThunk(updatedUser));
-    console.log("updated user " + updatedUser.avatarId.imageURL);
     setShowPopup(false);
+    await fetchUser(); // Fetch user data after the avatar is updated
   }
 
-  
+  console.log("allAvatars:", allAvatars);
+
+  const selectedAvatar = allAvatars.find((avatar) => avatar.id === user.avatarId);
+
+  const profileCardStyle = {
+    backgroundImage: selectedAvatar ? `url(${selectedAvatar.imageURL})` : "",
+  };
+
   return (
     <div>
       This is Profile.
       <p></p>
       <p></p>
       <button style={{ borderRadius: "10px" }} onClick={handleClick}>
-        <div className="card">
-          <div className="blob"></div>
+        <div className="card" style={profileCardStyle}> {/* Avatar changes upon refresh or re-clicking icon*/}
+          {/* No need for the bg and blob divs since the background image is applied to the card */}
         </div>
       </button>
       {showPopup && (
@@ -67,14 +72,14 @@ function Profile() {
             <span className="close" onClick={() => setShowPopup(false)}>
               &times;
             </span>
-            {allAvatars.map((item, id) => (
-              <div className="img-container" key={id}>
+            {allAvatars.map((item) => (
+              <div className="img-container" key={item.id}>
                 <div>
                   <img
-                    id={id}
                     className="avatarPics"
-                    onClick={handleClickAvatar}
+                    onClick={() => handleClickAvatar(item.id)} // Pass the item.id here
                     src={item.imageURL}
+                    alt={`Avatar ${item.id}`}
                   />
                 </div>
               </div>
