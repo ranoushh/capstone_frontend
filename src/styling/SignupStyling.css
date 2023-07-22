@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: #aea7e4;
 }
 
@@ -32,7 +32,7 @@ body {
 
 form {
     height: 520px;
-    width: 460px; /* Increase the width to accommodate wider textboxes */
+    width: 460px; /* Increase the width to accommodate wider textboxes 
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -43,19 +43,19 @@ form {
     padding: 50px 35px;
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.13);
-    display: flex; /* Add display flex to center the content */
-    flex-direction: column; /* Align the content vertically */
+    display: flex; /* Add display flex to center the content 
+    flex-direction: column; /* Align the content vertically 
     align-items: center;
 }
 
-/* Rest of your styles remain the same */
+/* Rest of your styles remain the same 
 
 
 .googleLogin {
     position: absolute;
-    bottom: 60px; /* Position the link at the bottom */
-    z-index: 3; /* Ensure the link is on top of the form */
-    margin-bottom: 1rem; /* Optional: Add some margin at the bottom */
+    bottom: 60px; 
+    z-index: 3; /* Ensure the link is on top of the form 
+    margin-bottom: 1rem; /* Optional: Add some margin at the bottom 
 }
 
 form * {
@@ -115,8 +115,8 @@ button {
   
   .googleSignup {
     position: absolute;
-    bottom: 60px; /* Position the link 60px from the bottom */
-    left: 630px; /* Position the link 35px from the left */
-    z-index: 3; /* Ensure the link is on top of the form */
-    margin-bottom: 1rem; /* Optional: Add some margin at the bottom */
-}
+    bottom: 60px; /* Position the link 60px from the bottom 
+    left: 630px; /* Position the link 35px from the left 
+    z-index: 3; /* Ensure the link is on top of the form 
+    margin-bottom: 1rem; /* Optional: Add some margin at the bottom 
+} */
