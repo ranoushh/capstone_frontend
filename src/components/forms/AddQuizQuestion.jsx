@@ -18,6 +18,7 @@ const AddQuizQuestion = ({ onSubmit, quizId }) => {
     navigate(`/quiz/${quizId}`);
   };
   console.log("Quiz question:", newQuizQuestion.question);
+
   return (
     <div>
       <h2>Add Quiz Question</h2>
