@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./form.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { me } from "../../redux/user";
+import { useSelector } from "react-redux";
+
+
 const AddQuiz = ({ onSubmit, languageId }) => {
   const navigate = useNavigate();
   const [newQuiz, setnewQuiz] = useState({});
@@ -17,6 +21,18 @@ const AddQuiz = ({ onSubmit, languageId }) => {
     onSubmit(newQuiz);
     navigate(`/language/${languageId}`);
   };
+
+  const user = useSelector((state) => state.user); //just checking if the user is admin or not
+  console.log(user.username);
+
+  if (user.username !== "admin") { //If not prevent access
+    return (
+      <div>
+        <div>You cannot add a new quiz at this time. </div>
+        <NavLink to="/languages">Go back to languages</NavLink>
+      </div>
+    );
+  }
 
   return (
     <div className="forms">

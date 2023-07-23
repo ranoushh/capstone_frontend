@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./form.css";
 import { editLessonThunk } from "../../redux/lessons/lessons.actions";
+import { me } from "../../redux/user";
+
 
 const EditLesson = ({ languageId }) => {
   const lesson = useSelector((state) => state.lessons.singleLesson);
@@ -26,6 +28,19 @@ const EditLesson = ({ languageId }) => {
       [event.target.name]: event.target.value,
     });
   };
+
+  const user = useSelector((state) => state.user); //just checking if the user is admin or not
+  console.log(user.username);
+
+  if (user.username !== "admin") { //If not prevent access
+    return (
+      <div>
+        <div>You cannot edit a new lesson at this time. </div>
+        <NavLink to="/languages">Go back to languages</NavLink>
+      </div>
+    );
+  }
+
 
   return (
     <div className="forms">

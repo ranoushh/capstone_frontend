@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editTestThunk } from "../../redux/tests/tests.actions";
 import "./form.css";
+import { me } from "../../redux/user";
+
 
 const EditTest = ({ languageId }) => {
   const test = useSelector((state) => state.tests.singleTest);
@@ -26,6 +28,19 @@ const EditTest = ({ languageId }) => {
       [event.target.name]: event.target.value,
     });
   };
+
+  const user = useSelector((state) => state.user); //just checking if the user is admin or not
+  console.log(user.username);
+
+  if (user.username !== "admin") { //If not prevent access
+    return (
+      <div>
+        <div>You cannot edit a new test at this time. </div>
+        <NavLink to="/languages">Go back to languages</NavLink>
+      </div>
+    );
+  }
+
 
   return (
     <div className="forms">
