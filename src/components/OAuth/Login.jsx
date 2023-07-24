@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/user";
 import UserHome from "./UserHome";
+import "../../styling/LoginStyling.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmit} name="login">
         <div>
           <label htmlFor="email">
@@ -38,7 +39,10 @@ export default function Login() {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="http://localhost:8080/auth/google">Log in with Google</a>
+      {/* Move the "Log in with Google" link here */}
+      <div className="googleLogin">
+        <a href="http://localhost:8080/auth/google">Log in with Google</a>
+      </div>
     </div>
   );
 }

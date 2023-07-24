@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signup } from "../../redux/user";
+import "../../styling/SignupStyling.css";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -46,7 +47,9 @@ export default function SignUp() {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
 
-      <a href="http://localhost:8080/auth/google">Sign up with Google</a>
+      <div className="googleSignup">
+        <a href="http://localhost:8080/auth/google">Sign up with Google</a>
+      </div>    
     </div>
   );
 }

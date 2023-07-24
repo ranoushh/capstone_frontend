@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../../style/flashcard.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteTestQuestionThunk } from "../../redux/testQuestion/testQuestion.actions";
 
 export default function ListingTestQuestion(props) {
-  console.log("LIST TESTQUESTION COMPONENT");
+  const dispatch = useDispatch();
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
@@ -44,6 +46,17 @@ export default function ListingTestQuestion(props) {
       setIsAnswerSubmitted(false);
     }, 1500);
   };
+
+    const handleDelete = (testQuestionId) => {
+      dispatch(deleteTestQuestionThunk(testQuestionId))
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Error deleting testQuestion:", error);
+        });
+    };
+
 
   return (
     <div>
@@ -89,6 +102,13 @@ export default function ListingTestQuestion(props) {
             >
               <button className="edit-btn">Edit</button>
             </Link>
+            <button
+              type="button"
+              className="del-btn"
+              onClick={() => handleDelete(currentCard.id)}
+            >
+              Delete
+            </button>
           </>
         ) : (
           <h1 className="info-message">
