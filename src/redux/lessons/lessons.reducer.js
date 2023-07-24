@@ -27,6 +27,8 @@ const lessonsReducer = (state = INITIAL_STUDENTS_STATE, { type, payload }) => {
         ...state,
         allLessons: state.allLessons.filter((lesson) => lesson.id !== payload),
       };
+      case LessonsActionType.COMPLETE_LESSON:
+        return{...state, singleLesson: payload}
     default:
       return state;
   }

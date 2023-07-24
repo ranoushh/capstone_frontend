@@ -4,5 +4,6 @@ const LessonsActionType = {
   ADD_LESSON: "ADD_LESSON",
   EDIT_LESSON: "EDIT_LESSON",
   DELETE_LESSON: "DELETE_LESSON",
+  COMPLETE_LESSON: "COMPLETE_LESSON"
 };
 export default LessonsActionType;
