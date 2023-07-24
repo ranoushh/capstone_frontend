@@ -49,3 +49,17 @@
     margin-top: 20px;
     text-align: center;
 }
+
+#home-greeting { /*The greeting on the home page */
+font-size: 80px;
+text-align: center;
+font-family:'Times New Roman', Times, serif;
+color: #eca63d;
+
+}
+#achievements-list { /*The greeting on the home page */
+  font-size: 50px;
+  font-family:'Times New Roman', Times, serif;
+  color: #000000;
+  
+  }
