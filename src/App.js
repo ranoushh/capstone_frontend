@@ -82,7 +82,8 @@ function App() {
           <Route path="/quiz/:quizId/quizQuestion/add" element={<AddQuizQuestionPage />}/>
           <Route path="/test/:testId/testQuestion/edit/:id" element={<EditTestQuestionPage />}/>
           <Route path="/quiz/:quizId/quizQuestion/edit/:id"element={<EditQuizQuestionPage />}/>
-          
+          <Route path="/addfriend"element={<AddFriend />}/>
+
         {/* </Route> */}
 
       </Routes>
