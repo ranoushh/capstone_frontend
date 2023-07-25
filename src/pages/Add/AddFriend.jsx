@@ -1,16 +1,20 @@
 import React from 'react'
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 function AddFriend() {
+  const user = useSelector((state) => state.user);
+  const friends = useSelector((state) => state.usersCrud.friends);
+  const dispatch = useDispatch();
+  const [searchInput, setSearchInput] = useState("");
 
-//fetch all users from our database
-const [searchInput, setSearchInput] = useState("");
-
-function handleSearch(){
-    //if user exists, list that user and have add button etc 
-    //if user doesn't, say user not found
-   
-};
+  function handleSearch(){
+      //if user exists, list that user and have add button etc 
+      //if user doesn't, say user not found
+    
+  };
+  
 
   return (
     <div>
