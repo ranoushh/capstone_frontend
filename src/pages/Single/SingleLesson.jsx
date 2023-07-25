@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { fetchSingleLessonThunk } from "../../redux/lessons/lessons.actions";
 import "../../styling/LessonStyle.css"; // Import the CSS for the SingleLesson component
+import { completeLessonThunk } from "../../redux/lessons/lessons.actions";
+import { updateUserPointsThunk } from "../../redux/usersCrud/users.actions";
+
 
 const SingleLesson = () => {
   const { lessonId } = useParams();
@@ -57,6 +60,24 @@ const SingleLesson = () => {
     setFlip(false);
   };
 
+  const verifyPoints = () => {
+    if (!singleLesson.completed) {
+      const updatedLesson = {
+        id: lessonId,
+        lessonName: singleLesson.lessonName,
+        description: singleLesson.description,
+        content: singleLesson.content,
+        languageId: singleLesson.languageId,
+        completed: true,
+      };
+      dispatch(completeLessonThunk(updatedLesson));
+      setCompletedCards((prevCompletedCards) => [...prevCompletedCards, lessonId]);
+      // Dispatch the thunk to update the user's points
+      const updatedUser = { ...user, points: user.points + 10 };
+      dispatch(updateUserPointsThunk(updatedUser));
+    }
+  };
+
   const flashcard = flashcards[currentCard] ?? {};
   const options = flashcard.options ?? [];
 
@@ -92,10 +113,9 @@ const SingleLesson = () => {
           </button>
         </div>
       </div>
-      {flashcards.length === 0 && (
+      {flashcards.length() === 0 && !singleLesson.completed && (
         <div className="empty-flashcards">
-          No flashcards available. Do you want to try the quiz?{" "}
-          <Link className="quiz-link" to={`/quiz/${singleLesson.id}`}>
+          <Link className="quiz-link" to={`/quiz/${singleLesson.id} onClick={verifyPoints}`}>
             Go to Quiz
           </Link>
         </div>
