@@ -2,20 +2,15 @@ import axios from "axios";
 import UserActionType from "./users.types";
 
 // Fetching all Users
-export const fetchAllUsers = (payload) => {
-  console.log("FETCH ALL USERS ACTION");
-  return {
-    type: UserActionType.FETCH_ALL_USERS,
-    payload: payload,
-  };
-};
+export const fetchAllUsers = (payload) => ({
+  type: UserActionType.FETCH_ALL_USERS,
+  payload: payload,
+});
 
 export const fetchAllUsersThunk = () => {
   return async (dispatch) => {
     try {
-      console.log("FETCH_ALL_USERS_THUNK is firing");
       const response = await axios.get("http://localhost:8080/api/users/allUsers");
-      console.log("FETCH_ALL_USERS_THUNK completed");
       dispatch(fetchAllUsers(response.data));
     } catch (error) {
       console.error(error);
@@ -24,22 +19,15 @@ export const fetchAllUsersThunk = () => {
 };
 
 // Fetching a single User
-export const fetchSingleUser = (payload) => {
-  console.log("FETCH SINGLE User ACTION");
-  return {
-    type: UserActionType.FETCH_SINGLE_USER,
-    payload: payload,
-  };
-};
+export const fetchSingleUser = (payload) => ({
+  type: UserActionType.FETCH_SINGLE_USER,
+  payload: payload,
+});
 
 export const fetchSingleUserThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log("FETCH_SINGLE_User_THUNK is firing");
-      const response = await axios.get(
-        `http://localhost:8080/api/users/${id}`
-      );
-      console.log("FETCH_SINGLE_User_THUNK completed");
+      const response = await axios.get(`http://localhost:8080/api/users/${id}`);
       dispatch(fetchSingleUser(response.data));
     } catch (error) {
       console.error(error);
@@ -47,35 +35,27 @@ export const fetchSingleUserThunk = (id) => {
   };
 };
 
-//Update a user 
-export const updateUser = (updatedUser) => {
-    console.log("UPDATE  User ACTION");
-    return {
-      type: UserActionType.UPDATE_USER,
-      payload: updatedUser,
-    };
-};
+// Update a user
+export const updateUser = (updatedUser) => ({
+  type: UserActionType.UPDATE_USER,
+  payload: updatedUser,
+});
 
 export const updateUserThunk = (updatedUser) => {
-  console.log("REACHED UPDATE USER ")
-    return async (dispatch) => {
-      try {
-        console.log("REACHED UPDATE USER 2 ")
-        const response = await axios.put(
-          `http://localhost:8080/api/users/updateAvatar/${updatedUser.id}`,
-          updatedUser
-        );
-        console.log(response.data);
-        dispatch(updateUser(response.data));
-  
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/users/updateAvatar/${updatedUser.id}`,
+        updatedUser
+      );
+      dispatch(updateUser(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 };
 
-
-
+// Update user points
 export const updateUserPoints = (updatedUser) => ({
   type: UserActionType.UPDATE_USER_POINTS,
   payload: updatedUser,
@@ -88,6 +68,41 @@ export const updateUserPointsThunk = (updatedUser) => {
       const response = await axios.put(`http://localhost:8080/api/users/updatePoints/${updatedUser.id}`, updatedUser);
       // Dispatch the action to update the Redux state
       dispatch(updateUserPoints(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+// Fetch Friends
+export const fetchFriends = (payload) => ({
+  type: UserActionType.FETCH_FRIENDS,
+  payload: payload,
+});
+
+export const fetchFriendsThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/users/friends/${id}`);
+      dispatch(fetchFriends(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+// Add Friend
+export const addFriend = (payload) => ({
+  type: UserActionType.ADD_FRIEND,
+  payload: payload,
+});
+
+export const addFriendThunk = (myID, friendId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(`http://localhost:8080/api/users/addfriend/${myID}/${friendId}`);
+      const friendData = response.data; // You might need to extract data from the response
+      dispatch(addFriend(friendData));
     } catch (error) {
       console.error(error);
     }
