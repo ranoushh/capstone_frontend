@@ -1,12 +1,44 @@
 import React from 'react';
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchFriendsThunk } from "../redux/usersCrud/users.actions";
+import { me } from '../redux/user';
 
 // sidebar showing active users
 function ChatBar (){
+  const user = useSelector((state) => state.user);
+  const friends = useSelector((state) => state.usersCrud.friends);
+  const dispatch = useDispatch();
 
+  function fetchMe() {
+    console.log("RUNNING DISPATCH FROM FETCHMe");
+    return dispatch(me());
+  }
+
+  function fetchFriends() {
+    console.log("RUNNING DISPATCH FROM FETCH FRIENDS");
+    return dispatch(fetchFriendsThunk(user));
+  }
+  
+
+  useEffect(() => {
+    fetchMe();
+    fetchFriends(); 
+  }, []);
+  
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     await fetchMe();
+  //     await fetchFriends();
+  //   }
+  //   fetchData();
+  // }, []);
+  
   function handleSubmit(){
     
   };
 
+  console.log("whyyyy")
   return (
     <div className="chat__sidebar">
       <h2>APP NAME</h2>
@@ -14,12 +46,15 @@ function ChatBar (){
       <div>
         <h4 className="chat__header">Friends</h4>
         <div className="chat__users">
-          {/* here we need to list ALL USERS FRIENDS */}
-          {/* <p>User 1</p>
-          <p>User 2</p>
-          <p>User 3</p>
-          <p>User 4</p> */}
           <button onClick={handleSubmit}>Learning Bot</button>
+          <p></p>
+          {/* here we need to list ALL USERS FRIENDS */}
+          {friends && friends.length > 0 ? 
+          (friends.map((item) => (
+            <li key={item}>{item.userId2}</li>
+          ))) : ("Loading friends...")
+        }
+        
         </div>
       </div>
     </div>

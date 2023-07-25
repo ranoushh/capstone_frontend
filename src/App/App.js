@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import Chat from "../pages/Chat";
-//import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import SingleLesson from "../pages/Single/SingleLesson";
 import Leaderboard from "../pages/Leaderboard";
@@ -19,11 +18,6 @@ import io from "socket.io-client";
 import AddQuizPage from "../pages/Add/AddQuizPage";
 import AddTestPage from "../pages/Add/AddTestPage";
 import AddLessonPage from "../pages/Add/AddLessonPage";
-// import EditTestPage from "../pages/Edit/EditTestPage";
-// import EditQuizPage from "../pages/Edit/EditQuizPage";
-// import EditLessonPage from "../pages/Edit/EditLessonPage";
-// import AddTestQuestionPage from "../pages/Add/AddTestQuestionPage";
-// import AddQuizQuestionPage from "../pages/Add/AddQuizQuestionPage";
 import EditTestPage from "../pages/Edit/EditTestPage";
 import EditQuizPage from "../pages/Edit/EditQuizPage";
 import EditLessonPage from "../pages/Edit/EditLessonPage";
@@ -37,7 +31,6 @@ import EditQuizQuestionPage from "../pages/Edit/EditQuizQuestionPage";
 //establish connection with backend
 const socket = io.connect(`http://localhost:8080`);
 
-console.log("here");
 function App() {
   const isLoggedIn = useSelector((state) => !!state.user.id);
   const [loading, setLoading] = useState(true);
@@ -62,7 +55,6 @@ function App() {
       <NavBar isLoggedIn={isLoggedIn} />
 
       <Routes>
-        {/* <Route path="/" element={<LandingPage />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         {/* <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}> */}
@@ -77,46 +69,16 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/addfriend" element={<AddFriend />} />
-        <Route
-          path="/language/:languageId/quiz/add"
-          element={<AddQuizPage />}
-        />
-        <Route
-          path="/language/:languageId/test/add"
-          element={<AddTestPage />}
-        />
-        <Route
-          path="/language/:languageId/lesson/add"
-          element={<AddLessonPage />}
-        />
-        <Route
-          path="/language/:languageId/quiz/edit/:id"
-          element={<EditQuizPage />}
-        />
-        <Route
-          path="/language/:languageId/test/edit/:id"
-          element={<EditTestPage />}
-        />
-        <Route
-          path="/language/:languageId/lesson/edit/:id"
-          element={<EditLessonPage />}
-        />
-        <Route
-          path="/test/:testId/testQuestion/add"
-          element={<AddTestQuestionPage />}
-        />
-        <Route
-          path="/quiz/:quizId/quizQuestion/add"
-          element={<AddQuizQuestionPage />}
-        />
-        <Route
-          path="/test/:testId/testQuestion/edit/:id"
-          element={<EditTestQuestionPage />}
-        />
-        <Route
-          path="/quiz/:quizId/quizQuestion/edit/:id"
-          element={<EditQuizQuestionPage />}
-        />
+        <Route path="/language/:languageId/quiz/add" element={<AddQuizPage />}/>
+        <Route path="/language/:languageId/test/add" element={<AddTestPage />}/>
+        <Route path="/language/:languageId/lesson/add" element={<AddLessonPage />}/>
+        <Route path="/language/:languageId/quiz/edit/:id" element={<EditQuizPage />}/>
+        <Route path="/language/:languageId/test/edit/:id" element={<EditTestPage />}/>
+        <Route path="/language/:languageId/lesson/edit/:id" element={<EditLessonPage />}/>
+        <Route path="/test/:testId/testQuestion/add" element={<AddTestQuestionPage />}/>
+        <Route path="/quiz/:quizId/quizQuestion/add" element={<AddQuizQuestionPage />}/>
+        <Route path="/test/:testId/testQuestion/edit/:id" element={<EditTestQuestionPage />}/>
+        <Route path="/quiz/:quizId/quizQuestion/edit/:id"element={<EditQuizQuestionPage />}/>
         {/* </Route> */}
       </Routes>
     </Router>
