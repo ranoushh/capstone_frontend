@@ -73,3 +73,24 @@ export const updateUserThunk = (updatedUser) => {
       }
     };
 };
+
+export const fetchFriends = (payload) => {
+  console.log("FETCH ALL FRIENDS ACTION");
+  return {
+    type: UserActionType.GET_FRIENDS,
+    payload: payload,
+  };
+};
+
+export const fetchFriendsThunk = (id) => {
+  console.log("reached fetch friends");
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/users/friends/${id}`);
+      console.log("REACHEDDDDDDDDDDDD");
+      dispatch(fetchFriends(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
