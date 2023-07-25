@@ -105,7 +105,7 @@ export const addFriend = (payload) => {
 
 //take friend id 
 export const addFriendThunk = (myID, friendId) => {
-  console.log("reached ad friends");
+  console.log("reached add friends");
   return async (dispatch) => {
     try {
       const response = await axios.post(`http://localhost:8080/api/users/addfriend/${myID}/${friendId}`);

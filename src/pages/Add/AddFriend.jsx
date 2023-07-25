@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAllUsersThunk, fetchFriendsThunk } from "../../redux/usersCrud/users.actions";
+import { addFriendThunk, fetchAllUsersThunk, fetchFriendsThunk } from "../../redux/usersCrud/users.actions";
 import { me } from "../../redux/user";
 
 function AddFriend() {
   const user = useSelector((state) => state.user);
-  const friends = useSelector((state) => state.usersCrud.friends);
+  // const friends = useSelector((state) => state.usersCrud.friends);
   const allUsers = useSelector((state) => state.usersCrud.allUsers);
   const [searchInput, setSearchInput] = useState("");
   const [findingUsers, setFindingUsers] = useState([]);
@@ -16,7 +16,7 @@ function AddFriend() {
     try {
       await dispatch(me());
       await dispatch(fetchAllUsersThunk());
-      // await dispatch(fetchFriendsThunk(user.id));
+      // await dispatch(addFriendThunk(user.id,findingUsers.id));
     } catch (error) {
       console.log("error fetching data " + error);
     }
@@ -27,16 +27,20 @@ function AddFriend() {
   }, [dispatch, user.id]);
 
   function handleSearch() {
-    //if user exists, list that user and have add button etc
-    //if user doesn't, say user not found
-
     setFindingUsers(
       allUsers.filter(
         (user) => user.username === searchInput
       )
     );
-
     console.log("users found: " + findingUsers)
+  }
+
+  async function add(friendID){
+      try {
+        await dispatch(addFriendThunk(user.id, friendID));
+      } catch (error) {
+        console.log("unsuccessful adding friend")
+      }
   }
 
   
@@ -50,7 +54,9 @@ function AddFriend() {
       <button onClick={handleSearch}>Search</button>
 
       {findingUsers.length > 0 ? (
-        findingUsers.map((item) => <li key={item.id}>{item.username}</li>)
+        findingUsers.map((item) => <li key={item.id}>{item.username}
+        <button onClick={() => add(item.id)} >Add Friend</button>
+        </li>)
       ) : (
         <p>No User Found</p>
       )}
