@@ -14,7 +14,7 @@ export const fetchAllUsersThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCH_ALL_USERS_THUNK is firing");
-      const response = await axios.get("http://localhost:8080/api/users");
+      const response = await axios.get("http://localhost:8080/api/users/allUsers");
       console.log("FETCH_ALL_USERS_THUNK completed");
       dispatch(fetchAllUsers(response.data));
     } catch (error) {
@@ -89,6 +89,28 @@ export const fetchFriendsThunk = (id) => {
       const response = await axios.get(`http://localhost:8080/api/users/friends/${id}`);
       console.log("REACHEDDDDDDDDDDDD");
       dispatch(fetchFriends(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+export const addFriend = (payload) => {
+  console.log("ADD FRIENDS ACTION");
+  return {
+    type: UserActionType.GET_FRIENDS,
+    payload: payload,
+  };
+};
+
+//take friend id 
+export const addFriendThunk = (myID, friendId) => {
+  console.log("reached add friends");
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(`http://localhost:8080/api/users/addfriend/${myID}/${friendId}`);
+      console.log("REACHEDDDDDDDDDDDD");
+      dispatch(addFriend(response.data));
     } catch (error) {
       console.error(error);
     }

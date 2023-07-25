@@ -1,49 +1,65 @@
-import React from 'react'
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
+import React from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addFriendThunk, fetchAllUsersThunk, fetchFriendsThunk } from "../../redux/usersCrud/users.actions";
+import { me } from "../../redux/user";
 
 function AddFriend() {
   const user = useSelector((state) => state.user);
-  const friends = useSelector((state) => state.usersCrud.friends);
-  const dispatch = useDispatch();
+  // const friends = useSelector((state) => state.usersCrud.friends);
+  const allUsers = useSelector((state) => state.usersCrud.allUsers);
   const [searchInput, setSearchInput] = useState("");
+  const [findingUsers, setFindingUsers] = useState([]);
+  const dispatch = useDispatch();
 
-  function handleSearch(){
-      //if user exists, list that user and have add button etc 
-      //if user doesn't, say user not found
-    
-  };
+  async function fetchAllData() {
+    try {
+      await dispatch(me());
+      await dispatch(fetchAllUsersThunk());
+      // await dispatch(addFriendThunk(user.id,findingUsers.id));
+    } catch (error) {
+      console.log("error fetching data " + error);
+    }
+  }
+
+  useEffect(() => {
+    fetchAllData();
+  }, [dispatch, user.id]);
+
+  function handleSearch() {
+    setFindingUsers(
+      allUsers.filter(
+        (user) => user.username === searchInput
+      )
+    );
+    console.log("users found: " + findingUsers)
+  }
+
+  async function add(friendID){
+      try {
+        await dispatch(addFriendThunk(user.id, friendID));
+      } catch (error) {
+        console.log("unsuccessful adding friend")
+      }
+  }
+
   
-
   return (
     <div>
       <input
         type="text"
         placeholder="Search friend's user"
-        value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
-      />
+        onChange={(e) => setSearchInput(e.target.value.toLowerCase())}
+      ></input>
       <button onClick={handleSearch}>Search</button>
 
-      {/* Display the list of users */}
-      {userList.length > 0 && (
-        <div>
-          <h2>Search Results:</h2>
-          <ul>
-            {userList.map((user) => (
-              <li key={user.id}>
-                {user.username} {/* You can display any relevant user information */}
-                {/* Add a button to send friend request */}
-                <button onClick={() => sendFriendRequest(user.id)}>Add Friend</button>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {findingUsers.length > 0 ? (
+        findingUsers.map((item) => <li key={item.id}>{item.username}
+        <button onClick={() => add(item.id)} >Add Friend</button>
+        </li>)
+      ) : (
+        <p>No User Found</p>
       )}
-
-      {/* Display "User not found" message if no results */}
-      {userList.length === 0 && searchInput !== "" && <div>User not found.</div>}
     </div>
   );
 }
