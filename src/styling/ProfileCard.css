@@ -96,10 +96,10 @@
 }
 
 .avatarPics {
-  width: 150px;
-  height: 150px;
-  margin-top: -2px;
-  margin-left: -2px;
+  width: 155px;
+  height: 155px;
+  margin-top: 23px;
+  margin-left: 10px;
 }
 
 .avatarPics:hover { /* hover for the avatar selection popup*/
