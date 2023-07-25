@@ -5,10 +5,11 @@ import { useSelector } from "react-redux"
 //containing the sent messages and the header
 function ChatBody ({messages}){
   const navigate = useNavigate();
-  const username = useSelector((state) => state.user.username);
+  const email = useSelector((state) => state.user.email);
+  const isLoggedIn = useSelector((state) => !!state.user.id);
 
   const handleLeaveChat = () => {
-    // localStorage.removeItem('userName');
+    // localStorage.removeItem('email');
     navigate('/');
     window.location.reload();
   };
@@ -16,7 +17,7 @@ function ChatBody ({messages}){
   return (
     <>
       <header className="chat__mainHeader">
-        <p>Hangout with Polyglot Losers</p>
+        <p>Chat with Friends!</p>
         <button className="leaveChat__btn" onClick={handleLeaveChat}>
           HOME
         </button>
@@ -25,7 +26,8 @@ function ChatBody ({messages}){
       <div className="message__container">
         {/* instead of localstorage get user etc, we need to check with our registered users table : needs oauth setup*/}
         {messages.map((message) =>
-          message.name === username ? (
+        isLoggedIn ? (
+          // message.name === email ? (
             <div className="message__chats" key={message.id}>
               <p className="sender__name">You</p>
               <div className="message__sender">

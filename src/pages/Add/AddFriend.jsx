@@ -1,40 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react'
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 function AddFriend() {
+  const user = useSelector((state) => state.user);
+  const friends = useSelector((state) => state.usersCrud.friends);
+  const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState("");
-  const [userList, setUserList] = useState([]);
 
-  function handleSearch() {
-    // Make an API request to fetch users based on searchInput
-    fetch(`/users?search=${searchInput}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the userList state with the fetched users
-        setUserList(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching users:", error);
-      });
-  }
-
-  function sendFriendRequest(userId) {
-    // Make an API request to send a friend request to the user with the given userId
-    fetch("/addfriend", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Friend request sent:", data);
-        // Optionally, you can update the user interface to indicate that the friend request was sent successfully.
-      })
-      .catch((error) => {
-        console.error("Error sending friend request:", error);
-      });
-  }
+  function handleSearch(){
+      //if user exists, list that user and have add button etc 
+      //if user doesn't, say user not found
+    
+  };
+  
 
   return (
     <div>
