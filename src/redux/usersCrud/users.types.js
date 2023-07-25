@@ -4,6 +4,7 @@ const UserActionType = {
     REMOVE_USER: "REMOVE_USER",
     UPDATE_USER: "UPDATE_USER",
     GET_FRIENDS: "GET_FRIENDS",
+    ADD_FRIEND: "ADD_FRIEND"
   };
 
 export default UserActionType;
