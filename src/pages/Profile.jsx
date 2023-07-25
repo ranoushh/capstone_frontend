@@ -12,6 +12,7 @@ function Profile() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const allAvatars = useSelector((state) => state.avatars.allAvatars);
+  const friends = useSelector((state) => state.usersCrud.friends);
   const [showPopup, setShowPopup] = useState(false);
 
   function fetchAllAvatars() {
@@ -50,7 +51,9 @@ function Profile() {
 
   console.log("allAvatars:", allAvatars);
 
-  const selectedAvatar = allAvatars.find((avatar) => avatar.id === user.avatarId);
+  const selectedAvatar = allAvatars.find(
+    (avatar) => avatar.id === user.avatarId
+  );
 
   const profileCardStyle = {
     backgroundImage: selectedAvatar ? `url(${selectedAvatar.imageURL})` : "",
@@ -60,8 +63,7 @@ function Profile() {
   return (
     <div>
       <div>
-        <p>Welcome, {user.username}!</p>
-        <p>Points: {user.points}</p>
+        <h1>Welcome, {user.username}!</h1>
       </div>
       <p></p>
       <p></p>
@@ -93,6 +95,13 @@ function Profile() {
           </div>
         </div>
       )}
+
+      <div>
+        <br></br>
+        <h2>Points: {user.points}</h2>
+
+        <h2>Friends: </h2>
+      </div>
     </div>
   );
 }
