@@ -10,45 +10,24 @@ function ChatBar() {
   const friends = useSelector((state) => state.usersCrud.friends);
   const dispatch = useDispatch();
 
-  async function fetchMe() {
-    console.log("RUNNING DISPATCH FROM FETCHMe");
-    dispatch(await me());
-  }
-
-  function fetchFriends() {
-    console.log("RUNNING DISPATCH FROM FETCH FRIENDS");
-    dispatch(fetchFriendsThunk(user));
+  async function fetchAllData(){
+    try {
+      await dispatch(me());
+      await dispatch(fetchFriendsThunk(user.id));
+    } catch (error) {
+      console.log("error fetching data " + error)
+    } 
   }
 
   useEffect(() => {
-    fetchMe();
-    // if(user.id){
-    //    fetchFriends();
-    // }
-    // dispatch(me());
-    if(user.id){
-      dispatch(fetchFriendsThunk(user.id));
-    }
-    
-    // async function runAll(){
-    //   await fetchMe();
-    //   await fetchFriends();
-    // };
-    // runAll();
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     await fetchMe();
-  //     await fetchFriends();
-  //   }
-  //   fetchData();
-  // }, []);
+    fetchAllData();
+  }, [dispatch, user.id]);
 
   function handleSubmit() {}
 
   console.log("user " + user.id);
   console.log("friends " + friends);
+
   return (
     <div className="chat__sidebar">
       <h2>APP NAME</h2>
