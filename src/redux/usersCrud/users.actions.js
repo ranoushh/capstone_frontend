@@ -116,3 +116,44 @@ export const addFriendThunk = (myID, friendId) => {
     }
   };
 }
+
+export const getFriendRequests = (payload) => {
+  console.log("GET FRIENDS REQUESTIS ACTION");
+  return {
+    type: UserActionType.GET_FRIEND_REQUESTS,
+    payload: payload,
+  };
+};
+
+export const fetchFriendRequestsThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/users/friendrequests/${id}`);
+      dispatch(getFriendRequests(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+//accept or delete request
+
+export const updateRequest = (payload) => {
+  console.log("GET FRIENDS REQUESTIS ACTION");
+  return {
+    type: UserActionType.GET_FRIEND_REQUESTS,
+    payload: payload,
+  };
+};
+
+export const updateFriendRequestThunk = (updatedFriendship) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(`http://localhost:8080/api/users/updatefriend/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,  
+      updatedFriendship);
+      dispatch(updateRequest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
