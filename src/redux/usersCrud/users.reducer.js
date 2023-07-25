@@ -20,6 +20,8 @@ const usersReducerCrud = (state = INITIAL_USER_STATE, { type, payload }) => {
         ...state, allUsers: state.allUsers.map((user) => user.id === payload.id ? payload : user)};
     case UserActionType.GET_FRIENDS:
       return { ...state, friends: payload };
+    case UserActionType.ADD_FRIEND:
+      return { ...state, friends: [...state.friends, payload] };
     default:
       return state;
   }
