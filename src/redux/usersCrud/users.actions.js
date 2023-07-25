@@ -82,11 +82,11 @@ export const fetchFriends = (payload) => {
   };
 };
 
-export const fetchFriendsThunk = (user) => {
+export const fetchFriendsThunk = (id) => {
   console.log("reached fetch friends");
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/users/friends/${user.id}`);
+      const response = await axios.get(`http://localhost:8080/api/users/friends/${id}`);
       console.log("REACHEDDDDDDDDDDDD");
       dispatch(fetchFriends(response.data));
     } catch (error) {
