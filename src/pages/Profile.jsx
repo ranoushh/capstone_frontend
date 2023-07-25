@@ -56,13 +56,19 @@ function Profile() {
     backgroundImage: selectedAvatar ? `url(${selectedAvatar.imageURL})` : "",
   };
 
+  console.log("point: ", user.points);
   return (
     <div>
-      This is Profile.
+      <div>
+        <p>Welcome, {user.username}!</p>
+        <p>Points: {user.points}</p>
+      </div>
       <p></p>
       <p></p>
       <button style={{ borderRadius: "10px" }} onClick={handleClick}>
-        <div className="card" style={profileCardStyle}> {/* Avatar changes upon refresh or re-clicking icon*/}
+        <div className="card" style={profileCardStyle}>
+          {" "}
+          {/* Avatar changes upon refresh or re-clicking icon*/}
           {/* No need for the bg and blob divs since the background image is applied to the card */}
         </div>
       </button>
