@@ -11,8 +11,6 @@ export const fetchSingleAchievement = (payload) => ({
     payload: payload, //data to be sent w/ action this is the data taken from thunk
 });
 
-console.log("in actions")
-
 export const fetchAllAchievementsThunk = () => {
     return async (dispatch) => {
         console.log("working");

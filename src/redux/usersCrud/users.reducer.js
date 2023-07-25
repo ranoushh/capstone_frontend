@@ -3,12 +3,10 @@ import UserActionType from "./users.types";
 export const INITIAL_USER_STATE = {
   allUsers: [],
   singleUser: {},
+  friends: [],
 };
 
-const usersReducerCrud = (
-  state = INITIAL_USER_STATE,
-  { type, payload }
-) => {
+const usersReducerCrud = (state = INITIAL_USER_STATE, { type, payload }) => {
   console.log("USER REDUCER IS HANDLING FETCH ALL USER ACTION");
   console.log("USER PL", payload);
   switch (type) {
@@ -17,13 +15,13 @@ const usersReducerCrud = (
       return { ...state, allUsers: payload };
     case UserActionType.FETCH_SINGLE_USER:
       return { ...state, singleUser: payload };
-    case UserActionType.UPDATE_USER:
-      return {
-        ...state,
-        allUsers: state.allUsers.map((user) =>
-          user.id === payload.id ? payload : user
-        ),
-      };
+      case UserActionType.UPDATE_USER:
+        return {
+          ...state, allUsers: state.allUsers.map((user) => user.id === payload.id ? payload : user)};
+      case UserActionType.GET_FRIENDS:
+        return { ...state, friends: payload };
+      case UserActionType.ADD_FRIEND:
+        return { ...state, friends: [...state.friends, payload] };
       case UserActionType.UPDATE_USER_POINTS:
         return{...state, singleUser: payload}
     default:
