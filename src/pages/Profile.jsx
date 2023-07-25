@@ -11,8 +11,8 @@ import { me } from "../redux/user";
 function Profile() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [showPopup, setShowPopup] = useState(false);
   const allAvatars = useSelector((state) => state.avatars.allAvatars);
+  const [showPopup, setShowPopup] = useState(false);
 
   function fetchAllAvatars() {
     console.log("RUNNING DISPATCH FROM FETCHALLAVATARS");
