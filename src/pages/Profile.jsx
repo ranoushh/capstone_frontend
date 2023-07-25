@@ -5,37 +5,32 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
-import { updateUserThunk } from "../redux/usersCrud/users.actions";
+import { updateUserThunk , fetchFriendsThunk} from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
 
 function Profile() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const allAvatars = useSelector((state) => state.avatars.allAvatars);
+  const friends = useSelector((state) => state.usersCrud.friends);
   const [showPopup, setShowPopup] = useState(false);
 
-  function fetchAllAvatars() {
-    console.log("RUNNING DISPATCH FROM FETCHALLAVATARS");
-    return dispatch(fetchAllAvatarsThunk());
-  }
-
-  function fetchMe() {
-    console.log("RUNNING DISPATCH FROM FETCHMe");
-    return dispatch(me());
-  }
-
-  async function fetchUser() {
-    await fetchMe();
+  async function fetchAllData(){
+    try {
+      await dispatch(me());
+      await dispatch(fetchAllAvatarsThunk());
+      await dispatch(fetchFriendsThunk(user.id));
+    } catch (error) {
+      console.log("error fetching data " + error)
+    } 
   }
 
   useEffect(() => {
-    fetchAllAvatars();
-    fetchUser(); // Fetch user data once on initial mount
-  }, []);
+    fetchAllData();
+  }, [dispatch, user.id]);
 
   async function handleClick() {
     setShowPopup(true);
-    await fetchUser(); // Fetch user data when the popup is shown
   }
 
   async function handleClickAvatar(avatarId) {
@@ -43,14 +38,17 @@ function Profile() {
       ...user,
       avatarId: avatarId,
     };
-    dispatch(updateUserThunk(updatedUser));
+    await dispatch(updateUserThunk(updatedUser));
+    await fetchAllData();
     setShowPopup(false);
-    await fetchUser(); // Fetch user data after the avatar is updated
+    // await fetchUser(); // Fetch user data after the avatar is updated
   }
 
   console.log("allAvatars:", allAvatars);
 
-  const selectedAvatar = allAvatars.find((avatar) => avatar.id === user.avatarId);
+  const selectedAvatar = allAvatars.find(
+    (avatar) => avatar.id === user.avatarId
+  );
 
   const profileCardStyle = {
     backgroundImage: selectedAvatar ? `url(${selectedAvatar.imageURL})` : "",
@@ -60,8 +58,7 @@ function Profile() {
   return (
     <div>
       <div>
-        <p>Welcome, {user.username}!</p>
-        <p>Points: {user.points}</p>
+        <h1>Welcome, {user.username}!</h1>
       </div>
       <p></p>
       <p></p>
@@ -93,6 +90,15 @@ function Profile() {
           </div>
         </div>
       )}
+
+      <div>
+        <br></br>
+        <h2>Points: {user.points ? user.points : "No Points"}</h2>
+        
+        <h2>Friends: {friends && friends.length > 0
+            ? friends.map((item) => <li key={item}>{item.userId2}</li>)
+            : "Loading friends..."}</h2>
+      </div>
     </div>
   );
 }
