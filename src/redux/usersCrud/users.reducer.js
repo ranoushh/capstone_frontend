@@ -24,6 +24,8 @@ const usersReducerCrud = (
           user.id === payload.id ? payload : user
         ),
       };
+      case UserActionType.UPDATE_USER_POINTS:
+        return{...state, singleUser: payload}
     default:
       return state;
   }

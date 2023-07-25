@@ -3,6 +3,7 @@ const UserActionType = {
     FETCH_SINGLE_USER: "FETCH_SINGLE_USER",
     REMOVE_USER: "REMOVE_USER",
     UPDATE_USER: "UPDATE_USER",
+    UPDATE_USER_POINTS: "UPDATE_USER_POINTS"
   };
 
 export default UserActionType;

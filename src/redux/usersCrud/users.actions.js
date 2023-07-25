@@ -73,3 +73,23 @@ export const updateUserThunk = (updatedUser) => {
       }
     };
 };
+
+
+
+export const updateUserPoints = (updatedUser) => ({
+  type: UserActionType.UPDATE_USER_POINTS,
+  payload: updatedUser,
+});
+
+export const updateUserPointsThunk = (updatedUser) => {
+  return async (dispatch) => {
+    try {
+      // Send a PUT request to update the user's points in the backend
+      const response = await axios.put(`http://localhost:8080/api/users/updatePoints/${updatedUser.id}`, updatedUser);
+      // Dispatch the action to update the Redux state
+      dispatch(updateUserPoints(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
