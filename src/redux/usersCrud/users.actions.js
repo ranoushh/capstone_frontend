@@ -141,7 +141,7 @@ export const fetchFriendRequestsThunk = (id) => {
 export const acceptRequest = (payload) => {
   console.log("GET FRIENDS REQUESTIS ACTION");
   return {
-    type: UserActionType.UPDATE_REQUEST,
+    type: UserActionType.ACCEPT_REQUEST,
     payload: payload,
   };
 };
@@ -153,6 +153,45 @@ export const acceptRequestThunk = (updatedFriendship) => {
       `http://localhost:8080/api/users/acceptrequest/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,  
       updatedFriendship);
       dispatch(acceptRequest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+export const declineRequest = (payload) => {
+  return {
+    type: UserActionType.DECLINE_REQUEST,
+    payload: payload,
+  };
+};
+
+export const declineRequestThunk = (updatedFriendship) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+      `http://localhost:8080/api/users/declinefriend/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,  
+      updatedFriendship);
+      dispatch(declineRequest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+export const deleteFriend = (payload) => {
+  return {
+    type: UserActionType.DELETE_FRIEND,
+    payload: payload,
+  };
+};
+
+export const deleteFriendThunk = (myID, friendID) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+      `http://localhost:8080/api/users/deletefriend/${myID}/${friendID}`);
+      dispatch(deleteFriend(response.data));
     } catch (error) {
       console.error(error);
     }
