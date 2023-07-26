@@ -1,28 +1,58 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFriendsThunk } from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
+import ChatWindow from './ChatWindow';
+import axios from "axios";
 
-// Separate component for the chat window
-function ChatWindow({ friendId }) {
-  // Implement your chat functionality here using the friendId
-  return (
-    <div>
-      <h2>Chat with Friend {friendId}</h2>
-      {/* Implement your chat UI here */}
-    </div>
-  );
-}
 
-// Sidebar showing active users
 function ChatBar() {
   const user = useSelector((state) => state.user);
   const friends = useSelector((state) => state.usersCrud.friends);
   const dispatch = useDispatch();
 
-  // State to keep track of the selected friend's ID
   const [selectedFriendId, setSelectedFriendId] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [conversation, setConversation] = useState({});
+
+
+  useEffect(() => {
+    const getConversation = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8080/api/conversations/${user.id}`);
+        const lastConversation = res.data[res.data.length-1]; 
+
+        setConversation(lastConversation);
+        console.log('conversation', conversation);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getConversation();
+  }, [user]);
+
+
+
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8080/api/mongoMessages/${conversation._id}`);
+        setMessages(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMessages();
+  }, [conversation]);
+
+
+console.log("user"+ user.id);
+
+  // Function to handle friend selection
+  const handleFriendClick = (friendId) => {
+    setSelectedFriendId(friendId);
+    setMessages([]); // Reset messages when a new friend is selected
+  };
 
   async function fetchAllData() {
     try {
@@ -37,14 +67,6 @@ function ChatBar() {
     fetchAllData();
   }, [dispatch, user.id]);
 
-  // Handle friend selection
-  function handleFriendClick(friendId) {
-    setSelectedFriendId(friendId);
-  }
-
-  console.log("user " + user.id);
-  console.log("friends " + JSON.stringify(friends));
-
   return (
     <div className="chat__sidebar">
       <h2>APP NAME</h2>
@@ -52,11 +74,10 @@ function ChatBar() {
       <div>
         <h4 className="chat__header">Friends</h4>
         <div className="chat__users">
-          {/* Map through friends and display their names */}
           {friends && friends.length > 0 ? (
             friends.map((friend) => (
               <button key={friend.userId2} onClick={() => handleFriendClick(friend.userId2)}>
-                {friend.username} {/* Assuming the friend's username is available */}
+                {friend.username}
               </button>
             ))
           ) : (
@@ -65,8 +86,9 @@ function ChatBar() {
         </div>
       </div>
 
-      {/* Render the ChatWindow component when a friend is selected */}
-      {selectedFriendId && <ChatWindow friendId={selectedFriendId} />}
+      {selectedFriendId && (
+        <ChatWindow friendId={selectedFriendId} messages={messages} setMessages={setMessages} />
+      )}
     </div>
   );
 }
