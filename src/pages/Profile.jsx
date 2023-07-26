@@ -5,7 +5,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
-import { updateUserThunk , fetchFriendsThunk, fetchFriendRequestsThunk, acceptRequestThunk} from "../redux/usersCrud/users.actions";
+import { updateUserThunk , fetchFriendsThunk, fetchFriendRequestsThunk, acceptRequestThunk , declineRequestThunk} from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
 
 
@@ -49,8 +49,14 @@ function Profile() {
     // await fetchAllData();
   }
 
-  function handleReject(){
-
+  async function handleReject(myID, friendID){
+    const updatedFriendship = {
+      userId1: friendID,
+      userId2: myID,
+      accepted: false
+    }
+    await dispatch(declineRequestThunk(updatedFriendship));
+    await fetchAllData();
   }
 
   async function handleClickAvatar(avatarId) {
@@ -125,7 +131,7 @@ function Profile() {
             ? friendRequests.map((item) => <li key={item}>
               {item.userId1}
               <button onClick={() => handleAccept(user.id, item.userId1)}> Accept</button>
-              <button onClick={handleReject}> Reject </button>
+              <button onClick={() => handleReject(user.id, item.userId1)}> Reject </button>
               </li>)
             : "No Requests"}
       </div>
