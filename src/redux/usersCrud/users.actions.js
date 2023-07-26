@@ -209,12 +209,15 @@ export const fetchUnlockAchievements = (payload) => {
 };
 
 export const fetchUnlockAchievementsThunk = (userId) => {
+  console.log("FETCH ACHIEVMENT", userId);
   return async (dispatch) => {
     try {
+      console.log("FETCH AHCHIEVEMENT TRY", userId);
       const response = await axios.get(
         `http://localhost:8080/api/users/${userId}/achievements`
       );
-      dispatch(fetchUnlockAchievements(response.data));
+      console.log("FETCH ACHIEVMENT RESPONSE", response.data);
+      dispatch(fetchUnlockAchievements(response.data.achievements));
     } catch (error) {
       console.error(error);
     }
