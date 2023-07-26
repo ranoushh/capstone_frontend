@@ -138,20 +138,21 @@ export const fetchFriendRequestsThunk = (id) => {
 
 //accept or delete request
 
-export const updateRequest = (payload) => {
+export const acceptRequest = (payload) => {
   console.log("GET FRIENDS REQUESTIS ACTION");
   return {
-    type: UserActionType.GET_FRIEND_REQUESTS,
+    type: UserActionType.UPDATE_REQUEST,
     payload: payload,
   };
 };
 
-export const updateFriendRequestThunk = (updatedFriendship) => {
+export const acceptRequestThunk = (updatedFriendship) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(`http://localhost:8080/api/users/updatefriend/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,  
+      const response = await axios.put(
+      `http://localhost:8080/api/users/acceptrequest/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,  
       updatedFriendship);
-      dispatch(updateRequest(response.data));
+      dispatch(acceptRequest(response.data));
     } catch (error) {
       console.error(error);
     }

@@ -9,7 +9,7 @@ import { updateUserThunk , fetchFriendsThunk, fetchFriendRequestsThunk, updateFr
 import { me } from "../redux/user";
 
 
-//friends u add automically go to friends[]
+//friends u add automically go to friends[], even if request is false
 //friends who added u go to friendrequests
 function Profile() {
   const dispatch = useDispatch();
@@ -45,6 +45,7 @@ function Profile() {
       accepted: true
     }
     await dispatch(updateFriendRequestThunk(updatedFriendship));
+    await dispatch(fetchFriendsThunk(myID));
     await fetchAllData();
   }
 
@@ -114,7 +115,7 @@ function Profile() {
         <br></br>
         <h2>Points: {user.points ? user.points : "No Points"}</h2>
         
-        <h2>Friends: {friends && friends.length > 0
+        <h2>Friends: {friends && friends.length > 0 
             ? friends.map((item) => <li key={item}>{item.userId2}</li>)
             : "Loading friends..."}</h2>
 

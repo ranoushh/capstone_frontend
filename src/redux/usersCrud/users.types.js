@@ -6,7 +6,7 @@ const UserActionType = {
     GET_FRIENDS: "GET_FRIENDS",
     ADD_FRIEND: "ADD_FRIEND",
     GET_FRIEND_REQUESTS: "GET_FRIEND_REQUESTS",
-    UPDATE_REQUEST: "UPDATE_REQUEST",
+    ACCEPT_REQUEST: "ACCEPT_REQUEST",
   };
 
 export default UserActionType;
