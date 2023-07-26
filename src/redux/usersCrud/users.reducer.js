@@ -4,6 +4,7 @@ export const INITIAL_USER_STATE = {
   allUsers: [],
   singleUser: {},
   friends: [],
+  achievements: [],
 };
 
 const usersReducerCrud = (state = INITIAL_USER_STATE, { type, payload }) => {
@@ -22,6 +23,8 @@ const usersReducerCrud = (state = INITIAL_USER_STATE, { type, payload }) => {
       return { ...state, friends: payload };
     case UserActionType.ADD_FRIEND:
       return { ...state, friends: [...state.friends, payload] };
+    case UserActionType.UNLOCKED_ACHIEVEMENT:
+      return { ...state, achievements: payload };
     default:
       return state;
   }
