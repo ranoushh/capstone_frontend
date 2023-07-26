@@ -5,7 +5,8 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
-import { updateUserThunk , fetchFriendsThunk, fetchFriendRequestsThunk, acceptRequestThunk , declineRequestThunk} from "../redux/usersCrud/users.actions";
+import { updateUserThunk , fetchFriendsThunk, fetchFriendRequestsThunk, 
+  acceptRequestThunk , declineRequestThunk, deleteFriendThunk } from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
 
 
@@ -58,6 +59,11 @@ function Profile() {
     await dispatch(declineRequestThunk(updatedFriendship));
     await fetchAllData();
   }
+
+  async function deleteFriend(myID, friendID){
+    await dispatch(deleteFriendThunk(myID, friendID));
+    await fetchAllData();
+  };
 
   async function handleClickAvatar(avatarId) {
     const updatedUser = {
@@ -122,7 +128,9 @@ function Profile() {
         
         <h2>Friends: </h2>
         {friends && friends.length > 0 
-            ? friends.map((item) => <li key={item}>{item.userId2}</li>)
+            ? friends.map((item) => <li key={item}>{item.userId2}
+            <button onClick={() => deleteFriend(user.id, item.userId2)}>Delete Friend</button>
+            </li>)
             : "No Friends"}
 
         
