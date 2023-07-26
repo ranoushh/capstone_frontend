@@ -1,21 +1,30 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllUsersThunk } from "../redux/usersCrud/users.actions";
+import { fetchAllUsersThunk ,fetchFriendsThunk} from "../redux/usersCrud/users.actions";
+import { me } from "../redux/user";
 import "../styling/LeaderboardStyle.css";
 
 function Leaderboard() {
-  const allUsers = useSelector((state) => state.user.allUsers);
+  const allUsers = useSelector((state) => state.usersCrud.allUsers);
+  
+  const friends = useSelector((state) => state.usersCrud.friends);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  function fetchAllUsers() {
-    console.log("RUNNING DISPATCH FROM FETCHALLAchievements");
-    return dispatch(fetchAllUsersThunk());
+  async function fetchAllData(){
+    try {
+      await dispatch(me());
+      await dispatch(fetchFriendsThunk(user.id));
+      await dispatch(fetchAllUsersThunk());
+    } catch (error) {
+      console.log("error fetching data " + error)
+    } 
   }
 
   useEffect(() => {
-    console.log("FETCH ALL USERS FIRING IN USEEFFECT");
-    fetchAllUsers();
-  }, []);
+    fetchAllData();
+  }, [dispatch, user.id]);
+
 
   return (
     <div className="leaderboard-container">
@@ -34,12 +43,12 @@ function Leaderboard() {
               ) : (
                 <span className="user-rank">{index + 1}</span>
               )}
-              <span className="user-name">{user.name}</span>
-              <span className="user-score">{user.score} points</span>
+              <span className="user-name">{user.username}</span>
+              <span className="user-score">{user.points} points </span>
             </div>
             <img
               className="user-avatar"
-              src={user.avatar}
+              src={user.avatarId}
               alt={`${user.name}'s avatar`}
             />
           </div>
