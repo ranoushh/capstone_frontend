@@ -45,8 +45,8 @@ function Profile() {
       accepted: true
     }
     await dispatch(acceptRequestThunk(updatedFriendship));
-    await dispatch(fetchFriendsThunk(myID));
     await fetchAllData();
+    // await fetchAllData();
   }
 
   function handleReject(){
@@ -63,8 +63,6 @@ function Profile() {
     setShowPopup(false);
     // await fetchUser(); // Fetch user data after the avatar is updated
   }
-
-  console.log("allAvatars:", allAvatars);
 
   const selectedAvatar = allAvatars.find(
     (avatar) => avatar.id === user.avatarId
@@ -113,11 +111,13 @@ function Profile() {
 
       <div>
         <br></br>
-        <h2>Points: {user.points ? user.points : "No Points"}</h2>
+        <h2>Points: </h2>
+        {user.points ? user.points : "0"}
         
-        <h2>Friends: {friends && friends.length > 0 
+        <h2>Friends: </h2>
+        {friends && friends.length > 0 
             ? friends.map((item) => <li key={item}>{item.userId2}</li>)
-            : "Loading friends..."}</h2>
+            : "No Friends"}
 
         
         <h2>Friend Requests:  </h2>
@@ -127,7 +127,7 @@ function Profile() {
               <button onClick={() => handleAccept(user.id, item.userId1)}> Accept</button>
               <button onClick={handleReject}> Reject </button>
               </li>)
-            : "Loading friends..."}
+            : "No Requests"}
       </div>
     </div>
   );

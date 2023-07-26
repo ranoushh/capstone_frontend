@@ -141,7 +141,7 @@ export const fetchFriendRequestsThunk = (id) => {
 export const acceptRequest = (payload) => {
   console.log("GET FRIENDS REQUESTIS ACTION");
   return {
-    type: UserActionType.UPDATE_REQUEST,
+    type: UserActionType.ACCEPT_REQUEST,
     payload: payload,
   };
 };
