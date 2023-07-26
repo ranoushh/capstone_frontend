@@ -38,7 +38,11 @@ const usersReducerCrud = (state = INITIAL_USER_STATE, { type, payload }) => {
     case UserActionType.DECLINE_REQUEST:
       return {...state,
         friendRequests: state.friendRequests.filter((request) => request.userId2 !== payload.userId2)}; 
-        
+    
+    case UserActionType.DELETE_FRIEND:
+        return {...state,
+          friends: state.friends.filter((friend) => friend.userId2 !== payload.userId2)};
+
     default:
       return state;
   }
