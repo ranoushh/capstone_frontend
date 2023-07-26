@@ -6,7 +6,7 @@ import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
 import { updateUserThunk , fetchFriendsThunk, fetchFriendRequestsThunk, 
-  acceptRequestThunk , declineRequestThunk, deleteFriendThunk } from "../redux/usersCrud/users.actions";
+  acceptRequestThunk , declineRequestThunk, deleteFriendThunk, fetchUnlockAchievementsThunk } from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
 
 
@@ -19,12 +19,16 @@ function Profile() {
   const friends = useSelector((state) => state.usersCrud.friends);
   const friendRequests = useSelector((state) => state.usersCrud.friendRequests);
   const [showPopup, setShowPopup] = useState(false);
+    const unlockedAchievements = useSelector(
+      (state) => state.usersCrud.achievements
+    );
 
   async function fetchAllData(){
     try {
       await dispatch(me());
       await dispatch(fetchAllAvatarsThunk());
       await dispatch(fetchFriendsThunk(user.id));
+      await dispatch(fetchUnlockAchievementsThunk(user.id));
       await dispatch(fetchFriendRequestsThunk(user.id));
     } catch (error) {
       console.log("error fetching data " + error)
@@ -85,6 +89,7 @@ function Profile() {
   };
 
   console.log("point: ", user.points);
+  console.log("unlockedAchievements: ", unlockedAchievements);
   return (
     <div>
       <div>
@@ -143,6 +148,25 @@ function Profile() {
               </li>)
             : "No Requests"}
       </div>
+
+      <h2>Unlocked Achievements:</h2>
+      <ul>
+        {unlockedAchievements && unlockedAchievements.length > 0 ? (
+          unlockedAchievements.map((achievement) => (
+            <li key={achievement.id}>
+              {achievement.achievementName}
+              <p>{achievement.criteria}</p>
+              <p>Points Requirement: {achievement.pointsRequirement}</p>
+              <img
+                src={achievement.imageURL}
+                alt={`Achievement ${achievement.id}`}
+              />
+            </li>
+          ))
+        ) : (
+          <li>No unlocked achievements yet.</li>
+        )}
+      </ul>
     </div>
   );
 }

@@ -117,6 +117,7 @@ export const addFriendThunk = (myID, friendId) => {
   };
 }
 
+
 export const getFriendRequests = (payload) => {
   console.log("GET FRIENDS REQUESTIS ACTION");
   return {
@@ -186,6 +187,7 @@ export const deleteFriend = (payload) => {
   };
 };
 
+
 export const deleteFriendThunk = (myID, friendID) => {
   return async (dispatch) => {
     try {
@@ -196,4 +198,26 @@ export const deleteFriendThunk = (myID, friendID) => {
       console.error(error);
     }
   };
-}
+
+};
+
+export const fetchUnlockAchievements = (payload) => {
+  return {
+    type: UserActionType.UNLOCKED_ACHIEVEMENT,
+    payload: payload,
+  };
+};
+
+export const fetchUnlockAchievementsThunk = (userId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/users/${userId}/achievements`
+      );
+      dispatch(fetchUnlockAchievements(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
