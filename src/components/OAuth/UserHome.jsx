@@ -13,8 +13,6 @@ const UserHome = () => {
   const username = useSelector((state) => state.user.username);
   const achievements = useSelector((state) => state.user.achievements);
   const dispatch = useDispatch();
- 
-  
 
   function fetchMe() {
     console.log("RUNNING DISPATCH FROM FETCHMe");
@@ -25,6 +23,8 @@ const UserHome = () => {
     console.log("FETCH user FIRING IN USEEFFECT");
     fetchMe();
   }, []);
+
+
   return (
     <div>
       <h3 id= "home-greeting">Welcome, {username} !</h3>
