@@ -25,8 +25,9 @@ const usersReducerCrud = (state = INITIAL_USER_STATE, { type, payload }) => {
       return { ...state, friends: [...state.friends, payload] };
     case UserActionType.GET_FRIEND_REQUESTS:
       return { ...state, friendRequests: payload};
-    case UserActionType.UPDATE_REQUEST:
-      return { ...state, friends: payload};
+    case UserActionType.ACCEPT_REQUEST:
+      return { ...state, friends: [...state.friends, payload], 
+        friendRequests: state.friendRequests.filter((request) => request.accepted===false)};
     default:
       return state;
   }
