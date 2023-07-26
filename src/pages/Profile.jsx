@@ -121,28 +121,45 @@ function Profile() {
         </div>
       )}
 
-      <div>
-        <br></br>
-        <h2>Points: </h2>
-        {user.points ? user.points : "0"}
-        
-        <h2>Friends: </h2>
-        {friends && friends.length > 0 
-            ? friends.map((item) => <li key={item}>{item.userId2}
-            <button onClick={() => deleteFriend(user.id, item.userId2)}>Delete Friend</button>
-            </li>)
-            : "No Friends"}
+<div>
+  <br />
+  <h2>Points: </h2>
+  {user.points ? user.points : "0"}
 
-        
-        <h2>Friend Requests:  </h2>
-        {friendRequests && friendRequests.length > 0
-            ? friendRequests.map((item) => <li key={item}>
-              {item.userId1}
-              <button onClick={() => handleAccept(user.id, item.userId1)}> Accept</button>
-              <button onClick={() => handleReject(user.id, item.userId1)}> Reject </button>
-              </li>)
-            : "No Requests"}
-      </div>
+  <h2>Friends: </h2>
+{friends && friends.length > 0 ? (
+  friends.map((item, index) => ( // Add index as the second argument
+    <li key={`${item.userId2}-${index}`}> 
+      {item.userId2}
+      <button onClick={() => deleteFriend(user.id, item.userId2)}>
+        Delete Friend
+      </button>
+    </li>
+  ))
+) : (
+  <p>No Friends</p>
+)}
+
+
+<h2>Friend Requests: </h2>
+{friendRequests && friendRequests.length > 0 ? (
+  friendRequests.map((item, index) => ( // Add index as the second argument
+    <li key={`${item.userId1}-${index}`}> 
+      {item.userId1}
+      <button onClick={() => handleAccept(user.id, item.userId1)}>
+        Accept
+      </button>
+      <button onClick={() => handleReject(user.id, item.userId1)}>
+        Reject
+      </button>
+    </li>
+  ))
+) : (
+  <p>No Requests</p>
+)}
+
+</div>
+
     </div>
   );
 }
