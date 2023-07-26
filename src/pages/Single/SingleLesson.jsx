@@ -11,6 +11,7 @@ const SingleLesson = () => {
   const { lessonId } = useParams();
   const dispatch = useDispatch();
   const singleLesson = useSelector((state) => state.lessons.singleLesson);
+  const currentUser = useSelector((state) => state.user);
   const [flip, setFlip] = useState(false);
   const [currentCard, setCurrentCard] = useState(0);
   const [completedCards, setCompletedCards] = useState([]);
@@ -39,12 +40,8 @@ const SingleLesson = () => {
       prevFlashcards.filter((_, index) => index !== currentCard)
     );
 
-    // Additional logic to handle marking the flashcard as completed or adding it to the completedCards list
-
-    // Move to the next flashcard
     setCurrentCard((prevCard) => (prevCard + 1) % flashcards.length);
 
-    // Reset flip to the front side of the flashcard
     setFlip(false);
   };
 
@@ -62,20 +59,12 @@ const SingleLesson = () => {
 
   const verifyPoints = () => {
     if (!singleLesson.completed) {
-      const updatedLesson = {
-        id: lessonId,
-        lessonName: singleLesson.lessonName,
-        description: singleLesson.description,
-        content: singleLesson.content,
-        languageId: singleLesson.languageId,
-        completed: true,
-      };
-      dispatch(completeLessonThunk(updatedLesson));
-      setCompletedCards((prevCompletedCards) => [...prevCompletedCards, lessonId]);
-      // Dispatch the thunk to update the user's points
-      const updatedUser = { ...user, points: user.points + 10 };
-      dispatch(updateUserPointsThunk(updatedUser));
-    }
+      dispatch(updateUserPointsThunk(currentUser.id, 10));
+    };
+    dispatch(completeLessonThunk(lessonId));
+    console.log("Added points");
+    setCompletedCards((prevCompletedCards) => [...prevCompletedCards, lessonId]);
+
   };
 
   const flashcard = flashcards[currentCard] ?? {};
@@ -113,9 +102,11 @@ const SingleLesson = () => {
           </button>
         </div>
       </div>
-      {flashcards.length() === 0 && !singleLesson.completed && (
+      {flashcards.length === 0 && !singleLesson.completed && (
         <div className="empty-flashcards">
-          <Link className="quiz-link" to={`/quiz/${singleLesson.id} onClick={verifyPoints}`}>
+          {verifyPoints}
+          You have completed the lesson! Would you like to try a quiz?
+          <Link className="quiz-link" to={`/quiz/${singleLesson.id}`}>
             Go to Quiz
           </Link>
         </div>

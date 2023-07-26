@@ -4,5 +4,6 @@ const TestsActionType = {
     ADD_TEST: "ADD_TEST",
     EDIT_TEST: "EDIT_TEST",
     DELETE_TEST: "DELETE_TEST",
+    COMPLETE_TEST: "COMPLETE_TEST"
 }
 export default TestsActionType;

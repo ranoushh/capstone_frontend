@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../../style/flashcard.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteQuizQuestionThunk } from "../../redux/quizQuestion/quizQuestion.actions";
+import { updateUserPointsThunk } from "../../redux/usersCrud/users.actions";
+import { markQuizCompletedThunk } from "../../redux/quizzes/quizzes.actions";
 
 export default function ListingQuizQuestion(props) {
   const dispatch = useDispatch();
@@ -11,6 +13,8 @@ export default function ListingQuizQuestion(props) {
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const [userScore, setUserScore] = useState(0);
   const { list, quizId } = props;
+  const currentUser = useSelector((state) => state.user);
+
   const filteredQuizQuestion = list.filter(
     (QuizQuestion) => QuizQuestion.quizId === quizId
   );
@@ -27,10 +31,13 @@ export default function ListingQuizQuestion(props) {
   const handleAnswerSubmit = () => {
     const isCorrect =
       userAnswer.toLowerCase() === currentCard.correctChoice.toLowerCase();
-
     if (isCorrect && isAnswerCorrect === null) {
       setIsAnswerCorrect(true);
       setUserScore((prevScore) => prevScore + currentCard.pointWorth);
+      if(currentCardIndex === filteredQuizQuestion.length - 1){
+        dispatch(markQuizCompletedThunk(quizId))
+        dispatch(updateUserPointsThunk(currentUser.id, userScore));
+      }
     } else {
       setIsAnswerCorrect(false);
     }

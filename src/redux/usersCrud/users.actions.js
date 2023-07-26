@@ -61,12 +61,12 @@ export const updateUserPoints = (updatedUser) => ({
   payload: updatedUser,
 });
 
-export const updateUserPointsThunk = (updatedUser) => {
+export const updateUserPointsThunk = (userId, points) => {
   return async (dispatch) => {
     try {
-      // Send a PUT request to update the user's points in the backend
-      const response = await axios.put(`http://localhost:8080/api/users/updatePoints/${updatedUser.id}`, updatedUser);
-      // Dispatch the action to update the Redux state
+      const response = await axios.put(
+        `http://localhost:8080/api/users/updatePoints/${userId}`,{ points }
+      );
       dispatch(updateUserPoints(response.data));
     } catch (error) {
       console.error(error);
