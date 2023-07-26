@@ -128,7 +128,7 @@ function Profile() {
         
         <h2>Friends: </h2>
         {friends && friends.length > 0 
-            ? friends.map((item) => <li key={item}>{item.userId2}
+            ? friends.map((item) => <li key={item}>{item.userId2 === user.id ? item.userId1 : item.userId2}
             <button onClick={() => deleteFriend(user.id, item.userId2)}>Delete Friend</button>
             </li>)
             : "No Friends"}
