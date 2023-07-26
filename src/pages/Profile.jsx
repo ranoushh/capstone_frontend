@@ -5,7 +5,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
-import { updateUserThunk , fetchFriendsThunk, fetchFriendRequestsThunk, updateFriendRequestThunk} from "../redux/usersCrud/users.actions";
+import { updateUserThunk , fetchFriendsThunk, fetchFriendRequestsThunk, acceptRequestThunk} from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
 
 
@@ -44,7 +44,7 @@ function Profile() {
       userId2: myID,
       accepted: true
     }
-    await dispatch(updateFriendRequestThunk(updatedFriendship));
+    await dispatch(acceptRequestThunk(updatedFriendship));
     await dispatch(fetchFriendsThunk(myID));
     await fetchAllData();
   }
