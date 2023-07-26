@@ -23,7 +23,10 @@ function ChatBar() {
     fetchAllData();
   }, [dispatch, user.id]);
 
-  function handleSubmit() {}
+  function handleSubmit() {
+
+
+  }
 
   console.log("user " + user.id);
   console.log("friends " + friends);
@@ -35,7 +38,7 @@ function ChatBar() {
       <div>
         <h4 className="chat__header">Friends</h4>
         <div className="chat__users">
-          <button onClick={handleSubmit}>Learning Bot</button>
+          <button onClick={handleSubmit}>friend1</button>
           <p></p>
           {/* here we need to list ALL USERS FRIENDS */}
           {friends && friends.length > 0
