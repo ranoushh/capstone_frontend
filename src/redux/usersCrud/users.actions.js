@@ -116,3 +116,24 @@ export const addFriendThunk = (myID, friendId) => {
     }
   };
 }
+
+
+export const fetchUnlockAchievements = (payload) => {
+  return {
+    type: UserActionType.UNLOCKED_ACHIEVEMENT,
+    payload: payload,
+  };
+};
+
+export const fetchUnlockAchievementsThunk = (userId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/users/${userId}/achievements`
+      );
+      dispatch(fetchUnlockAchievements(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};

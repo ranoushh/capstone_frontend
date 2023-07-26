@@ -12,7 +12,7 @@ import SingleQuiz from "./pages/Single/SingleQuiz";
 import SingleTest from "./pages/Single/SingleTest";
 import ProtectedRoute from "./Utils/Auth";
 import { HomePage, Navigation } from "./components";
-import Achievements from "./pages/Achievements";
+import AchievementsPage from "./pages/AchievementsPage";
 import AddFriend from "./pages/Add/AddFriend";
 import io from "socket.io-client";
 import AddQuizPage from "./pages/Add/AddQuizPage";
@@ -70,7 +70,7 @@ function App() {
           <Route path="/quiz/:quizId" element={<SingleQuiz />} />
           <Route path="/test/:testId" element={<SingleTest />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/achievements" element={<AchievementsPage />} />
           <Route path="/addfriend" element={<AddFriend />} />
           <Route path="/language/:languageId/quiz/add" element={<AddQuizPage />}/>
           <Route path="/language/:languageId/test/add" element={<AddTestPage />}/>

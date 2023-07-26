@@ -5,7 +5,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
-import { updateUserThunk , fetchFriendsThunk} from "../redux/usersCrud/users.actions";
+import { updateUserThunk , fetchFriendsThunk, fetchUnlockAchievementsThunk} from "../redux/usersCrud/users.actions";
 import { me } from "../redux/user";
 
 function Profile() {
@@ -14,12 +14,16 @@ function Profile() {
   const allAvatars = useSelector((state) => state.avatars.allAvatars);
   const friends = useSelector((state) => state.usersCrud.friends);
   const [showPopup, setShowPopup] = useState(false);
+    const unlockedAchievements = useSelector(
+      (state) => state.usersCrud.achievements
+    );
 
   async function fetchAllData(){
     try {
       await dispatch(me());
       await dispatch(fetchAllAvatarsThunk());
       await dispatch(fetchFriendsThunk(user.id));
+      await dispatch(fetchUnlockAchievementsThunk(user.id));
     } catch (error) {
       console.log("error fetching data " + error)
     } 
@@ -55,6 +59,7 @@ function Profile() {
   };
 
   console.log("point: ", user.points);
+  console.log("unlockedAchievements: ", unlockedAchievements);
   return (
     <div>
       <div>
@@ -94,11 +99,33 @@ function Profile() {
       <div>
         <br></br>
         <h2>Points: {user.points ? user.points : "No Points"}</h2>
-        
-        <h2>Friends: {friends && friends.length > 0
+
+        <h2>
+          Friends:{" "}
+          {friends && friends.length > 0
             ? friends.map((item) => <li key={item}>{item.userId2}</li>)
-            : "Loading friends..."}</h2>
+            : "Loading friends..."}
+        </h2>
       </div>
+
+      <h2>Unlocked Achievements:</h2>
+      <ul>
+        {unlockedAchievements && unlockedAchievements.length > 0 ? (
+          unlockedAchievements.map((achievement) => (
+            <li key={achievement.id}>
+              {achievement.achievementName}
+              <p>{achievement.criteria}</p>
+              <p>Points Requirement: {achievement.pointsRequirement}</p>
+              <img
+                src={achievement.imageURL}
+                alt={`Achievement ${achievement.id}`}
+              />
+            </li>
+          ))
+        ) : (
+          <li>No unlocked achievements yet.</li>
+        )}
+      </ul>
     </div>
   );
 }
