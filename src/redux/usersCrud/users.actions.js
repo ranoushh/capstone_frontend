@@ -87,7 +87,7 @@ export const fetchFriendsThunk = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:8080/api/users/friends/${id}`);
-      console.log("REACHEDDDDDDDDDDDD");
+      console.log("completed fetch friends");
       dispatch(fetchFriends(response.data));
     } catch (error) {
       console.error(error);
