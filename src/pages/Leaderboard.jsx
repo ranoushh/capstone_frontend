@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllUsersThunk ,fetchFriendsThunk } from "../redux/usersCrud/users.actions";
 import { fetchAllAvatarsThunk } from "../redux/avatars/avatars.actions";
@@ -18,6 +18,7 @@ function Leaderboard() {
       await dispatch(fetchFriendsThunk(user.id));
       await dispatch(fetchAllAvatarsThunk());
       await dispatch(fetchAllUsersThunk());
+
     } catch (error) {
       console.log("error fetching data " + error)
     } 
@@ -28,13 +29,16 @@ function Leaderboard() {
   }, [dispatch, user.id]);
 
   
+  const sortedUsers = allUsers.slice().sort((a, b) => b.points - a.points);
+
   return (
     <div className="leaderboard-container">
       <h1 className="title">Leaderboard</h1>
-      {allUsers && allUsers.length > 0 ? (
-        allUsers.slice(0, 10).map((user, index) => {
-          // Find the corresponding avatar for the user
+      <br></br>
+      {sortedUsers && sortedUsers.length > 0 ? (
+        sortedUsers.slice(0, 10).map((user, index) => {
           let userAvatar = allAvatars.find((avatar) => parseInt(avatar.id) === user.avatarId);
+          // let friends = allUsers.find((friend) => )
           return (
             <div
               key={index}
