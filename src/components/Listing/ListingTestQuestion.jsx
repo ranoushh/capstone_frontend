@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../../style/flashcard.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTestQuestionThunk } from "../../redux/testQuestion/testQuestion.actions";
+import { updateUserPointsThunk } from "../../redux/usersCrud/users.actions";
+import { markTestCompletedThunk } from "../../redux/tests/tests.actions";
 
 export default function ListingTestQuestion(props) {
   const dispatch = useDispatch();
@@ -11,6 +13,7 @@ export default function ListingTestQuestion(props) {
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const [userScore, setUserScore] = useState(0);
   const { list, testId } = props;
+   const currentUser = useSelector((state) => state.user);
   const filteredTestQuestion = list.filter(
     (TestQuestion) => TestQuestion.testId === testId
   );
@@ -26,10 +29,14 @@ export default function ListingTestQuestion(props) {
   const handleAnswerSubmit = () => {
     const isCorrect =
       userAnswer.toLowerCase() === currentCard.correctChoice.toLowerCase();
-
     if (isCorrect && isAnswerCorrect === null) {
       setIsAnswerCorrect(true);
       setUserScore((prevScore) => prevScore + currentCard.pointWorth);
+      if(currentCardIndex === filteredTestQuestion.length - 1){
+        console.log("testid", testId);
+        dispatch(markTestCompletedThunk(testId))
+        dispatch(updateUserPointsThunk(currentUser.id, userScore));
+      }
     } else {
       setIsAnswerCorrect(false);
     }
@@ -96,19 +103,21 @@ export default function ListingTestQuestion(props) {
                 )}
               </div>
             </div>
-            <Link
-              to={`/test/${testId}/testQuestion/edit/${currentCard.id}`}
-              className="text"
-            >
-              <button className="edit-btn">Edit</button>
-            </Link>
-            <button
-              type="button"
-              className="del-btn"
-              onClick={() => handleDelete(currentCard.id)}
-            >
-              Delete
-            </button>
+            <div className="button-container">
+              <Link
+                to={`/test/${testId}/testQuestion/edit/${currentCard.id}`}
+                className="text"
+              >
+                <button className="edit1-btn">Edit</button>
+              </Link>
+              <button
+                type="button"
+                className="del1-btn"
+                onClick={() => handleDelete(currentCard.id)}
+              >
+                Delete
+              </button>
+            </div>
           </>
         ) : (
           <h1 className="info-message">

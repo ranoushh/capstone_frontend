@@ -14,6 +14,8 @@ function SingleTest() {
   const testQuestion = useSelector(
     (state) => state.testQuestion.allTestQuestion
   );
+  const currentUser = useSelector((state) => state.user);
+  const isTestCompleted = singleTest.completed;
 
   useEffect(() => {
     dispatch(fetchSingleTestThunk(testId));
@@ -21,15 +23,15 @@ function SingleTest() {
   }, [dispatch, testId]);
 
   return (
-    <div>
+    <div className="test-container">
       {singleTest ? (
         <div>
           <h2 className="title">{singleTest.testName}</h2>
           <p className="test-level">Difficulty: {singleTest.difficulty}</p>
           <Link to={`/test/${testId}/testQuestion/add`}>
-            <button class="add-btn">Add Test Question</button>
+            <button class="add1-btn">Add Test Question</button>
           </Link>
-          <ListingTestQuestion list={testQuestion} testId={singleTest.id} />
+          <ListingTestQuestion list={testQuestion} testId={singleTest.id} isTestCompleted={isTestCompleted} />
         </div>
       ) : (
         <p className="info-message">No Test information currently</p>
