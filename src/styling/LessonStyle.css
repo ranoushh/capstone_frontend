@@ -85,11 +85,13 @@
     margin-top: 16px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   
   .yes-button,
   .no-button {
-    margin: 0 8px;
+    margin: 8px;
     padding: 24px 48px;
     background-color: #EBE6E8;
     border: none;
