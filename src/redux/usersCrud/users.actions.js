@@ -76,7 +76,7 @@ export const updateUserPointsThunk = (userId, points) => {
 
 // Fetch Friends
 export const fetchFriends = (payload) => ({
-  type: UserActionType.FETCH_FRIENDS,
+  type: UserActionType.GET_FRIENDS,
   payload: payload,
 });
 

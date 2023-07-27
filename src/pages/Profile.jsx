@@ -96,7 +96,7 @@ function Profile() {
 
   console.log("Friends: ", friends);
   console.log("my User ID: ", user.id);
-  console.log("Friend ID: ", friends[0].username);
+  // console.log("Friend ID: ", friends[0].username);
   console.log("unlockedAchievements: ", unlockedAchievements);
   return (
     <div>
@@ -140,14 +140,6 @@ function Profile() {
         {user.points ? user.points : "0"}
 
         <h2>Friends: </h2>
-        <button> Add Friends</button>
-        <br></br>
-        {/* {Object.keys(friends).length > 0
-            ? friends.map((item) => <li key={item.id}>{item.username}
-            <button onClick={() => deleteFriend(user.id, item.username)}>Delete Friend</button>
-            </li>)
-            : "No Friends"} */}
-
         {Object.keys(friends).length > 0
           ? 
           <ul>
