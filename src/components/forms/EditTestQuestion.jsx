@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "./form.css";
+import "../../style/form.css";
 import { editTestQuestionThunk } from "../../redux/testQuestion/testQuestion.actions";
 
 const EditTestQuestion = ({ testId }) => {
@@ -42,46 +42,60 @@ const EditTestQuestion = ({ testId }) => {
   }
 
   return (
-    <div className="forms">
-      <h1 className={"form-header"}>Edit Test Question</h1>
+    <div className="form-container">
+      <h1 className="form-title">Edit Test Question</h1>
       <form onSubmit={handleEditSubmit}>
-        <label>Question: </label>
-        <input
-          type="text"
-          name="question"
-          value={editForm.question || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Test Choice:</label>
-        <input
-          type="text"
-          name="testChoice"
-          value={editForm.testChoice || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Correct Choice:</label>
-        <input
-          type="text"
-          name="correctChoice"
-          value={editForm.correctChoice || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Point Worth:</label>
-        <input
-          type="number"
-          name="pointWorth"
-          value={editForm.pointWorth || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Test ID: </label>
-        <input
-          type="number"
-          name="testId"
-          value={editForm.testId || ""}
-          onChange={HandleInputChange}
-        />
-
-        <button className="submitbtn" type="submit">
+        <div className="form-group">
+          <label className="form-label">Question: </label>
+          <input
+            type="text"
+            name="question"
+            value={editForm.question || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Test Choice:</label>
+          <input
+            type="text"
+            name="testChoice"
+            value={editForm.testChoice || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Correct Choice:</label>
+          <input
+            type="text"
+            name="correctChoice"
+            value={editForm.correctChoice || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Point Worth:</label>
+          <input
+            type="number"
+            name="pointWorth"
+            value={editForm.pointWorth || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Test ID: </label>
+          <input
+            type="number"
+            name="testId"
+            value={editForm.testId || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
+        <button className="form-button" type="submit">
           Save
         </button>
       </form>

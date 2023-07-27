@@ -25,13 +25,17 @@ function SingleQuiz() {
   return (
     <div>
       {singleQuiz ? (
-        <div>
+        <div className="quiz-container">
           <h2 className="title">{singleQuiz.quizName}</h2>
           <p className="quiz-level">Difficulty: {singleQuiz.difficulty}</p>
           <Link to={`/quiz/${quizId}/quizQuestion/add`}>
-            <button class="add-btn">Add Quiz Question</button>
+            <button class="add1-btn">Add Quiz Question</button>
           </Link>
-          <ListingQuizQuestion list={quizQuestion} quizId={singleQuiz.id} isQuizCompleted={isQuizCompleted} />
+          <ListingQuizQuestion
+            list={quizQuestion}
+            quizId={singleQuiz.id}
+            isQuizCompleted={isQuizCompleted}
+          />
         </div>
       ) : (
         <p className="info-message">No quiz information currently</p>

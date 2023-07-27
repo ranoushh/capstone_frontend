@@ -93,6 +93,7 @@ const SingleLesson = () => {
             <div className="back">{flashcard?.answer}</div>
           </div>
         </div>
+        <p className="little-msg">Did you memorize it?</p>
         <div className="button-container">
           <button className="yes-button" onClick={handleYesClick}>
             Yes
