@@ -34,6 +34,12 @@ const SingleLesson = () => {
     }
   }, [singleLesson]);
 
+  useEffect(() => {
+    if (flashcards.length === 0 && !singleLesson.completed) {
+      verifyPoints();
+    }
+  }, [singleLesson, flashcards]);
+
   const handleYesClick = () => {
     // Remove the current flashcard from the array
     setFlashcards((prevFlashcards) =>
@@ -58,13 +64,12 @@ const SingleLesson = () => {
   };
 
   const verifyPoints = () => {
+    console.log("Points", singleLesson.id, lessonId);
     if (!singleLesson.completed) {
       dispatch(updateUserPointsThunk(currentUser.id, 10));
     };
     dispatch(completeLessonThunk(lessonId));
-    console.log("Added points");
     setCompletedCards((prevCompletedCards) => [...prevCompletedCards, lessonId]);
-
   };
 
   const flashcard = flashcards[currentCard] ?? {};
@@ -93,7 +98,9 @@ const SingleLesson = () => {
             <div className="back">{flashcard?.answer}</div>
           </div>
         </div>
-        <p className="little-msg">Did you memorize it?</p>
+
+        <p className="little-msg">Please press yes if you think you have sufficiently memorized the current flashcard. Press No if you want to come back to it later to memorize</p>
+
         <div className="button-container">
           <button className="yes-button" onClick={handleYesClick}>
             Yes
@@ -105,8 +112,17 @@ const SingleLesson = () => {
       </div>
       {flashcards.length === 0 && !singleLesson.completed && (
         <div className="empty-flashcards">
-          {verifyPoints}
-          You have completed the lesson! Would you like to try a quiz?
+          <button onClick={verifyPoints}>Verify Points</button>
+          You have completed the lesson for now!
+          <Link className="quiz-link" to={`/quiz/${singleLesson.id}`}>
+            Go to Quiz
+          </Link>
+        </div>
+      )}
+
+      {flashcards.length === 0 && singleLesson.completed && (
+        <div className="empty-flashcards">
+          Lesson already completed. You cannot get any more points.
           <Link className="quiz-link" to={`/quiz/${singleLesson.id}`}>
             Go to Quiz
           </Link>
