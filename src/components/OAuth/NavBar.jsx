@@ -31,6 +31,12 @@ const NavBar = ({ isLoggedIn }) => {
           {isLoggedIn ? (
             <div className="navbar-links">
               <LinkButton to="/home">Home</LinkButton>
+              <LinkButton to="/profile">Profile</LinkButton>
+              <LinkButton to="/languages">Languages</LinkButton>
+              <LinkButton to="/achievements">Achievements</LinkButton>
+              <LinkButton to="/leaderboard">LeaderBoard</LinkButton>
+              <LinkButton to="/chat">Chat</LinkButton>
+              <LinkButton to="/addfriend">AddFriend</LinkButton>
               <LinkButton onClick={handleLogOut}>Logout</LinkButton>
             </div>
           ) : (
