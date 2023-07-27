@@ -9,7 +9,8 @@
 .container-language {
   width: 300px;
   height: 150px;
-  background-color: #f0f0f0;
+  border: 2px solid gray;
+  background-color: rgb(249, 236, 210);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -33,26 +34,56 @@
   text-align: center;
 }
 
-.add-btn{
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  background-color: #28a745;
-  color: white;
+.add-btn {
+  width: 7%;
+  padding: 3px;
+  border: 1px gray solid;
+  border-radius: 4px;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-image: linear-gradient(135deg, #85c498, #34a65f);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 11%;
 }
 
 .add-btn:hover {
-  background-color: #218838;
+  background-image: linear-gradient(135deg, #1e9628, #0e742e);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.add-btn:focus {
-  outline: none;
+.edit-btn {
+  width: 20%;
+  padding: 3px;
+  border: 1px gray solid;
+  border-radius: 4px;
+  color: #fff;
+  margin-right: 5%;
+  margin-left: 26%;
+  cursor: pointer;
+  background-color: #f9b933;
+  background-image: linear-gradient(135deg, #f9b933, #f99d0c);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.add-btn:active {
-  background-color: #1e7e34;
+.edit-btn:hover {
+  background-image: linear-gradient(135deg, #b28b0b, #ebc52e);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.del-btn {
+  width: 20%;
+  padding: 3px;
+  border: 1px gray solid;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #db3a79;
+  background-image: linear-gradient(135deg, #db3a79, #c72c66);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.del-btn:hover {
+  background-image: linear-gradient(135deg, #a7173d, #940840);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

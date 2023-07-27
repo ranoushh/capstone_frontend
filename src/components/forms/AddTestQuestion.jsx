@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./form.css";
+import "../../style/form.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
