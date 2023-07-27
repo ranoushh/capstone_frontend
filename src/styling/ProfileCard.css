@@ -1,4 +1,5 @@
   .card {
+    text-align: center;
     position: relative;
     width: 200px;
     height: 200px;
@@ -14,6 +15,7 @@
   }
   
   .bg {
+    text-align: center;
     position: absolute;
     top: 5px;
     left: 5px;
@@ -29,6 +31,7 @@
   }
   
   .blob {
+    text-align: center;
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -107,6 +110,7 @@
 }
 
 .img-container {
+  align-items: center;
     display: inline-block;
     margin-right: 10px;
 }
