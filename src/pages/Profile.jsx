@@ -127,7 +127,7 @@ function Profile() {
   {user.points ? user.points : "0"}
 
   <h2>Friends: </h2>
-{friends && friends.length > 0 ? (
+{friends && friends.length > 0 ? ( // Including the index in the key creates unique keys for each element in the list
   friends.map((item, index) => ( // Add index as the second argument
     <li key={`${item.userId2}-${index}`}> 
       {item.userId2}
@@ -142,7 +142,7 @@ function Profile() {
 
 
 <h2>Friend Requests: </h2>
-{friendRequests && friendRequests.length > 0 ? (
+{friendRequests && friendRequests.length > 0 ? ( // Including the index in the key creates unique keys for each element in the list
   friendRequests.map((item, index) => ( // Add index as the second argument
     <li key={`${item.userId1}-${index}`}> 
       {item.userId1}

@@ -28,17 +28,15 @@ function ChatBody ({messages}){
       <div className="message__container">
 
 
-        {messages.map((message) =>
-         (
-          // message.name === email ? (
-          <div className="message__chats" key={1 || message.id}>
-              <p className="sender__name">You</p>
-              <div className="message__sender">
-                <p>{message.text}</p>
-              </div>
-            </div>
-          )
-        )}
+      {messages.map((message) => (
+  <div className="message__chats" key={message.id}>
+    <p className="sender__name">You</p>
+    <div className="message__sender">
+      <p>{message.text}</p>
+    </div>
+  </div>
+))}
+
 
         {/* <div className="message__status">
           <p>Someone is typing...</p>

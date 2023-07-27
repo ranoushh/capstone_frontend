@@ -72,18 +72,18 @@ console.log("user"+ user.id);
       <h2>APP NAME</h2>
 
       <div>
-        <h4 className="chat__header">Friends</h4>
-        <div className="chat__users">
-          {friends && friends.length > 0 ? (
-            friends.map((friend) => (
-              <button key={friend.userId2} onClick={() => handleFriendClick(friend.userId2)}>
-                {friend.username}
-              </button>
-            ))
-          ) : (
-            <p>Loading friends...</p>
-          )}
-        </div>
+      <h4 className="chat__header">Friends</h4>
+      <div className="chat__users">
+        {friends && friends.length > 0 ? (
+          friends.map((friend) => (
+            <button key={friend.id} onClick={() => handleFriendClick(friend.userId2)}>
+              {friend.userId2}
+            </button>
+          ))
+        ) : (
+          <p>Loading friends...</p>
+        )}
+      </div>
       </div>
 
       {selectedFriendId && (
