@@ -9,10 +9,7 @@ function ChatWindow({ messages }) {
   return (
     <div className="chat__window">
       {messages.map((message) => (
-        <div key={message.id}>
-          {/* Your message rendering code */}
-          <p>{message.text}</p>
-        </div>
+        <div key={message.id}>{message.text}</div>
       ))}
     </div>
   );
