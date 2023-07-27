@@ -146,11 +146,15 @@ function Profile() {
           {Object.entries(friends).map((friend) => {
             let friendData = friend[1]
             return (
-              <li key={friendData.username} >
-                {friendData.username}
-                <button onClick={() => deleteFriend(user.id, friendData.id)}>Delete Friend</button>
+              <li key={friendData.username}>
+                {friendData.Friendship.accepted === true ? (
+                  <React.Fragment>
+                    {friendData.username}
+                    <button onClick={() => deleteFriend(user.id, friendData.id)}>Delete Friend</button>
+                  </React.Fragment>
+                ) : null}
               </li>
-            )
+            );
           })}
           </ul>
           : "no friends"}
