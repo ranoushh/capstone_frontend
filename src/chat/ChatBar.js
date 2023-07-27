@@ -5,7 +5,6 @@ import { me } from "../redux/user";
 import ChatWindow from './ChatWindow';
 import axios from "axios";
 
-
 function ChatBar() {
   const user = useSelector((state) => state.user);
   const friends = useSelector((state) => state.usersCrud.friends);
@@ -15,44 +14,43 @@ function ChatBar() {
   const [messages, setMessages] = useState([]);
   const [conversation, setConversation] = useState({});
 
+  // Function to handle friend selection //please work displayed
+//   const handleFriendClick = async (friendId) => {
+//   setSelectedFriendId(friendId);
+//   setMessages([]); // Reset messages when a new friend is selected
 
-  useEffect(() => {
-    const getConversation = async () => {
-      try {
-        const res = await axios.get(`http://localhost:8080/api/conversations/${user.id}`);
-        const lastConversation = res.data[res.data.length-1]; 
+//   try {
+//     const res = await axios.get(`http://localhost:8080/api/conversations/find/${user.id}/${friendId}`);
+//     const conversationId = res.data._id;
+//     setConversation({ _id: conversationId });
 
-        setConversation(lastConversation);
-        console.log('conversation', conversation);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getConversation();
-  }, [user]);
+//     // Fetch messages for the selected conversation
+//     const messagesRes = await axios.get(`http://localhost:8080/api/mongoMessages/${conversationId}`);
+//     setMessages(messagesRes.data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
+const handleFriendClick = async (friendId) => {
+  setSelectedFriendId(friendId);
+  setMessages([]); // Reset messages when a new friend is selected
 
+  try {
+    const res = await axios.get(`http://localhost:8080/api/conversations/find/${user.id}/${friendId}`);
+    const conversationId = res.data?._id; // Use optional chaining to access _id
+    if (conversationId) {
+      setConversation({ _id: conversationId });
 
-  useEffect(() => {
-    const getMessages = async () => {
-      try {
-        const res = await axios.get(`http://localhost:8080/api/mongoMessages/${conversation._id}`);
-        setMessages(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getMessages();
-  }, [conversation]);
+      // Fetch messages for the selected conversation
+      const messagesRes = await axios.get(`http://localhost:8080/api/mongoMessages/${conversationId}`);
+      setMessages(messagesRes.data);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-
-console.log("user"+ user.id);
-
-  // Function to handle friend selection
-  const handleFriendClick = (friendId) => {
-    setSelectedFriendId(friendId);
-    setMessages([]); // Reset messages when a new friend is selected
-  };
 
   async function fetchAllData() {
     try {
@@ -72,18 +70,19 @@ console.log("user"+ user.id);
       <h2>APP NAME</h2>
 
       <div>
-      <h4 className="chat__header">Friends</h4>
-      <div className="chat__users">
-        {friends && friends.length > 0 ? (
-          friends.map((friend) => (
-            <button key={friend.id} onClick={() => handleFriendClick(friend.userId2)}>
-              {friend.userId2}
-            </button>
-          ))
-        ) : (
-          <p>Loading friends...</p>
-        )}
-      </div>
+        <h4 className="chat__header">Friends</h4>
+        <div className="chat__users">
+          {friends && friends.length > 0 ? (
+           friends.map((friend) => (
+  <button key={friend.id} onClick={() => handleFriendClick(friend.userId1)}>
+    {friend.userId2}
+  </button>
+))
+
+          ) : (
+            <p>Loading friends...</p>
+          )}
+        </div>
       </div>
 
       {selectedFriendId && (
