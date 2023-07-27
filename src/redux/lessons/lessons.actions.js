@@ -107,3 +107,21 @@ export const deleteLessonThunk = (lessonId) => {
     }
   };
 };
+
+export const completeLesson = (payload) => ({
+  type: LessonsActionType.COMPLETE_LESSON,
+  payload: payload,
+});
+
+export const completeLessonThunk = (lesson) => {
+  return async (dispatch) => {
+    try {
+      console.log('COMPLETE LESSON THUNK IS FIRING');
+      const response = await axios.put(`http://localhost:8080/api/lessons/${lesson.id}`, lesson);
+      console.log('COMPLETE LESSON THUNK COMPLETED');
+      dispatch(completeLesson(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};

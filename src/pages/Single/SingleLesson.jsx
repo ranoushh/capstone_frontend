@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { fetchSingleLessonThunk } from "../../redux/lessons/lessons.actions";
 import "../../styling/LessonStyle.css"; // Import the CSS for the SingleLesson component
+import { completeLessonThunk } from "../../redux/lessons/lessons.actions";
+import { updateUserPointsThunk } from "../../redux/usersCrud/users.actions";
+
 
 const SingleLesson = () => {
   const { lessonId } = useParams();
   const dispatch = useDispatch();
   const singleLesson = useSelector((state) => state.lessons.singleLesson);
+  const currentUser = useSelector((state) => state.user);
   const [flip, setFlip] = useState(false);
   const [currentCard, setCurrentCard] = useState(0);
   const [completedCards, setCompletedCards] = useState([]);
@@ -36,12 +40,8 @@ const SingleLesson = () => {
       prevFlashcards.filter((_, index) => index !== currentCard)
     );
 
-    // Additional logic to handle marking the flashcard as completed or adding it to the completedCards list
-
-    // Move to the next flashcard
     setCurrentCard((prevCard) => (prevCard + 1) % flashcards.length);
 
-    // Reset flip to the front side of the flashcard
     setFlip(false);
   };
 
@@ -55,6 +55,16 @@ const SingleLesson = () => {
       setCurrentCard((prevCard) => prevCard + 1);
     }
     setFlip(false);
+  };
+
+  const verifyPoints = () => {
+    if (!singleLesson.completed) {
+      dispatch(updateUserPointsThunk(currentUser.id, 10));
+    };
+    dispatch(completeLessonThunk(lessonId));
+    console.log("Added points");
+    setCompletedCards((prevCompletedCards) => [...prevCompletedCards, lessonId]);
+
   };
 
   const flashcard = flashcards[currentCard] ?? {};
@@ -92,9 +102,10 @@ const SingleLesson = () => {
           </button>
         </div>
       </div>
-      {flashcards.length === 0 && (
+      {flashcards.length === 0 && !singleLesson.completed && (
         <div className="empty-flashcards">
-          No flashcards available. Do you want to try the quiz?{" "}
+          {verifyPoints}
+          You have completed the lesson! Would you like to try a quiz?
           <Link className="quiz-link" to={`/quiz/${singleLesson.id}`}>
             Go to Quiz
           </Link>

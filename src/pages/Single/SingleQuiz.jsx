@@ -14,6 +14,8 @@ function SingleQuiz() {
   const quizQuestion = useSelector(
     (state) => state.quizQuestion.allQuizQuestion
   );
+  const currentUser = useSelector((state) => state.user);
+  const isQuizCompleted = singleQuiz.completed;
 
   useEffect(() => {
     dispatch(fetchSingleQuizThunk(quizId));
@@ -29,7 +31,7 @@ function SingleQuiz() {
           <Link to={`/quiz/${quizId}/quizQuestion/add`}>
             <button class="add-btn">Add Quiz Question</button>
           </Link>
-          <ListingQuizQuestion list={quizQuestion} quizId={singleQuiz.id} />
+          <ListingQuizQuestion list={quizQuestion} quizId={singleQuiz.id} isQuizCompleted={isQuizCompleted} />
         </div>
       ) : (
         <p className="info-message">No quiz information currently</p>

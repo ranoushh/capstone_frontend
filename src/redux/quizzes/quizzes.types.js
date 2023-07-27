@@ -4,5 +4,6 @@ const QuizzesActionType = {
   ADD_QUIZ: "ADD_QUIZ",
   EDIT_QUIZ: "EDIT_QUIZ",
   DELETE_QUIZ: "DELETE_QUIZ",
+  COMPLETE_QUIZ: "COMPLETE_QUIZ"
 };
 export default QuizzesActionType;
