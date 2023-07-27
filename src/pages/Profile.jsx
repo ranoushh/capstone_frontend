@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "../styling/ProfileCard.css";
+import "../styling/ProfilePage.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -86,6 +87,7 @@ function Profile() {
 
   const profileCardStyle = {
     backgroundImage: selectedAvatar ? `url(${selectedAvatar.imageURL})` : "",
+    backgroundPosition: "center", // Center the background image
   };
 
   console.log("point: ", user.points);
@@ -93,17 +95,23 @@ function Profile() {
   return (
     <div>
       <div>
-        <h1>Welcome, {user.username}!</h1>
+        <h1 id="profile-greeting">Welcome, {user.username}!</h1>
       </div>
       <p></p>
       <p></p>
-      <button style={{ borderRadius: "10px" }} onClick={handleClick}>
-        <div className="card" style={profileCardStyle}>
-          {" "}
-          {/* Avatar changes upon refresh or re-clicking icon*/}
-          {/* No need for the bg and blob divs since the background image is applied to the card */}
-        </div>
-      </button>
+      <center>
+        {showPopup ? ( // Check if popup is open
+          // If popup is open, don't render the avatar profile
+          null
+        ) : (
+          <button style={{ borderRadius: "10px" }} onClick={handleClick}>
+            <div className="card" style={profileCardStyle}>
+              {/* Avatar changes upon refresh or re-clicking icon*/}
+              {/* No need for the bg and blob divs since the background image is applied to the card */}
+            </div>
+          </button>
+        )}
+      </center>
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
