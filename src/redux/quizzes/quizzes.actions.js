@@ -109,3 +109,21 @@ export const deleteQuizThunk = (quizId) => {
     }
   };
 };
+
+export const markQuizCompleted = (payload) => ({
+  type: QuizzesActionType.COMPLETE_QUIZ,
+  payload: payload,
+});
+
+export const markQuizCompletedThunk = (id) =>{
+  return async (dispatch) => {
+    try {
+      console.log('COMPLETE QUIZ THUNK IS FIRING');
+      const response = await axios.put(`http://localhost:8080/api/quiz/markCompleted/${id}`);
+      console.log('COMPLETE QUIZ THUNK COMPLETED');
+      dispatch(markQuizCompleted(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}

@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { fetchSingleLessonThunk } from "../../redux/lessons/lessons.actions";
 import "../../styling/LessonStyle.css"; // Import the CSS for the SingleLesson component
+import { completeLessonThunk } from "../../redux/lessons/lessons.actions";
+import { updateUserPointsThunk } from "../../redux/usersCrud/users.actions";
+
 
 const SingleLesson = () => {
   const { lessonId } = useParams();
   const dispatch = useDispatch();
   const singleLesson = useSelector((state) => state.lessons.singleLesson);
+  const currentUser = useSelector((state) => state.user);
   const [flip, setFlip] = useState(false);
   const [currentCard, setCurrentCard] = useState(0);
   const [completedCards, setCompletedCards] = useState([]);
@@ -30,18 +34,20 @@ const SingleLesson = () => {
     }
   }, [singleLesson]);
 
+  useEffect(() => {
+    if (flashcards.length === 0 && !singleLesson.completed) {
+      verifyPoints();
+    }
+  }, [singleLesson, flashcards]);
+
   const handleYesClick = () => {
     // Remove the current flashcard from the array
     setFlashcards((prevFlashcards) =>
       prevFlashcards.filter((_, index) => index !== currentCard)
     );
 
-    // Additional logic to handle marking the flashcard as completed or adding it to the completedCards list
-
-    // Move to the next flashcard
     setCurrentCard((prevCard) => (prevCard + 1) % flashcards.length);
 
-    // Reset flip to the front side of the flashcard
     setFlip(false);
   };
 
@@ -55,6 +61,15 @@ const SingleLesson = () => {
       setCurrentCard((prevCard) => prevCard + 1);
     }
     setFlip(false);
+  };
+
+  const verifyPoints = () => {
+    console.log("Points", singleLesson.id, lessonId);
+    if (!singleLesson.completed) {
+      dispatch(updateUserPointsThunk(currentUser.id, 10));
+    };
+    dispatch(completeLessonThunk(lessonId));
+    setCompletedCards((prevCompletedCards) => [...prevCompletedCards, lessonId]);
   };
 
   const flashcard = flashcards[currentCard] ?? {};
@@ -83,6 +98,9 @@ const SingleLesson = () => {
             <div className="back">{flashcard?.answer}</div>
           </div>
         </div>
+
+        <p className="little-msg">Please press yes if you think you have sufficiently memorized the current flashcard. Press No if you want to come back to it later to memorize</p>
+
         <div className="button-container">
           <button className="yes-button" onClick={handleYesClick}>
             Yes
@@ -92,9 +110,19 @@ const SingleLesson = () => {
           </button>
         </div>
       </div>
-      {flashcards.length === 0 && (
+      {flashcards.length === 0 && !singleLesson.completed && (
         <div className="empty-flashcards">
-          No flashcards available. Do you want to try the quiz?{" "}
+          <button onClick={verifyPoints}>Verify Points</button>
+          You have completed the lesson for now!
+          <Link className="quiz-link" to={`/quiz/${singleLesson.id}`}>
+            Go to Quiz
+          </Link>
+        </div>
+      )}
+
+      {flashcards.length === 0 && singleLesson.completed && (
+        <div className="empty-flashcards">
+          Lesson already completed. You cannot get any more points.
           <Link className="quiz-link" to={`/quiz/${singleLesson.id}`}>
             Go to Quiz
           </Link>

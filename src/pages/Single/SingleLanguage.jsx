@@ -26,14 +26,14 @@ function SingleLanguage() {
   }, [dispatch, languageId]);
 
   return (
-    <div>
+    <div className="language-container">
       <h1 className="title">Let's learn {singleLanguage.languageName}!</h1>
 
       {singleLanguage ? (
         <div>
           <h2 className="subheading">Lesson</h2>
           <Link to={`/language/${languageId}/lesson/add`}>
-            <button class="add-btn">Add Lesson</button>
+              <button class="add-btn">Add Lesson</button>
           </Link>
           <ListingLessons list={lessons} languageId={singleLanguage.id} />
           <h2 className="subheading">Test</h2>

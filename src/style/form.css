@@ -1,0 +1,80 @@
+/* form.css */
+
+.form-container {
+  max-width: 45%;
+  margin: 3% auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+}
+
+.form-title {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+background-image: linear-gradient(135deg, #006400, #32cd32);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.content-form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.content-form-input:focus {
+  border-color: #db3a79;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #db3a79;
+}
+
+.form-button {
+background-image: linear-gradient(135deg, #71c7f1, #94dead);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solod grey;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-image: linear-gradient(135deg, #23b5d2, #61cc33);
+}
+
+/* Add some spacing for better readability */
+.form-container > form > div:last-child {
+  margin-top: 20px;
+}

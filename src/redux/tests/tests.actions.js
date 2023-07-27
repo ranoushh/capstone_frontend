@@ -107,3 +107,21 @@ export const deleteTestThunk = (testId) => {
     }
   };
 };
+
+export const markTestCompleted = (payload) => ({
+  type: TestsActionType.COMPLETE_TEST,
+  payload: payload,
+});
+
+export const markTestCompletedThunk = (id) =>{
+  return async (dispatch) => {
+    try {
+      console.log('COMPLETE TEST THUNK IS FIRING');
+      const response = await axios.put(`http://localhost:8080/api/test/markCompleted/${id}`);
+      console.log('COMPLETE TEST THUNK COMPLETED');
+      dispatch(markTestCompleted(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
