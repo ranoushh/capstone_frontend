@@ -98,9 +98,9 @@ const SingleLesson = () => {
             <div className="back">{flashcard?.answer}</div>
           </div>
         </div>
-        <br />
-        <div>Please press yes if you think you have sufficiently memorized the current flashcard. Press No if you want to come back to it later to memorize</div>
-<br />
+
+        <p className="little-msg">Please press yes if you think you have sufficiently memorized the current flashcard. Press No if you want to come back to it later to memorize</p>
+
         <div className="button-container">
           <button className="yes-button" onClick={handleYesClick}>
             Yes

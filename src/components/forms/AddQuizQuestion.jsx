@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./form.css";
+import "../../style/form.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -35,56 +35,67 @@ const AddQuizQuestion = ({ onSubmit, quizId }) => {
 
   return (
     <div>
-      <h2>Add Quiz Question</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Question:</label>
-          <input
-            type="text"
-            name="question"
-            value={newQuizQuestion.question}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Quiz Choice:</label>
-          <input
-            type="text"
-            name="quizChoice"
-            value={newQuizQuestion.quizChoice}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Correct Choice:</label>
-          <input
-            type="text"
-            name="correctChoice"
-            value={newQuizQuestion.correctChoice}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Point Worth:</label>
-          <input
-            type="number"
-            name="pointWorth"
-            value={newQuizQuestion.pointWorth}
-            onChange={handleInputChange}
-          />
-          <label>Quiz ID: </label>
-          <input
-            type="number"
-            name="quizId"
-            value={newQuizQuestion.quizId}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="submit">Add Quiz Question</button>
-      </form>
+      <div className="form-container">
+        <h2 className="form-title">Add Quiz Question</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label">Question:</label>
+            <input
+              type="text"
+              name="question"
+              value={newQuizQuestion.question}
+              onChange={handleInputChange}
+              className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Quiz Choice:</label>
+            <input
+              type="text"
+              name="quizChoice"
+              value={newQuizQuestion.quizChoice}
+              onChange={handleInputChange}
+              className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Correct Choice:</label>
+            <input
+              type="text"
+              name="correctChoice"
+              value={newQuizQuestion.correctChoice}
+              onChange={handleInputChange}
+              className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Point Worth:</label>
+            <input
+              type="number"
+              name="pointWorth"
+              value={newQuizQuestion.pointWorth}
+              onChange={handleInputChange}
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Quiz ID: </label>
+            <input
+              type="number"
+              name="quizId"
+              value={newQuizQuestion.quizId}
+              onChange={handleInputChange}
+              className="form-input"
+            />
+          </div>
+          <button className="form-button" type="submit">
+            Add Quiz Question
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
