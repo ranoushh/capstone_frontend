@@ -49,8 +49,8 @@ function Achievements({ userId, points }) {
 
   return (
     <div>
-      <h1>Achievement Page</h1>
-      <h2>Your points: {points}</h2>
+      <h1 className="achievement-title">Achievement</h1>
+      <h2 className="achievement-user-info">Your points: {points} pts</h2>
       <div className="achievement-container">
         {allAchievements.map((achievement) => (
           <div key={achievement.id} className="achievement-card">
@@ -64,9 +64,11 @@ function Achievements({ userId, points }) {
             <div className="achievement-name">
               {achievement.achievementName}
             </div>
-            <div className="achievement-criteria">{achievement.criteria}</div>
+            <div className="achievement-criteria">
+              {achievement.criteria}
+            </div>
             <div className="achievement-points">
-              Points Requirement: {achievement.pointsRequirement}
+              Points Requirement: <h2>{achievement.pointsRequirement}</h2>
             </div>
             {achievement.isUnlocked ? (
               <p style={{ color: "#0fab3e" }}>Achievement already unlocked</p>
