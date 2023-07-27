@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import "./form.css"; // Import the CSS for form styling
-import { useNavigate } from "react-router-dom";
-=======
 import "./form.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
->>>>>>> c7d2d708b6071d5525ff4e588204c6fcd558c6ed
 
 const AddTestQuestion = ({ onSubmit, testId }) => {
   const navigate = useNavigate();
@@ -25,8 +20,6 @@ const AddTestQuestion = ({ onSubmit, testId }) => {
     navigate(`/test/${testId}`);
   };
 
-<<<<<<< HEAD
-=======
     const user = useSelector((state) => state.user); //just checking if the user is admin or not
     console.log(user.username);
 
@@ -40,7 +33,6 @@ const AddTestQuestion = ({ onSubmit, testId }) => {
       );
     }
 
->>>>>>> c7d2d708b6071d5525ff4e588204c6fcd558c6ed
   return (
     <div className="form-container">
       <h2 className="form-title">Add Test Question</h2>
