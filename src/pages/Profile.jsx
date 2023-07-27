@@ -94,9 +94,6 @@ function Profile() {
     backgroundImage: selectedAvatar ? `url(${selectedAvatar.imageURL})` : "",
   };
 
-  console.log("Friends: ", friends);
-  console.log("my User ID: ", user.id);
-  // console.log("Friend ID: ", friends[0].username);
   console.log("unlockedAchievements: ", unlockedAchievements);
   return (
     <div>
