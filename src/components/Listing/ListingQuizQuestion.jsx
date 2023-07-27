@@ -35,6 +35,7 @@ export default function ListingQuizQuestion(props) {
       setIsAnswerCorrect(true);
       setUserScore((prevScore) => prevScore + currentCard.pointWorth);
       if(currentCardIndex === filteredQuizQuestion.length - 1){
+        console.log(quizId);
         dispatch(markQuizCompletedThunk(quizId))
         dispatch(updateUserPointsThunk(currentUser.id, userScore));
       }
