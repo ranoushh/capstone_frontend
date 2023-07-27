@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./form.css";
 import { editQuizQuestionThunk } from "../../redux/quizQuestion/quizQuestion.actions";
@@ -28,6 +28,18 @@ const EditQuizQuestion = ({ quizId }) => {
       [event.target.name]: event.target.value,
     });
   };
+
+   const user = useSelector((state) => state.user); 
+
+   if (user.username !== "admin") {
+     //If not prevent access
+     return (
+       <div>
+         <div>You cannot edit a quiz question at this time. </div>
+         <NavLink to={`/quiz/${quizId}`}>Go back to Quiz</NavLink>
+       </div>
+     );
+   }
 
   return (
     <div className="forms">
