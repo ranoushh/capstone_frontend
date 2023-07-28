@@ -93,6 +93,7 @@ const EditTestQuestion = ({ testId }) => {
             value={editForm.testId || ""}
             onChange={HandleInputChange}
             className="form-input"
+            readOnly
           />
         </div>
         <button className="form-button" type="submit">
