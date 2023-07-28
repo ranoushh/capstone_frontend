@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "../styling/ProfileCard.css";
+import "../styling/ProfilePage.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -92,23 +93,32 @@ function Profile() {
 
   const profileCardStyle = {
     backgroundImage: selectedAvatar ? `url(${selectedAvatar.imageURL})` : "",
+    backgroundPosition: "center", // Center the background image
   };
 
   console.log("unlockedAchievements: ", unlockedAchievements);
   return (
-    <div>
-      <div>
-        <h1>Welcome, {user.username}!</h1>
-      </div>
+    <div id = "entire-container">
+        <div id="content-container">
+      {/* <div>
+        <h1 id="profile-greeting">Welcome, {user.username}!</h1>
+      </div> */}
       <p></p>
       <p></p>
-      <button style={{ borderRadius: "10px" }} onClick={handleClick}>
-        <div className="card" style={profileCardStyle}>
-          {" "}
-          {/* Avatar changes upon refresh or re-clicking icon*/}
-          {/* No need for the bg and blob divs since the background image is applied to the card */}
-        </div>
-      </button>
+      <center>
+        {showPopup ? ( // Check if popup is open
+          // If popup is open, don't render the avatar profile
+          null
+        ) : (
+          <button id = "profiles-button" onClick={handleClick}>
+            <div className="card" style={profileCardStyle}>
+              {/* Avatar changes upon refresh or re-clicking icon*/}
+              {/* No need for the bg and blob divs since the background image is applied to the card */}
+            </div>
+          </button>
+          
+        )}
+      </center>
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
@@ -132,8 +142,12 @@ function Profile() {
       )}
 
       <div>
+        <div>
+        <h1 id="profile-greeting">{user.username}</h1>
+        </div>
         <br></br>
-        <h2>Points: </h2>
+        <center>
+        <h2 id = "user-points">Points: </h2>
         {user.points ? user.points : "0"}
 
         <h2>Friends: </h2>
@@ -155,7 +169,7 @@ function Profile() {
           })}
           </ul>
           : "no friends"}
-
+        </center>
         <h2>Friend Requests: </h2>
         {friendRequests && friendRequests.length > 0
           ? friendRequests.map((item) => (
@@ -174,7 +188,8 @@ function Profile() {
           : "No Requests"}
       </div>
 
-      <h2>Unlocked Achievements:</h2>
+      <center>
+      <h2 id = "user-achievements">Unlocked Achievements:</h2>
       <ul>
         {unlockedAchievements && unlockedAchievements.length > 0 ? (
           unlockedAchievements.map((achievement) => (
@@ -192,7 +207,10 @@ function Profile() {
           <li>No unlocked achievements yet.</li>
         )}
       </ul>
+      </center>
     </div>
+    </div>
+
   );
 }
 
