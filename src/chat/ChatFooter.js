@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ChatWindow from './ChatWindow'; // Import the ChatWindow component
 
 
 //the message box and the send button.
@@ -31,6 +32,7 @@ function ChatFooter({socket}) {
         />
         <button className="sendBtn">SEND</button>
       </form>
+
     </div>
   );
 };
