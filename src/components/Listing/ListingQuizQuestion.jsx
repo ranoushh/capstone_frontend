@@ -34,9 +34,9 @@ export default function ListingQuizQuestion(props) {
     if (isCorrect && isAnswerCorrect === null) {
       setIsAnswerCorrect(true);
       setUserScore((prevScore) => prevScore + currentCard.pointWorth);
-      if(currentCardIndex === filteredQuizQuestion.length - 1){
+      if (currentCardIndex === filteredQuizQuestion.length - 1) {
         console.log(quizId);
-        dispatch(markQuizCompletedThunk(quizId))
+        dispatch(markQuizCompletedThunk(quizId));
         dispatch(updateUserPointsThunk(currentUser.id, userScore));
       }
     } else {
@@ -65,6 +65,9 @@ export default function ListingQuizQuestion(props) {
         console.error("Error deleting quizQuestion:", error);
       });
   };
+
+  const user = useSelector((state) => state.user);
+  const isAdmin = user.username === "admin"; 
 
   return (
     <div>
@@ -105,19 +108,23 @@ export default function ListingQuizQuestion(props) {
               </div>
             </div>
             <div className="button-container">
-              <Link
-                to={`/quiz/${quizId}/quizQuestion/edit/${currentCard.id}`}
-                className="text"
-              >
-                <button className="edit1-btn">Edit</button>
-              </Link>
-              <button
-                type="button"
-                className="del1-btn"
-                onClick={() => handleDelete(currentCard.id)}
-              >
-                Delete
-              </button>
+              {isAdmin && (
+                <Link
+                  to={`/quiz/${quizId}/quizQuestion/edit/${currentCard.id}`}
+                  className="text"
+                >
+                  <button className="edit1-btn">Edit</button>
+                </Link>
+              )}
+              {isAdmin && (
+                <button
+                  type="button"
+                  className="del1-btn"
+                  onClick={() => handleDelete(currentCard.id)}
+                >
+                  Delete
+                </button>
+              )}
             </div>
           </>
         ) : (
