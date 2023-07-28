@@ -9,7 +9,8 @@ import Languages from "../pages/Languages";
 import SingleLanguage from "../pages/Single/SingleLanguage";
 import SingleQuiz from "../pages/Single/SingleQuiz";
 import SingleTest from "../pages/Single/SingleTest";
-import ProtectedRoute from "../Utils/Auth";
+//import ProtectedRoute from "../Utils/Auth";
+import ProtectedRoutes from "../components/Auth/ProtectedRoutes";
 import { HomePage, Navigation } from "../components";
 import AchievementsPage from "../pages/AchievementsPage";
 import AddFriend from "../pages/Add/AddFriend";
@@ -51,14 +52,13 @@ function App() {
   console.log("isloggingin" + isLoggedIn);
   return (
     <div>
-      <Router>
-        <NavBar isLoggedIn={isLoggedIn} />
+      <NavBar isLoggedIn={isLoggedIn} />
 
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
 
-          {/* <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}> */}
+        <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />}>
           <Route path="/home" element={<UserHome />} />
           <Route path="/chatbot" element={<ChatBot />} />
           {/* <Route path="/chat" element={<Chat socket={socket} />} /> */}
@@ -112,10 +112,8 @@ function App() {
             element={<EditQuizQuestionPage />}
           />
           <Route path="/addfriend" element={<AddFriend />} />
-
-          {/* </Route> */}
-        </Routes>
-      </Router>
+        </Route>
+      </Routes>
     </div>
   );
 }
