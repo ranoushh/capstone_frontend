@@ -24,7 +24,7 @@ const NavBar = ({ isLoggedIn }) => {
   return (
     <div className="navbar-container">
       <div className="navbar-left">
-        <h1 className="navbar-title">Language Learning</h1>
+        <h1 className="navbar-title">Polyglot Palace</h1>
       </div>
       <div className="navbar-right">
         <nav className="navbar-nav">
