@@ -11,7 +11,6 @@ import "../../styling/HomeStyling.css";
  */
 const UserHome = () => {
   const username = useSelector((state) => state.user.username);
-  const achievements = useSelector((state) => state.user.achievements);
   const dispatch = useDispatch();
 
   function fetchMe() {
@@ -26,9 +25,17 @@ const UserHome = () => {
 
 
   return (
-    <div>
-      <h3 id= "home-greeting">Welcome, {username} !</h3>
-      <h4 id = "achievements-list">Your Progress {achievements} </h4>
+    <div className="main-container">
+      <h1 id="home-greeting">Welcome, {username} !</h1>
+      <h4 className="app-name">PolyglotPalace</h4>
+
+      <p className="description">
+        PolyglotPalace is an immersive and engaging platform designed to help
+        users master various languages through interactive quizzes and engaging
+        challenges. Whether you're a beginner or looking to refine your language
+        skills, our app offers a personalized learning experience tailored to
+        your proficiency level.
+      </p>
     </div>
   );
 };

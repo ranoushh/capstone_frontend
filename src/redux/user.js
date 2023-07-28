@@ -27,7 +27,7 @@ export const me = () => async (dispatch) => {
       withCredentials: true,
     });
     console.log("ME RESPONSE", res.data);
-    dispatch(getUser(res.data || defaultUser));
+    dispatch(getUser(res.data));
   } catch (err) {
     console.error(err);
   }
