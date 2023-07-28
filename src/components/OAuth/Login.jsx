@@ -15,7 +15,7 @@ export default function Login() {
     const name = event.target.name;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    dispatch(login(email, password, name));
+    await dispatch(login(email, password, name));
     navigate("/home");
   };
 

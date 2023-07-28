@@ -1,46 +1,97 @@
 /* AddFriend.css */
-.container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .button {
-    background-color: #07372C;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    background-color: #3C6659;
-  }
-  
-  .ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .li {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .li button {
-    margin-left: 10px;
-  }
-  
+
+.f-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 300px;
+  margin-bottom: 8px;
+}
+
+.search-button {
+  margin-bottom: 2%;
+  background-color: #6ba86f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #1b6244;
+}
+
+.add-friend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.f-form {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+    width: 500px;
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.f-username {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.f-button {
+  background-color: #6ba86f;
+  color: #fff;
+  margin-left: 70%;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.f-button:hover {
+  background-color: #1b6244;
+}
+
+.reset-button {
+  background-color: #6ba86f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+  background-color: #1b6244;
+}
+
+.no-users-found {
+  margin-top: 16px;
+  color: #777;
+}
