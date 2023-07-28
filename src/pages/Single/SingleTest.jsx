@@ -22,16 +22,25 @@ function SingleTest() {
     dispatch(fetchAllTestQuestionThunk());
   }, [dispatch, testId]);
 
+    const user = useSelector((state) => state.user);
+    const isAdmin = user.username === "admin"; 
+
   return (
     <div className="test-container">
       {singleTest ? (
         <div>
           <h2 className="title">{singleTest.testName}</h2>
           <p className="test-level">Difficulty: {singleTest.difficulty}</p>
-          <Link to={`/test/${testId}/testQuestion/add`}>
-            <button class="add1-btn">Add Test Question</button>
-          </Link>
-          <ListingTestQuestion list={testQuestion} testId={singleTest.id} isTestCompleted={isTestCompleted} />
+          {isAdmin && (
+            <Link to={`/test/${testId}/testQuestion/add`}>
+              <button class="add1-btn">Add Test Question</button>
+            </Link>
+          )}
+          <ListingTestQuestion
+            list={testQuestion}
+            testId={singleTest.id}
+            isTestCompleted={isTestCompleted}
+          />
         </div>
       ) : (
         <p className="info-message">No Test information currently</p>
