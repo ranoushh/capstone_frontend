@@ -15,7 +15,7 @@ export const fetchAllTestQuestionThunk = () => {
     try {
       console.log("FETCH_ALL_TESTQUESTION_THUNK is firing");
       const response = await axios.get(
-        "http://localhost:8080/api/testQuestion"
+        `${process.env.REACT_APP_BACKEND_URL}/api/testQuestion`
       );
       console.log("FETCH_ALL_TESTQUESTION_THUNK completed");
       dispatch(fetchAllTestQuestion(response.data));
@@ -39,7 +39,7 @@ export const fetchSingleTestQuestionThunk = (id) => {
     try {
       console.log("FETCH_SINGLE_TESTQUESTION_THUNK is firing");
       const response = await axios.get(
-        `http://localhost:8080/api/testQuestion/${id}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/testQuestion/${id}`
       );
       console.log("FETCH_SINGLE_TESTQUESTION_THUNK completed");
       dispatch(fetchSingleTestQuestion(response.data));
@@ -50,7 +50,7 @@ export const fetchSingleTestQuestionThunk = (id) => {
 };
 
 export const addTestQuestion = (payload) => {
- console.log("ADD TESTQUESTION ACTION");
+  console.log("ADD TESTQUESTION ACTION");
   return {
     type: TestQuestionActionType.ADD_TEST_QUESTION,
     payload: payload,
@@ -62,7 +62,7 @@ export const addTestQuestionThunk = (newTestQuestion) => {
     try {
       console.log("add_TESTQUESTION_THUNK is firing");
       const response = await axios.post(
-        "http://localhost:8080/api/testQuestion",
+        `${process.env.REACT_APP_BACKEND_URL}/api/testQuestion`,
         newTestQuestion
       );
       dispatch(addTestQuestion(response.data));
@@ -83,7 +83,7 @@ export const editTestQuestionThunk = (testQuestion) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/testQuestion/${testQuestion.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/testQuestion/${testQuestion.id}`,
         testQuestion
       );
       dispatch(editTestQuestion(response.data));
@@ -92,7 +92,6 @@ export const editTestQuestionThunk = (testQuestion) => {
     }
   };
 };
-
 
 export const deleteTestQuestion = (payload) => {
   return {
@@ -105,7 +104,7 @@ export const deleteTestQuestionThunk = (testQuestionId) => {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/testQuestion/${testQuestionId}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/testQuestion/${testQuestionId}`
       );
       dispatch(deleteTestQuestion(response.data));
     } catch (error) {

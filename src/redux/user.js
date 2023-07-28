@@ -23,9 +23,12 @@ const removeUser = () => ({ type: REMOVE_USER });
  */
 export const me = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:8080/auth/me", {
-      withCredentials: true,
-    });
+    const res = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/auth/me`,
+      {
+        withCredentials: true,
+      }
+    );
     console.log("ME RESPONSE", res.data);
     dispatch(getUser(res.data));
   } catch (err) {
@@ -36,7 +39,7 @@ export const me = () => async (dispatch) => {
 export const login = (email, password) => async (dispatch) => {
   let res;
   try {
-    res = await axios.post(`http://localhost:8080/auth/login`, {
+    res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
       email,
       password,
     });
@@ -54,10 +57,10 @@ export const login = (email, password) => async (dispatch) => {
 export const signup = (email, password, username) => async (dispatch) => {
   let res;
   try {
-    res = await axios.post(`http://localhost:8080/auth/signup`, {
+    res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/signup`, {
       email,
       password,
-      username
+      username,
     });
   } catch (authError) {
     return dispatch(getUser({ error: authError }));
@@ -74,7 +77,7 @@ export const signup = (email, password, username) => async (dispatch) => {
 // !! Not working or logging out of session
 export const logout = () => async (dispatch) => {
   try {
-    await axios.post("http://localhost:8080/auth/logout");
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/logout`);
     dispatch(removeUser());
   } catch (err) {
     console.error(err);

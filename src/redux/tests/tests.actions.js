@@ -14,7 +14,9 @@ export const fetchAllTestsThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCH_ALL_TESTS_THUNK is firing");
-      const response = await axios.get("http://localhost:8080/api/test");
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/test`
+      );
       console.log("FETCH_ALL_TESTS_THUNK completed");
       dispatch(fetchAllTests(response.data));
     } catch (error) {
@@ -36,7 +38,9 @@ export const fetchSingleTestThunk = (id) => {
   return async (dispatch) => {
     try {
       console.log("FETCH_SINGLE_TEST_THUNK is firing");
-      const response = await axios.get(`http://localhost:8080/api/test/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/test/${id}`
+      );
       console.log("Test", response.data);
       console.log("FETCH_SINGLE_TEST_THUNK completed");
       dispatch(fetchSingleTest(response.data));
@@ -57,7 +61,7 @@ export const addTestThunk = (newTest) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/test",
+        `${process.env.REACT_APP_BACKEND_URL}/api/test`,
         newTest
       );
       dispatch(addTest(response.data));
@@ -78,7 +82,7 @@ export const editTestThunk = (test) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/test/${test.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/test/${test.id}`,
         test
       );
       dispatch(editTest(response.data));
@@ -99,7 +103,7 @@ export const deleteTestThunk = (testId) => {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/test/${testId}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/test/${testId}`
       );
       dispatch(deleteTest(response.data));
     } catch (error) {
@@ -113,15 +117,17 @@ export const markTestCompleted = (payload) => ({
   payload: payload,
 });
 
-export const markTestCompletedThunk = (id) =>{
+export const markTestCompletedThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log('COMPLETE TEST THUNK IS FIRING');
-      const response = await axios.put(`http://localhost:8080/api/test/markCompleted/${id}`);
-      console.log('COMPLETE TEST THUNK COMPLETED');
+      console.log("COMPLETE TEST THUNK IS FIRING");
+      const response = await axios.put(
+        `${process.env.REACT_APP_BACKEND_URL}/api/test/markCompleted/${id}`
+      );
+      console.log("COMPLETE TEST THUNK COMPLETED");
       dispatch(markTestCompleted(response.data));
     } catch (error) {
       console.error(error);
     }
   };
-}
+};

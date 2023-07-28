@@ -14,7 +14,9 @@ export const fetchAllQuizQuestionThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCH_ALL_QUIZQUESTION_THUNK is firing");
-      const response = await axios.get("http://localhost:8080/api/quizQuestion");
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/quizQuestion`
+      );
       console.log("FETCH_ALL_QUIZQUESTION_THUNK completed");
       dispatch(fetchAllQuizQuestion(response.data));
     } catch (error) {
@@ -36,7 +38,9 @@ export const fetchSingleQuizQuestionThunk = (id) => {
   return async (dispatch) => {
     try {
       console.log("FETCH_SINGLE_QUIZQUESTION_THUNK is firing");
-      const response = await axios.get(`http://localhost:8080/api/quizQuestion/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/quizQuestion/${id}`
+      );
       console.log("FETCH_SINGLE_QUIZQUESTION_THUNK completed");
       dispatch(fetchSingleQuizQuestion(response.data));
     } catch (error) {
@@ -56,7 +60,7 @@ export const addQuizQuestionThunk = (newQuizQuestion) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/quizQuestion",
+        `${process.env.REACT_APP_BACKEND_URL}/api/quizQuestion`,
         newQuizQuestion
       );
       dispatch(addQuizQuestion(response.data));
@@ -77,7 +81,7 @@ export const editQuizQuestionThunk = (quizQuestion) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/quizQuestion/${quizQuestion.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/quizQuestion/${quizQuestion.id}`,
         quizQuestion
       );
       dispatch(editQuizQuestion(response.data));
@@ -98,7 +102,7 @@ export const deleteQuizQuestionThunk = (quizQuestionId) => {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/quizQuestion/${quizQuestionId}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/quizQuestion/${quizQuestionId}`
       );
       dispatch(deleteQuizQuestion(response.data));
     } catch (error) {
@@ -106,4 +110,3 @@ export const deleteQuizQuestionThunk = (quizQuestionId) => {
     }
   };
 };
-
