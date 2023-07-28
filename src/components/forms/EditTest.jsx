@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editTestThunk } from "../../redux/tests/tests.actions";
-import "./form.css";
+import "../../style/form.css";
 import { me } from "../../redux/user";
 
 
@@ -43,32 +43,41 @@ const EditTest = ({ languageId }) => {
 
 
   return (
-    <div className="forms">
-      <h1 className={"form-header"}>Edit Test</h1>
+    <div className="form-container">
+      <h1 className="form-title">Edit Test</h1>
       <form onSubmit={handleEditSubmit}>
-        <label>Test Name: </label>
-        <input
-          type="text"
-          name="testName"
-          value={editForm.testName || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Difficulty:</label>
-        <input
-          type="text"
-          name="difficulty"
-          value={editForm.difficulty || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Language ID: </label>
-        <input
-          type="number"
-          name="languageId"
-          value={editForm.languageId || ""}
-          onChange={HandleInputChange}
-        />
-
-        <button className="submitbtn" type="submit">
+        <div className="form-group">
+          <label className="form-label">Test Name: </label>
+          <input
+            type="text"
+            name="testName"
+            value={editForm.testName || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Difficulty:</label>
+          <input
+            type="text"
+            name="difficulty"
+            value={editForm.difficulty || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Language ID: </label>
+          <input
+            type="number"
+            name="languageId"
+            value={editForm.languageId || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+            readOnly
+          />
+        </div>
+        <button className="form-button" type="submit">
           Save
         </button>
       </form>

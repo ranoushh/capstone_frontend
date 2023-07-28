@@ -113,11 +113,11 @@ export const completeLesson = (payload) => ({
   payload: payload,
 });
 
-export const completeLessonThunk = (lesson) => {
+export const completeLessonThunk = (id) => {
   return async (dispatch) => {
     try {
       console.log('COMPLETE LESSON THUNK IS FIRING');
-      const response = await axios.put(`http://localhost:8080/api/lessons/${lesson.id}`, lesson);
+      const response = await axios.put(`http://localhost:8080/api/lessons/markCompleted/${id}`);
       console.log('COMPLETE LESSON THUNK COMPLETED');
       dispatch(completeLesson(response.data));
     } catch (error) {
