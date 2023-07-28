@@ -25,6 +25,9 @@ function SingleLanguage() {
     dispatch(fetchAllQuizzesThunk());
   }, [dispatch, languageId]);
 
+   const user = useSelector((state) => state.user);
+   const isAdmin = user.username === "admin"; 
+
   return (
     <div className="language-container">
       <h1 className="title">Let's learn {singleLanguage.languageName}!</h1>
@@ -32,19 +35,25 @@ function SingleLanguage() {
       {singleLanguage ? (
         <div>
           <h2 className="subheading">Lesson</h2>
-          <Link to={`/language/${languageId}/lesson/add`}>
+          {isAdmin && (
+            <Link to={`/language/${languageId}/lesson/add`}>
               <button class="add-btn">Add Lesson</button>
-          </Link>
+            </Link>
+          )}
           <ListingLessons list={lessons} languageId={singleLanguage.id} />
           <h2 className="subheading">Test</h2>
-          <Link to={`/language/${languageId}/test/add`}>
-            <button class="add-btn">Add Test</button>
-          </Link>
+          {isAdmin && (
+            <Link to={`/language/${languageId}/test/add`}>
+              <button class="add-btn">Add Test</button>
+            </Link>
+          )}
           <ListingTests list={tests} languageId={singleLanguage.id} />
           <h2 className="subheading">Quiz</h2>
-          <Link to={`/language/${languageId}/quiz/add`}>
-            <button class="add-btn">Add Quiz</button>
-          </Link>
+          {isAdmin && (
+            <Link to={`/language/${languageId}/quiz/add`}>
+              <button class="add-btn">Add Quiz</button>
+            </Link>
+          )}
           <ListingQuizzes list={quizzes} languageId={singleLanguage.id} />
         </div>
       ) : (
