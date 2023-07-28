@@ -36,7 +36,7 @@ const NavBar = ({ isLoggedIn }) => {
               <LinkButton to="/achievements">Achievements</LinkButton>
               <LinkButton to="/leaderboard">LeaderBoard</LinkButton>
               <LinkButton to="/chat">Chat</LinkButton>
-              <LinkButton to="/addfriend">AddFriend</LinkButton>
+              <LinkButton to="/addfriend">Friends</LinkButton>
               <LinkButton onClick={handleLogOut}>Logout</LinkButton>
             </div>
           ) : (

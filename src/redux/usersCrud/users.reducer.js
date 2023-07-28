@@ -3,7 +3,7 @@ import UserActionType from "./users.types";
 export const INITIAL_USER_STATE = {
   allUsers: [],
   singleUser: {},
-  friends: [],
+  friends: {},
   achievements: [],
   friendRequests: [],
 };
