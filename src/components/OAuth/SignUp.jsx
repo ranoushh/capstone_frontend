@@ -48,8 +48,10 @@ export default function SignUp() {
       </form>
 
       <div className="googleSignup">
-        <a href="http://localhost:8080/auth/google">Sign up with Google</a>
-      </div>    
+        <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google`}>
+          Sign up with Google
+        </a>
+      </div>
     </div>
   );
 }

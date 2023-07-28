@@ -41,7 +41,9 @@ export default function Login() {
       </form>
       {/* Move the "Log in with Google" link here */}
       <div className="googleLogin">
-        <a href="http://localhost:8080/auth/google">Log in with Google</a>
+        <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google`}>
+          Log in with Google
+        </a>
       </div>
     </div>
   );

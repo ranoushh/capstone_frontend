@@ -10,7 +10,9 @@ export const fetchAllUsers = (payload) => ({
 export const fetchAllUsersThunk = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:8080/api/users/allUsers");
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/allUsers`
+      );
       dispatch(fetchAllUsers(response.data));
     } catch (error) {
       console.error(error);
@@ -27,7 +29,9 @@ export const fetchSingleUser = (payload) => ({
 export const fetchSingleUserThunk = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/users/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/${id}`
+      );
       dispatch(fetchSingleUser(response.data));
     } catch (error) {
       console.error(error);
@@ -45,7 +49,7 @@ export const updateUserThunk = (updatedUser) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/users/updateAvatar/${updatedUser.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/updateAvatar/${updatedUser.id}`,
         updatedUser
       );
       dispatch(updateUser(response.data));
@@ -65,7 +69,8 @@ export const updateUserPointsThunk = (userId, points) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/users/updatePoints/${userId}`,{ points }
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/updatePoints/${userId}`,
+        { points }
       );
       dispatch(updateUserPoints(response.data));
     } catch (error) {
@@ -83,7 +88,9 @@ export const fetchFriends = (payload) => ({
 export const fetchFriendsThunk = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/users/friends/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/friends/${id}`
+      );
       console.log("completed fetch friends");
       dispatch(fetchFriends(response.data));
     } catch (error) {
@@ -101,7 +108,9 @@ export const addFriend = (payload) => ({
 export const addFriendThunk = (myID, friendId) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`http://localhost:8080/api/users/addfriend/${myID}/${friendId}`);
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/addfriend/${myID}/${friendId}`
+      );
       const friendData = response.data; // You might need to extract data from the response
       dispatch(addFriend(friendData));
     } catch (error) {
@@ -109,7 +118,6 @@ export const addFriendThunk = (myID, friendId) => {
     }
   };
 };
-
 
 export const getFriendRequests = (payload) => {
   console.log("GET FRIENDS REQUESTIS ACTION");
@@ -122,7 +130,9 @@ export const getFriendRequests = (payload) => {
 export const fetchFriendRequestsThunk = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/users/friendrequests/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/friendrequests/${id}`
+      );
       dispatch(getFriendRequests(response.data));
     } catch (error) {
       console.error(error);
@@ -144,8 +154,9 @@ export const acceptRequestThunk = (updatedFriendship) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
-      `http://localhost:8080/api/users/acceptrequest/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,  
-      updatedFriendship);
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/acceptrequest/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,
+        updatedFriendship
+      );
       dispatch(acceptRequest(response.data));
     } catch (error) {
       console.error(error);
@@ -164,8 +175,9 @@ export const declineRequestThunk = (updatedFriendship) => {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-      `http://localhost:8080/api/users/declinefriend/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,  
-      updatedFriendship);
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/declinefriend/${updatedFriendship.userId1}/${updatedFriendship.userId2}/${updatedFriendship.accepted}`,
+        updatedFriendship
+      );
       dispatch(declineRequest(response.data));
     } catch (error) {
       console.error(error);
@@ -180,12 +192,12 @@ export const deleteFriend = (payload) => {
   };
 };
 
-
 export const deleteFriendThunk = (myID, friendID) => {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-      `http://localhost:8080/api/users/deletefriend/${myID}/${friendID}`);
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/deletefriend/${myID}/${friendID}`
+      );
       dispatch(deleteFriend(response.data));
     } catch (error) {
       console.error(error);
@@ -206,7 +218,7 @@ export const fetchUnlockAchievementsThunk = (userId) => {
     try {
       console.log("FETCH AHCHIEVEMENT TRY", userId);
       const response = await axios.get(
-        `http://localhost:8080/api/users/${userId}/achievements`
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/${userId}/achievements`
       );
       console.log("FETCH ACHIEVMENT RESPONSE", response.data);
       dispatch(fetchUnlockAchievements(response.data.achievements));
@@ -215,4 +227,3 @@ export const fetchUnlockAchievementsThunk = (userId) => {
     }
   };
 };
-

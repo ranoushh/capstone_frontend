@@ -14,7 +14,9 @@ export const fetchAllQuizzesThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCH_ALL_QUIZZES_THUNK is firing");
-      const response = await axios.get("http://localhost:8080/api/quiz");
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/quiz`
+      );
       console.log("FETCH_ALL_QUIZZES_THUNK completed");
       dispatch(fetchAllQuizzes(response.data));
     } catch (error) {
@@ -36,7 +38,9 @@ export const fetchSingleQuizThunk = (id) => {
   return async (dispatch) => {
     try {
       console.log("FETCH_SINGLE_QUIZ_THUNK is firing");
-      const response = await axios.get(`http://localhost:8080/api/quiz/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/quiz/${id}`
+      );
       console.log("FETCH_SINGLE_QUIZ_THUNK completed");
       dispatch(fetchSingleQuiz(response.data));
     } catch (error) {
@@ -58,7 +62,7 @@ export const addQuizThunk = (newQuiz) => {
     try {
       console.log("ADD_QUIZ_THUNK is firing");
       const response = await axios.post(
-        "http://localhost:8080/api/quiz",
+        `${process.env.REACT_APP_BACKEND_URL}/api/quiz`,
         newQuiz
       );
       console.log("ADD_QUIZ_THUNK completed");
@@ -80,7 +84,7 @@ export const editQuizThunk = (quiz) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/quiz/${quiz.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/quiz/${quiz.id}`,
         quiz
       );
       dispatch(editQuiz(response.data));
@@ -101,7 +105,7 @@ export const deleteQuizThunk = (quizId) => {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/quiz/${quizId}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/quiz/${quizId}`
       );
       dispatch(deleteQuiz(response.data));
     } catch (error) {
@@ -115,15 +119,17 @@ export const markQuizCompleted = (payload) => ({
   payload: payload,
 });
 
-export const markQuizCompletedThunk = (id) =>{
+export const markQuizCompletedThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log('COMPLETE QUIZ THUNK IS FIRING');
-      const response = await axios.put(`http://localhost:8080/api/quiz/markCompleted/${id}`);
-      console.log('COMPLETE QUIZ THUNK COMPLETED');
+      console.log("COMPLETE QUIZ THUNK IS FIRING");
+      const response = await axios.put(
+        `${process.env.REACT_APP_BACKEND_URL}/api/quiz/markCompleted/${id}`
+      );
+      console.log("COMPLETE QUIZ THUNK COMPLETED");
       dispatch(markQuizCompleted(response.data));
     } catch (error) {
       console.error(error);
     }
   };
-}
+};

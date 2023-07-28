@@ -29,7 +29,7 @@ import EditTestQuestionPage from "../pages/Edit/EditTestQuestionPage";
 import EditQuizQuestionPage from "../pages/Edit/EditQuizQuestionPage";
 import ChatBot from "../pages/ChatBot";
 
-const socket = io.connect(`http://localhost:8080`);
+// const socket = io.connect(`${process.env.REACT_APP_BACKEND_URL}`);
 
 function App() {
   const isLoggedIn = useSelector((state) => !!state.user.id);

@@ -37,7 +37,7 @@ function Achievements({ userId, points }) {
       }
 
       await axios.post(
-        `http://localhost:8080/api/achievements/${userId}/unlock/${achievementId}`
+        `${process.env.REACT_APP_BACKEND_URL}/${userId}/unlock/${achievementId}`
       );
 
       await fetchAllAchievements();
