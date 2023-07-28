@@ -93,10 +93,11 @@ function Profile() {
   console.log("point: ", user.points);
   console.log("unlockedAchievements: ", unlockedAchievements);
   return (
-    <div>
-      <div>
+    <div id = "entire-container">
+        <div id="content-container">
+      {/* <div>
         <h1 id="profile-greeting">Welcome, {user.username}!</h1>
-      </div>
+      </div> */}
       <p></p>
       <p></p>
       <center>
@@ -104,12 +105,13 @@ function Profile() {
           // If popup is open, don't render the avatar profile
           null
         ) : (
-          <button style={{ borderRadius: "10px" }} onClick={handleClick}>
+          <button id = "profiles-button" onClick={handleClick}>
             <div className="card" style={profileCardStyle}>
               {/* Avatar changes upon refresh or re-clicking icon*/}
               {/* No need for the bg and blob divs since the background image is applied to the card */}
             </div>
           </button>
+          
         )}
       </center>
       {showPopup && (
@@ -135,11 +137,15 @@ function Profile() {
       )}
 
       <div>
+        <div>
+        <h1 id="profile-greeting">{user.username}</h1>
+        </div>
         <br></br>
-        <h2>Points: </h2>
+        <center>
+        <h2 id = "user-points">Points: </h2>
         {user.points ? user.points : "0"}
-        
-        <h2>Friends: </h2>
+        </center>
+        <h2 id= "user-friends">Friends: </h2>
         {friends && friends.length > 0 
             ? friends.map((item) => <li key={item}>{item.userId2 === user.id ? item.userId1 : item.userId2}
             <button onClick={() => deleteFriend(user.id, item.userId2)}>Delete Friend</button>
@@ -147,7 +153,7 @@ function Profile() {
             : "No Friends"}
 
         
-        <h2>Friend Requests:  </h2>
+        <h2 id = "user-requests">Friend Requests:  </h2>
         {friendRequests && friendRequests.length > 0
             ? friendRequests.map((item) => <li key={item}>
               {item.userId1}
@@ -157,7 +163,8 @@ function Profile() {
             : "No Requests"}
       </div>
 
-      <h2>Unlocked Achievements:</h2>
+      <center>
+      <h2 id = "user-achievements">Unlocked Achievements:</h2>
       <ul>
         {unlockedAchievements && unlockedAchievements.length > 0 ? (
           unlockedAchievements.map((achievement) => (
@@ -175,7 +182,10 @@ function Profile() {
           <li>No unlocked achievements yet.</li>
         )}
       </ul>
+      </center>
     </div>
+    </div>
+
   );
 }
 

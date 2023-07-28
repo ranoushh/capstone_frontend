@@ -1,9 +1,9 @@
   .card {
     text-align: center;
     position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 14px;
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
     z-index: 1111;
     overflow: hidden;
     display: flex;
@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-    border-radius: 10px;
+    margin-left: 33px;
   }
   
   .bg {
@@ -24,7 +24,7 @@
     z-index: 2;
     background: rgba(255, 255, 255, .95);
     backdrop-filter: blur(24px);
-    border-radius: 10px;
+    border-radius: 50px;
     overflow: hidden;
     outline: 2px solid white;
 
@@ -123,4 +123,10 @@
     height: 150px;
     border-radius: 10px;
     
+}
+
+#profiles-button {
+  border-radius: 100px;
+  width: 190px;
+  height: 190px;
 }

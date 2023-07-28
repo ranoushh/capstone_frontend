@@ -10,7 +10,7 @@ import Languages from "./pages/Languages";
 import SingleLanguage from "./pages/Single/SingleLanguage";
 import SingleQuiz from "./pages/Single/SingleQuiz";
 import SingleTest from "./pages/Single/SingleTest";
-import ProtectedRoute from "./Utils/Auth";
+import ProtectedRoute from "./components/Auth/ProtectedRoutes";
 import { HomePage, Navigation } from "./components";
 import AchievementsPage from "./pages/AchievementsPage";
 import AddFriend from "./pages/Add/AddFriend";
@@ -32,18 +32,25 @@ import EditQuizQuestionPage from "./pages/Edit/EditQuizQuestionPage";
 const socket = io.connect(`http://localhost:8080`);
 
 function App() {
-  const isLoggedIn = useSelector((state) => !!state.user.id);
-  const user = useSelector((state) => state.user);
+  const isLoggedIn = useSelector((state) => !!state?.user?.id);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   
   useEffect(() => {
     const fetchMe = async () => {
-      dispatch(await me());
-      setLoading(false);
+      try {
+        await dispatch(me());
+      } catch (error) {
+        console.log('error', error)
+      }
     };
     fetchMe();
+    setLoading(false);
+    // console.log("AppJSUseEffect");
+    // dispatch(me());
+    // setLoading(false);
+
   }, [dispatch, isLoggedIn]);
 
   if (loading) {
@@ -52,15 +59,15 @@ function App() {
   // const isLoggedIn = true;
   console.log("isloggingin" + isLoggedIn);
   return (
-    <Router>
+<>
       <NavBar isLoggedIn={isLoggedIn} />
-
       <Routes>
+        <Route path = "/" elememt = {<Login/> } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-        {/* <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}> */}
-
+        <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}>
+          
           <Route path="/home" element={<UserHome />} />
           <Route path="/chat" element={<Chat socket={socket} />} />
           <Route path="/profile" element={<Profile />} />
@@ -84,10 +91,10 @@ function App() {
           <Route path="/quiz/:quizId/quizQuestion/edit/:id"element={<EditQuizQuestionPage />}/>
           <Route path="/addfriend"element={<AddFriend />}/>
 
-        {/* </Route> */}
-
+        </Route>
       </Routes>
-    </Router>
+
+      </>
   );
 }
 
