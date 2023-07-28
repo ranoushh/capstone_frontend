@@ -66,7 +66,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-        <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}>
+        {/* <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}> */}
           
           <Route path="/home" element={<UserHome />} />
           <Route path="/chat" element={<Chat socket={socket} />} />
@@ -91,7 +91,7 @@ function App() {
           <Route path="/quiz/:quizId/quizQuestion/edit/:id"element={<EditQuizQuestionPage />}/>
           <Route path="/addfriend"element={<AddFriend />}/>
 
-        </Route>
+        {/* </Route> */}
       </Routes>
 
       </>
