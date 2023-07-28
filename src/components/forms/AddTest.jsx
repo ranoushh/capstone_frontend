@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const AddTest = ({ onSubmit, languageId}) => {
   const navigate = useNavigate();
-  const [newTest, setnewTest] = useState({});
+  const [newTest, setnewTest] = useState({ languageId: languageId });
 
   const HandleInputChange = (event) => {
     setnewTest({
@@ -67,6 +67,7 @@ const AddTest = ({ onSubmit, languageId}) => {
             name="languageId"
             value={newTest.languageId}
             onChange={HandleInputChange}
+            readOnly
             className="form-input"
           />
         </div>

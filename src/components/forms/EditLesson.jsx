@@ -87,6 +87,7 @@ const EditLesson = ({ languageId }) => {
             value={editForm.languageId || ""}
             onChange={HandleInputChange}
             className="form-input"
+            readOnly
           />
         </div>
         <button className="form-button" type="submit">

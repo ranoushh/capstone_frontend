@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const AddTestQuestion = ({ onSubmit, testId }) => {
   const navigate = useNavigate();
-  const [newTestQuestion, setNewTestQuestion] = useState({});
+  const [newTestQuestion, setNewTestQuestion] = useState({ testId: testId,});
 
   const handleInputChange = (event) => {
     setNewTestQuestion({
@@ -88,6 +88,7 @@ const AddTestQuestion = ({ onSubmit, testId }) => {
             name="testId"
             value={newTestQuestion.testId}
             onChange={handleInputChange}
+            readOnly
           />
         </div>
         <button className="form-button" type="submit">
