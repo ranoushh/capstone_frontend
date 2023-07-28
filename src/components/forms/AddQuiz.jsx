@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const AddQuiz = ({ onSubmit, languageId }) => {
   const navigate = useNavigate();
-  const [newQuiz, setnewQuiz] = useState({});
+  const [newQuiz, setnewQuiz] = useState({ languageId: languageId });
 
   const HandleInputChange = (event) => {
     setnewQuiz({
@@ -67,6 +67,7 @@ const AddQuiz = ({ onSubmit, languageId }) => {
             name="languageId"
             value={newQuiz.languageId}
             onChange={HandleInputChange}
+            readOnly
             className="form-input"
           />
         </div>
