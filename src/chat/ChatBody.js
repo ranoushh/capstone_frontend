@@ -14,6 +14,8 @@ function ChatBody ({messages}){
     window.location.reload();
   };
 
+  {console.log('messages', messages)}
+
   return (
     <>
       <header className="chat__mainHeader">
@@ -24,25 +26,17 @@ function ChatBody ({messages}){
       </header>
 
       <div className="message__container">
-        {/* instead of localstorage get user etc, we need to check with our registered users table : needs oauth setup*/}
-        {messages.map((message) =>
-        isLoggedIn ? (
-          // message.name === email ? (
-            <div className="message__chats" key={message.id}>
-              <p className="sender__name">You</p>
-              <div className="message__sender">
-                <p>{message.text}</p>
-              </div>
-            </div>
-          ) : (
-            <div className="message__chats" key={message.id}>
-              <p>{message.name}</p>
-              <div className="message__recipient">
-                <p>{message.text}</p>
-              </div>
-            </div>
-          )
-        )}
+
+
+      {messages.map((message) => (
+  <div className="message__chats" key={message.id}>
+    <p className="sender__name">You</p>
+    <div className="message__sender">
+      <p>{message.text}</p>
+    </div>
+  </div>
+))}
+
 
         {/* <div className="message__status">
           <p>Someone is typing...</p>
