@@ -50,11 +50,13 @@ function Profile() {
   }
 
   async function handleAccept(myID, friendID) {
+    console.log("at accepted")
     const updatedFriendship = {
       userId1: friendID,
       userId2: myID,
       accepted: true,
     };
+    console.log("after object")
     await dispatch(acceptRequestThunk(updatedFriendship));
     await fetchAllData();
     // await fetchAllData();
@@ -157,21 +159,21 @@ function Profile() {
           : "no friends"}
 
         <h2>Friend Requests: </h2>
-        {friendRequests && friendRequests.length > 0
+        {/* {friendRequests && friendRequests.length > 0
           ? friendRequests.map((item) => (
               <li key={item}>
-                {item.userId1}
-                <button onClick={() => handleAccept(user.id, item.userId1)}>
+                {item.username}
+                <button onClick={() => handleAccept(user.id, item.id)}>
                   {" "}
                   Accept
                 </button>
-                <button onClick={() => handleReject(user.id, item.userId1)}>
+                <button onClick={() => handleReject(user.id, item.id)}>
                   {" "}
                   Reject{" "}
                 </button>
               </li>
             ))
-          : "No Requests"}
+          : "No Requests"} */}
       </div>
 
       <h2>Unlocked Achievements:</h2>
