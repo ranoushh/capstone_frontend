@@ -85,11 +85,13 @@
     margin-top: 16px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   
   .yes-button,
   .no-button {
-    margin: 0 8px;
+    margin: 8px;
     padding: 24px 48px;
     background-color: #EBE6E8;
     border: none;
@@ -160,11 +162,17 @@
     justify-content: center;
     align-items: center;
     height: 100px;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     color: #db3a79;
     font-style: italic;
     font-family: "Courier New", monospace; /* Replace with your desired font-family */
+  }
+
+  .little-msg{
+    font-size: 20px;
+    margin-top: 1%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
   

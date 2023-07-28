@@ -35,6 +35,7 @@ export default function ListingQuizQuestion(props) {
       setIsAnswerCorrect(true);
       setUserScore((prevScore) => prevScore + currentCard.pointWorth);
       if(currentCardIndex === filteredQuizQuestion.length - 1){
+        console.log(quizId);
         dispatch(markQuizCompletedThunk(quizId))
         dispatch(updateUserPointsThunk(currentUser.id, userScore));
       }
@@ -103,19 +104,21 @@ export default function ListingQuizQuestion(props) {
                 )}
               </div>
             </div>
-            <Link
-              to={`/quiz/${quizId}/quizQuestion/edit/${currentCard.id}`}
-              className="text"
-            >
-              <button className="edit-btn">Edit</button>
-            </Link>
-            <button
-              type="button"
-              className="del-btn"
-              onClick={() => handleDelete(currentCard.id)}
-            >
-              Delete
-            </button>
+            <div className="button-container">
+              <Link
+                to={`/quiz/${quizId}/quizQuestion/edit/${currentCard.id}`}
+                className="text"
+              >
+                <button className="edit1-btn">Edit</button>
+              </Link>
+              <button
+                type="button"
+                className="del1-btn"
+                onClick={() => handleDelete(currentCard.id)}
+              >
+                Delete
+              </button>
+            </div>
           </>
         ) : (
           <h1 className="info-message">

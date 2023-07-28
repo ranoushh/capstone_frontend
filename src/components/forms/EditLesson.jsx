@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "./form.css";
+import "../../style/form.css";
 import { editLessonThunk } from "../../redux/lessons/lessons.actions";
 import { me } from "../../redux/user";
 
@@ -43,39 +43,54 @@ const EditLesson = ({ languageId }) => {
 
 
   return (
-    <div className="forms">
-      <h1 className={"form-header"}>Edit Lesson</h1>
+    <div className="form-container">
+      <h2 className="form-title">Edit Lesson</h2>
       <form onSubmit={handleEditSubmit}>
-        <label>Lesson Name: </label>
-        <input
-          type="text"
-          name="lessonName"
-          value={editForm.lessonName || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Description:</label>
-        <input
-          type="text"
-          name="description"
-          value={editForm.description || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Content:</label>
-        <input
-          type="text"
-          name="content"
-          value={editForm.content || ""}
-          onChange={HandleInputChange}
-        />
-        <label>Language ID: </label>
-        <input
-          type="number"
-          name="languageId"
-          value={editForm.languageId || ""}
-          onChange={HandleInputChange}
-        />
+        <div className="form-group">
+          <label className="form-label">Lesson Name: </label>
+          <input
+            type="text"
+            name="lessonName"
+            value={editForm.lessonName || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
 
-        <button className="submitbtn" type="submit">
+        <div className="form-group">
+          <label className="form-label">Description:</label>
+          <input
+            type="text"
+            name="description"
+            value={editForm.description || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Content:</label>
+          <textarea
+            name="content"
+            value={editForm.content || ""}
+            onChange={HandleInputChange}
+            className="content-form-input"
+            rows={4} 
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Language ID: </label>
+          <input
+            type="number"
+            name="languageId"
+            value={editForm.languageId || ""}
+            onChange={HandleInputChange}
+            className="form-input"
+            readOnly
+          />
+        </div>
+        <button className="form-button" type="submit">
           Save
         </button>
       </form>
