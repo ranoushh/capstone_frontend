@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../style/singleLanguage.css";
 import { useParams } from "react-router";
 import { deleteLessonThunk } from "../../redux/lessons/lessons.actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ListingLessons(props) {
   const dispatch = useDispatch();
@@ -22,28 +22,37 @@ export default function ListingLessons(props) {
       });
   };
 
+  const user = useSelector((state) => state.user);
+  console.log(user.username);
+
+  const isAdmin = user.username === "admin"; // Check if the user is an admin
+
   return filteredLessons.length > 0 ? (
     <div className="item-grid">
       {filteredLessons.map((item) => (
-        <div>
-          <Link key={item.id} className="card-link" to={`/lesson/${item.id}`}>
+        <div key={item.id}>
+          <Link className="card-link" to={`/lesson/${item.id}`}>
             <div className="container-item">
               <h2 className="item-name">{item.lessonName}</h2>
             </div>
           </Link>
-          <Link
-            to={`/language/${languageId}/lesson/edit/${item.id}`}
-            className="text"
-          >
-            <button className="edit-btn">Edit</button>
-          </Link>
-          <button
-            type="button"
-            className="del-btn"
-            onClick={() => handleDelete(item.id)}
-          >
-            Delete
-          </button>
+          {isAdmin && ( // Only show the "Edit" button for admin users
+            <Link
+              to={`/language/${languageId}/lesson/edit/${item.id}`}
+              className="text"
+            >
+              <button className="edit-btn">Edit</button>
+            </Link>
+          )}
+          {isAdmin && ( // Only show the "Delete" button for admin users
+            <button
+              type="button"
+              className="del-btn"
+              onClick={() => handleDelete(item.id)}
+            >
+              Delete
+            </button>
+          )}
         </div>
       ))}
     </div>

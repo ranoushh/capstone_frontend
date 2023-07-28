@@ -4,11 +4,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { me } from "../../redux/user";
 import { useSelector } from "react-redux";
 
-
-
 const AddLesson = ({ onSubmit, languageId }) => {
   const navigate = useNavigate();
-  const [newLesson, setnewLesson] = useState({});
+  const [newLesson, setnewLesson] = useState({
+    languageId: languageId,
+  });
 
   const HandleInputChange = (event) => {
     setnewLesson({
@@ -26,7 +26,8 @@ const AddLesson = ({ onSubmit, languageId }) => {
   const user = useSelector((state) => state.user); //just checking if the user is admin or not
   console.log(user.username);
 
-  if (user.username !== "admin") { //If not prevent access
+  if (user.username !== "admin") {
+    //If not prevent access
     return (
       <div>
         <div>You cannot add a new lesson at this time. </div>
@@ -34,7 +35,6 @@ const AddLesson = ({ onSubmit, languageId }) => {
       </div>
     );
   }
-
 
   return (
     <div className="form-container">
@@ -80,6 +80,7 @@ const AddLesson = ({ onSubmit, languageId }) => {
             name="languageId"
             value={newLesson.languageId}
             onChange={HandleInputChange}
+            readOnly
             className="form-input"
           />
         </div>

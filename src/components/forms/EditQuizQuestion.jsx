@@ -93,6 +93,7 @@ const EditQuizQuestion = ({ quizId }) => {
             value={editForm.quizId || ""}
             onChange={HandleInputChange}
             className="form-input"
+            readOnly
           />
         </div>
         <button className="form-button" type="submit">
