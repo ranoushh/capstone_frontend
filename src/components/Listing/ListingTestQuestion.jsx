@@ -13,7 +13,7 @@ export default function ListingTestQuestion(props) {
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const [userScore, setUserScore] = useState(0);
   const { list, testId } = props;
-   const currentUser = useSelector((state) => state.user);
+  const currentUser = useSelector((state) => state.user);
   const filteredTestQuestion = list.filter(
     (TestQuestion) => TestQuestion.testId === testId
   );
@@ -32,9 +32,9 @@ export default function ListingTestQuestion(props) {
     if (isCorrect && isAnswerCorrect === null) {
       setIsAnswerCorrect(true);
       setUserScore((prevScore) => prevScore + currentCard.pointWorth);
-      if(currentCardIndex === filteredTestQuestion.length - 1){
+      if (currentCardIndex === filteredTestQuestion.length - 1) {
         console.log("testid", testId);
-        dispatch(markTestCompletedThunk(testId))
+        dispatch(markTestCompletedThunk(testId));
         dispatch(updateUserPointsThunk(currentUser.id, userScore));
       }
     } else {
@@ -54,16 +54,18 @@ export default function ListingTestQuestion(props) {
     }, 1500);
   };
 
-    const handleDelete = (testQuestionId) => {
-      dispatch(deleteTestQuestionThunk(testQuestionId))
-        .then(() => {
-          window.location.reload();
-        })
-        .catch((error) => {
-          console.error("Error deleting testQuestion:", error);
-        });
-    };
+  const handleDelete = (testQuestionId) => {
+    dispatch(deleteTestQuestionThunk(testQuestionId))
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error deleting testQuestion:", error);
+      });
+  };
 
+  const user = useSelector((state) => state.user);
+  const isAdmin = user.username === "admin";
 
   return (
     <div>
@@ -104,19 +106,23 @@ export default function ListingTestQuestion(props) {
               </div>
             </div>
             <div className="button-container">
-              <Link
-                to={`/test/${testId}/testQuestion/edit/${currentCard.id}`}
-                className="text"
-              >
-                <button className="edit1-btn">Edit</button>
-              </Link>
-              <button
-                type="button"
-                className="del1-btn"
-                onClick={() => handleDelete(currentCard.id)}
-              >
-                Delete
-              </button>
+              {isAdmin && (
+                <Link
+                  to={`/test/${testId}/testQuestion/edit/${currentCard.id}`}
+                  className="text"
+                >
+                  <button className="edit1-btn">Edit</button>
+                </Link>
+              )}
+              {isAdmin && (
+                <button
+                  type="button"
+                  className="del1-btn"
+                  onClick={() => handleDelete(currentCard.id)}
+                >
+                  Delete
+                </button>
+              )}
             </div>
           </>
         ) : (
