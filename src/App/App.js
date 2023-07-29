@@ -28,6 +28,7 @@ import { Login, NavBar, SignUp, UserHome } from "../components";
 import EditTestQuestionPage from "../pages/Edit/EditTestQuestionPage";
 import EditQuizQuestionPage from "../pages/Edit/EditQuizQuestionPage";
 import ChatBot from "../pages/ChatBot";
+import LandingPage from "../pages/LandingPage";
 
 // const socket = io.connect(`${process.env.REACT_APP_BACKEND_URL}`);
 
@@ -57,6 +58,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path ="/" element={<LandingPage/>}/>
 
         <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />}>
           <Route path="/home" element={<UserHome />} />

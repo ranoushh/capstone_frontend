@@ -62,6 +62,7 @@ function Profile() {
     await fetchAllData();
     // await fetchAllData();
   }
+  
 
   async function handleReject(myID, friendID) {
     const updatedFriendship = {
@@ -160,7 +161,7 @@ function Profile() {
             let friendData = friend[1]
             return (
               <li key={friendData.username}>
-                {friendData.Friendship.accepted === true ? (
+                {friendData.Friendship && friendData.Friendship.accepted === true ? (
                   <React.Fragment>
                     {friendData.username}
                     <button onClick={() => deleteFriend(user.id, friendData.id)}>Delete Friend</button>
@@ -173,6 +174,25 @@ function Profile() {
           : "no friends"}
         </center>
         <h2>Friend Requests: </h2>
+        {Object.keys(friendRequests).length > 0
+          ? 
+          <ul>
+          {Object.entries(friendRequests).map((request) => {
+            let friendData = request[1]
+            return (
+              <li key={friendData.username}>
+                {friendData.Friendship && friendData.Friendship.accepted === false ? (
+                  <React.Fragment>
+                    {friendData.username}
+                    <button onClick={() => handleAccept(user.id, friendData.id)}>Accept Friend</button>
+                    <button onClick={() => handleReject(user.id, friendData.id)}>Delete Friend</button>
+                  </React.Fragment>
+                ) : null}
+              </li>
+            );
+          })}
+          </ul>
+          : "no requests"}
         {/* {friendRequests && friendRequests.length > 0
           ? friendRequests.map((item) => (
               <li key={item}>
