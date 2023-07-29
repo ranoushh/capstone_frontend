@@ -1,179 +1,103 @@
-/* Global Styles */
-/* styles.css */
+/* LandingPage.css */
 
-/* Add the following CSS rule at the top of the file to set the background image */
-body {
-    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fvector-art%2F6529745-castle-with-majestic-palace-architecture-and-fairytale-like-forest-scenery-in-cartoon-flat-style-illustration&psig=AOvVaw21efQDhCei36Vbzp4J25a6&ust=1690747568466000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCLD71tPbtIADFQAAAAAdAAAAABAR');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-
-header {
-    background-color: #f9f9f9;
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #c7e8ca, #c0e3d4);
+  }
+  
+  .header {
     text-align: center;
-    padding: 20px 0;
-}
-
-header h1 {
+  }
+  
+  .title {
     font-size: 36px;
-    margin: 0;
-    color: #333;
-}
-
-header p {
+    color: #1b5e20;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
     font-size: 18px;
-    margin: 10px 0;
-    color: #666;
-}
-
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 60px 0;
-    background-color: #007BFF;
-    color: #fff;
-}
-
-.hero h2 {
-    font-size: 48px;
-    margin: 0;
-}
-
-.cta-button {
-    background-color: #FFA500;
+    color: #2e7d32;
+    margin-bottom: 20px;
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 30px;
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .description {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  .description p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .cta-button {
+    background-color: #edba74;
     color: #fff;
     border: none;
-    padding: 15px 30px;
-    font-size: 18px;
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
-}
-
-/* Features Section */
-.features {
-    padding: 60px 0;
+    transition: background-color 0.3s ease;
+    margin-left: 300px;
+  }
+  
+  .cta-button:hover {
+    background-color: rgb(230, 154, 91);
+  }
+  
+  .features {
     display: flex;
-    justify-content: center;
-}
-
-.feature {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
+  }
+  
+  .feature-card {
     text-align: center;
-    margin: 0 20px;
-    max-width: 300px;
-}
-
-.feature img {
-    width: 80px;
-    height: 80px;
-}
-
-.feature h3 {
-    font-size: 24px;
-    margin: 10px 0;
-    color: #333;
-}
-
-.feature p {
-    color: #666;
-}
-
-/* Testimonials Section */
-.testimonials {
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 60px 0;
-}
-
-.testimonial {
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-.testimonial img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.testimonial p {
-    font-style: italic;
-    color: #666;
-}
-
-.testimonial h4 {
-    font-size: 18px;
-    color: #333;
-}
-
-/* Call-to-Action Section */
-.cta {
-    text-align: center;
-    padding: 60px 0;
-    background-color: #FFA500;
-    color: #fff;
-}
-
-.cta h2 {
-    font-size: 36px;
-    margin: 0;
-}
-
-/* Footer Section */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer p {
-    margin: 0;
-}
-
-footer ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-footer li {
-    display: inline-block;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    flex: 1;
     margin: 0 10px;
-}
-
-footer a {
-    color: #fff;
-    text-decoration: none;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    /* Adjust styles for smaller screens if needed */
-    header h1 {
-        font-size: 24px;
-    }
-
-    header p {
-        font-size: 16px;
-    }
-
-    .hero h2 {
-        font-size: 36px;
-    }
-
-    .feature {
-        margin: 20px;
-    }
-
-    .testimonial img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .cta h2 {
-        font-size: 24px;
-    }
-}
+  }
+  
+  .feature-card h2 {
+    font-size: 24px;
+    color: #1b5e20;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card p {
+    line-height: 1.6;
+  }
+  
+  .footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #888;
+  }
+  

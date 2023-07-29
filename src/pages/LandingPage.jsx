@@ -12,8 +12,76 @@ export default function LandingPage() {
 
   return (
     <div>
-      
-    <header>
+    <div className="landing-container">
+      <div className="header">
+        <h1 className="title">Polyglot Palace</h1>
+        <p className="subtitle">Learn Languages with Fun and Ease!</p>
+      </div>
+      <div className="main-content">
+        <div className="hero-image">
+          <img
+            src="/images/language_learning.png"
+            alt="Language Learning Illustration"
+          />
+        </div>
+        <div className="description">
+          <p>
+            Welcome to Polyglot Palace, your one-stop destination for language
+            learning. Whether you're a beginner or an advanced learner, we have
+            the right tools and courses to help you master multiple languages
+            with ease.
+          </p>
+          <p>
+            Our interactive and gamified approach to learning ensures that you
+            have fun while picking up new vocabulary, grammar, and speaking
+            skills. Say goodbye to boring textbooks and hello to immersive and
+            engaging lessons!
+          </p>
+          <p>
+            Join our global community of language enthusiasts and embark on a
+            linguistic journey like no other. Unlock achievements, track your
+            progress, and connect with language learners from all over the
+            world.
+          </p>
+          <button onClick= {handleButton}className="cta-button">Get Started</button>
+        </div>
+      </div>
+      <div className="features">
+        <div className="feature-card">
+          <img
+            src="/images/interactive_lessons.png"
+            alt="Interactive Lessons"
+          />
+          <h2>Interactive Lessons</h2>
+          <p>
+            Engaging and interactive lessons that make language learning fun
+            and effective!
+          </p>
+        </div>
+        <div className="feature-card">
+          <img src="/images/gamified_learning.png" alt="Gamified Learning" />
+          <h2>Thriving Community</h2>
+          <p>
+            Connect with your friends and compete, earning points and achievements
+            as you progress!
+          </p>
+        </div>
+        <div className="feature-card">
+          <img src="/images/community.png" alt="Community" />
+          <h2>ChatBot</h2>
+          <p>
+            Learn through our advanced AI ChatBot, who helps you on the go in any 
+            language you'd like!
+          </p>
+        </div>
+      </div>
+      <footer className="footer">
+        <p>&copy; 2023 Polyglot Palace. All rights reserved.</p>
+      </footer>
+    </div>
+
+
+    {/* <header>
         <h1>Polyglot Palace</h1>
         <h1>Unlock the World with Language</h1>
     </header>
@@ -63,7 +131,7 @@ export default function LandingPage() {
             <li><a href="terms.html">Terms of Service</a></li>
         </ul>
     </footer>
-    
+     */}
     
     </div>
   )
