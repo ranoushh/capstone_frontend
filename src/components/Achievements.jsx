@@ -48,8 +48,8 @@ function Achievements({ userId, points }) {
   };
 
   return (
-    <div>
-      <h1 className="achievement-title">Achievement</h1>
+    <div className="achievement-body" >
+      <h1 className="achievement-title">Achievements</h1>
       <h2 className="achievement-user-info">Your points: {points} pts</h2>
       <div className="achievement-container">
         {allAchievements.map((achievement) => (

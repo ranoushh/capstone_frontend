@@ -1,4 +1,6 @@
-
+.achievement-body{
+  background-color: #faf8ef;
+}
 
 .achievement-title{
  font-size: 3.5rem;
@@ -23,6 +25,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  text-align: center;
 }
 
 .achievement-card {

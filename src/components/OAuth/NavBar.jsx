@@ -23,9 +23,12 @@ const NavBar = ({ isLoggedIn }) => {
 
   return (
     <div className="navbar-container">
-      <div className="navbar-left">
+      <div className="navbar-left"> 
+      <span>
         <h1 className="navbar-title">Polyglot Palace</h1>
+        </span>
       </div>
+      
       <div className="navbar-right">
         <nav className="navbar-nav">
           {isLoggedIn ? (
@@ -42,11 +45,9 @@ const NavBar = ({ isLoggedIn }) => {
           ) : (
             <div className="navbar-links">
               <div className="navbar-auth">
-                <h4 className="navbar-auth-text">Not a User?</h4>
                 <LinkButton to="/signup">Sign Up</LinkButton>
               </div>
               <div className="navbar-auth">
-                <h4 className="navbar-auth-text">Already a User?</h4>
                 <LinkButton to="/login">Login</LinkButton>
               </div>
             </div>
