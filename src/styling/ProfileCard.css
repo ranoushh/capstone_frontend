@@ -146,11 +146,12 @@
 
 .accept-button {
   margin-bottom: 0.5%;
+  margin-left: 5px;
   background-color: #5cb9b1;
   color: #fff;
   border: none;
-  border-radius: 7px;
-  padding: 21px 25px;
+  border-radius: 6px;
+  padding: 3px 3px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -162,11 +163,12 @@
 
 .reject-button {
   margin-bottom: 0.5%;
+  margin-left: 5px;
   background-color: #b95c5c;
   color: #fff;
   border: none;
-  border-radius: 7px;
-  padding: 21px 25px;
+  border-radius: 6px;
+  padding: 3px 3px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
