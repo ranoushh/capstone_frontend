@@ -59,7 +59,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path ="/" element={<LandingPage/>}/>
-
+        <Route path="/home" element={<UserHome />} />
+        
         <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />}>
           <Route path="/home" element={<UserHome />} />
           <Route path="/chatbot" element={<ChatBot />} />
