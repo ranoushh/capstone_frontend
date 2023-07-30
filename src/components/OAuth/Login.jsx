@@ -20,30 +20,34 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="background">
       <form onSubmit={handleSubmit} name="login">
         <div>
+        <h1 style={{textAlign: 'center'}}>Login!</h1>
           <label htmlFor="email">
             <small>Email</small>
           </label>
-          <input name="email" type="text" />
+          <input className="input" name="email" type="text" placeholder="Enter email..." />
         </div>
         <div>
           <label htmlFor="password">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input className="input" name="password" type="password" placeholder="Enter password" />
         </div>
         <div>
           <button type="submit">Log In</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       
+        <br></br>
       {/* Move the "Log in with Google" link here */}
-      <div className="googleLogin">
+      <div className="signup-options" style={{display: 'contents'}}>
+      <div className="googleSignup">
         <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google`}>
           Log in with Google
         </a>
+      </div>
       </div>
     </form>
 
