@@ -10,7 +10,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* Set the height to fill the available viewport height */
-    background: linear-gradient(135deg, #f9f9f9, #34221b);
+    /* background: linear-gradient(135deg, #f9f9f9, #34221b); */
+    background: linear-gradient(135deg, #c7e8ca, #b5e8d3);
 
   }
   

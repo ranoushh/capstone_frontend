@@ -1,8 +1,28 @@
-import React from 'react'
+import React from "react";
+import "../styling/LandingPage.css"
+import ParticlesBg from "particles-bg";
 
 export default function LandingPage() {
   return (
-    <div>
-        LandingPage</div>
-  )
+    <header id="header">
+      <div className="intro">
+        <ParticlesBg
+          type="circle"
+          num={7}
+          bg={{ zIndex: 0, position: "absolute", top: 0 }}
+        />
+        <div className="overlay">
+          <div className="row">
+            <div className="col-md-8 col-md-offset-2 intro-text">
+              <h1>
+                Welcome to <br></br>Polyglot Palace!
+                <span></span>
+              </h1>
+              <p>Start your language learning journey today.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 }

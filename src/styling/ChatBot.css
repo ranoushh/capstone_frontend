@@ -14,13 +14,13 @@
   
   .input__button__shadow--variant {
     border-radius: 15px;
-    background-color: #07372C;
+    background-color: #5cb9b1;
     padding: 10px;
     border: none;
   }
   
   .input__button__shadow--variant:hover {
-    background-color: #3C6659;
+    background-color: #3fb5ab;
   }
   
   .input__search--variant {
@@ -48,7 +48,8 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #bbd9c4; /* background color for the whole page */
+    /* background-color: #bbd9c4; background color for the whole page */
+    background: linear-gradient(135deg, #c7e8ca, #b5e8d3);
   }
   
   .container {
@@ -64,7 +65,7 @@
   
   .chatbot-response {
 
-    background: linear-gradient(to bottom, #cff0e3, #d7f1e6);
+    background: linear-gradient(to bottom, #e7ffe8, #e7fffe);
     border-radius: 30px;
     padding: 1em 1em;
     box-shadow: 0em 1em 3em #beecdc64;
@@ -73,7 +74,7 @@
     margin-top: 70px;
   }
   .input__container--variant{
-    background: linear-gradient(to bottom, #cff0e3, #d7f1e6);
+    background: linear-gradient(to bottom, #e7ffe8, #e7fffe);
     border-radius: 30px;
     padding: 1em 1em;
     box-shadow: 0em 1em 3em #beecdc64;

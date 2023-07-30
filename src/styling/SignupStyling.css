@@ -1,15 +1,17 @@
-/* body {
-    background-color: #aea7e4;
+body {
+    background-color: #FAF8EF;;
 }
 
-.background {
-    width: 430px;
-    height: 520px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
+.input {
+    border: solid #000000;
+    /* font-weight: bold; */
+    border-radius: 5px;
 }
+.input::placeholder {
+    color: #2e9463;
+    opacity: 1;
+}
+
 
 .background .shape {
     height: 200px;
@@ -30,37 +32,38 @@
     bottom: -80px;
 }
 
+
 form {
-    height: 520px;
-    width: 460px; /* Increase the width to accommodate wider textboxes 
+    background: linear-gradient(135deg, #c7e8ca, #b5e8d3);
+    width: 460px; /* Increase the width to accommodate wider textboxes */
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
+    top: 65%;
     left: 50%;
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
     padding: 50px 35px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.13);
-    display: flex; /* Add display flex to center the content 
-    flex-direction: column; /* Align the content vertically 
+    backdrop-filter: blur(px);
+    display: flex; /* Add display flex to center the content */
+    flex-direction: column; /* Align the content vertically */
     align-items: center;
 }
 
 /* Rest of your styles remain the same 
-
+*/
 
 .googleLogin {
     position: absolute;
     bottom: 60px; 
-    z-index: 3; /* Ensure the link is on top of the form 
-    margin-bottom: 1rem; /* Optional: Add some margin at the bottom 
+    z-index: 3; /* Ensure the link is on top of the form */
+    margin-bottom: 1rem; /* Optional: Add some margin at the bottom */
 }
 
 form * {
     font-family: 'Poppins', sans-serif;
-    color: #ffffff;
+    font-weight: bold;
+    color: #2e9463;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -98,8 +101,8 @@ input {
 
 button {
     margin-top: 50px;
-    width: 80px;
-    background-color: #ffffff;
+    width: 100px;
+    background-color: #FAF8EF;
     color: #080710;
     padding: 15px 0;
     font-size: 18px;
@@ -107,6 +110,9 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+button:hover {
+    background-color: #2e9463;
+  }
 .container {
     display: flex;
     flex-direction: column;
@@ -114,9 +120,7 @@ button {
   }
   
   .googleSignup {
-    position: absolute;
-    bottom: 60px; /* Position the link 60px from the bottom 
-    left: 630px; /* Position the link 35px from the left 
-    z-index: 3; /* Ensure the link is on top of the form 
-    margin-bottom: 1rem; /* Optional: Add some margin at the bottom 
-} */
+    bottom: 60px; /* Position the link 60px from the bottom */
+    z-index: 3; /* Ensure the link is on top of the form */
+    margin-bottom: 1rem; /* Optional: Add some margin at the bottom */
+} 
