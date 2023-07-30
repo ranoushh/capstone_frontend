@@ -1,4 +1,6 @@
-
+.single-lesson{
+  background-color: #faf8ef;
+}
 .lesson-grid {
     display: flex;
     justify-content: center;

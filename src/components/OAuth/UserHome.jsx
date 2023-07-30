@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { me } from "../../redux/user";
 import { useEffect } from "react";
 import "../../styling/HomeStyling.css";
+import ParticlesBg from "particles-bg";
 
 /**
  * COMPONENT
@@ -25,17 +26,19 @@ const UserHome = () => {
 
 
   return (
-    <div className="main-container">
+    <div className="homepage-container">
       <h1 id="home-greeting">Welcome, {username} !</h1>
-      <h4 className="app-name">PolyglotPalace</h4>
+      <div className="home-card">
+        <h4 className="app-name">PolyglotPalace</h4>
 
-      <p className="description">
-        PolyglotPalace is an immersive and engaging platform designed to help
-        users master various languages through interactive quizzes and engaging
-        challenges. Whether you're a beginner or looking to refine your language
-        skills, our app offers a personalized learning experience tailored to
-        your proficiency level.
-      </p>
+        <p className="description">
+          PolyglotPalace is an immersive and engaging platform designed to help
+          users master various languages through interactive quizzes and
+          engaging challenges. Whether you're a beginner or looking to refine
+          your language skills, our app offers a personalized learning
+          experience tailored to your proficiency level.
+        </p>
+      </div>
     </div>
   );
 };

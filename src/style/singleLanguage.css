@@ -1,5 +1,6 @@
 .language-container{
-  margin-bottom: 5%;
+  padding-bottom: 5%;
+  background-color: #faf8ef;
 }
 .item-grid {
   display: flex;

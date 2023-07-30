@@ -48,7 +48,7 @@ function Achievements({ userId, points }) {
   };
 
   return (
-    <div>
+    <div className="achievement-body">
       <h1 className="achievement-title">Achievement</h1>
       <h2 className="achievement-user-info">Your points: {points} pts</h2>
       <div className="achievement-container">
