@@ -19,19 +19,19 @@
 .search-input {
   padding: 8px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 10px;
   width: 300px;
   margin-bottom: 8px;
 }
 
 .search-button {
-  margin-bottom: 2%;
+  margin-bottom: 0.5%;
   background-color: #5cb9b1;
   color: #fff;
   border: none;
   border-radius: 7px;
-  padding: 8px 16px;
+  padding: 21px 25px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

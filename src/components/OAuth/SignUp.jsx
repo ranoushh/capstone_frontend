@@ -44,8 +44,8 @@ export default function SignUp() {
         </div>
         
         <div className="signup-options" style={{display: 'contents'}}>
-        <div classname="button">
-          <button type="submit">Sign Up</button>
+        <div >
+          <button className="signup-button" type="submit">Sign Up</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
         <br></br>
