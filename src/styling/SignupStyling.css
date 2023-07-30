@@ -99,7 +99,7 @@ input {
     color: #e5e5e5;
 }
 
-button {
+.signup-button {
     margin-top: 50px;
     width: 100px;
     background-color: #FAF8EF;
@@ -110,7 +110,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
-button:hover {
+.signup-button:hover {
     background-color: #2e9463;
   }
 .container {

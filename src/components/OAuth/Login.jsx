@@ -36,7 +36,7 @@ export default function Login() {
           <input className="input" name="password" type="password" placeholder="Enter password" />
         </div>
         <div>
-          <button type="submit">Log In</button>
+          <button className="signup-button" type="submit">Log In</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       

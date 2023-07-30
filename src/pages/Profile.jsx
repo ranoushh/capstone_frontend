@@ -51,18 +51,17 @@ function Profile() {
   }
 
   async function handleAccept(myID, friendID) {
-    console.log("at accepted")
+    console.log("at accepted");
     const updatedFriendship = {
       userId1: friendID,
       userId2: myID,
       accepted: true,
     };
-    console.log("after object")
+    console.log("after object");
     await dispatch(acceptRequestThunk(updatedFriendship));
     await fetchAllData();
     // await fetchAllData();
   }
-  
 
   async function handleReject(myID, friendID) {
     const updatedFriendship = {
@@ -101,138 +100,138 @@ function Profile() {
 
   console.log("unlockedAchievements: ", unlockedAchievements);
   return (
-    <div id = "entire-container">
-        <div id="content-container">
-      {/* <div>
-        <h1 id="profile-greeting">Welcome, {user.username}!</h1>
-      </div> */}
-      <p></p>
-      <p></p>
-      <center>
-        {showPopup ? ( // Check if popup is open
-          // If popup is open, don't render the avatar profile
-          null
-        ) : (
-          <button id = "profiles-button" onClick={handleClick}>
-            <div className="card" style={profileCardStyle}>
-              {/* Avatar changes upon refresh or re-clicking icon*/}
-              {/* No need for the bg and blob divs since the background image is applied to the card */}
-            </div>
-          </button>
-          
-        )}
-      </center>
-      {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <span className="close" onClick={() => setShowPopup(false)}>
-              &times;
-            </span>
-            {allAvatars.map((item) => (
-              <div className="img-container" key={item.id}>
-                <div>
-                  <img
-                    className="avatarPics"
-                    onClick={() => handleClickAvatar(item.id)} // Pass the item.id here
-                    src={item.imageURL}
-                    alt={`Avatar ${item.id}`}
-                  />
-                </div>
+    <div id="entire-container">
+      <div id="content-container">
+        <p></p>
+        <p></p>
+        <center>
+          {showPopup ? // If popup is open, don't render the avatar profile // Check if popup is open
+          null : (
+            <button className="profiles-button" onClick={handleClick}>
+              <div className="card" style={profileCardStyle}>
+                {/* Avatar changes upon refresh or re-clicking icon*/}
+                {/* No need for the bg and blob divs since the background image is applied to the card */}
               </div>
-            ))}
+            </button>
+          )}
+        </center>
+        {showPopup && (
+          <div className="popup">
+            <div className="popup-content">
+              <span className="close" onClick={() => setShowPopup(false)}>
+                &times;
+              </span>
+              {allAvatars.map((item) => (
+                <div className="img-container" key={item.id}>
+                  <div>
+                    <img
+                      className="avatarPics"
+                      onClick={() => handleClickAvatar(item.id)} // Pass the item.id here
+                      src={item.imageURL}
+                      alt={`Avatar ${item.id}`}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <div>
+        {/* <div> */}
         <div>
-        <h1 id="profile-greeting">{user.username}</h1>
+          <h1 id="profile-greeting">{user.username}</h1>
         </div>
         <br></br>
-        <center>
-        <h2 id = "user-points">Points: </h2>
-        {user.points ? user.points : "0"}
+        <br></br>
+        <br></br>
+      
 
-        <h2>Friends: </h2>
-        {Object.keys(friends).length > 0
-          ? 
+      
+          <h2 id="user-points">Points: </h2>
+          {user.points ? user.points : "0"}
+
+          <h2 id="user-achievements">Unlocked Achievements:</h2>
           <ul>
-          {Object.entries(friends).map((friend) => {
-            let friendData = friend[1]
-            return (
-              <li key={friendData.username}>
-                {friendData.Friendship && friendData.Friendship.accepted === true ? (
-                  <React.Fragment>
-                    {friendData.username}
-                    <button onClick={() => deleteFriend(user.id, friendData.id)}>Delete Friend</button>
-                  </React.Fragment>
-                ) : null}
-              </li>
-            );
-          })}
+            {unlockedAchievements && unlockedAchievements.length > 0 ? (
+              unlockedAchievements.map((achievement) => (
+                <li key={achievement.id}>
+                  {achievement.achievementName}
+                  <p>{achievement.criteria}</p>
+                  <p>Points Requirement: {achievement.pointsRequirement}</p>
+                  <img className="achievement-image"
+                    src={achievement.imageURL}
+                    alt={`Achievement ${achievement.id}`}
+                  />
+                </li>
+              ))
+            ) : (
+              <li>No unlocked achievements yet.</li>
+            )}
           </ul>
-          : "no friends"}
-        </center>
-        <h2>Friend Requests: </h2>
-        {Object.keys(friendRequests).length > 0
-          ? 
-          <ul>
-          {Object.entries(friendRequests).map((request) => {
-            let friendData = request[1]
-            return (
-              <li key={friendData.username}>
-                {friendData.Friendship && friendData.Friendship.accepted === false ? (
-                  <React.Fragment>
-                    {friendData.username}
-                    <button onClick={() => handleAccept(user.id, friendData.id)}>Accept Friend</button>
-                    <button onClick={() => handleReject(user.id, friendData.id)}>Delete Friend</button>
-                  </React.Fragment>
-                ) : null}
-              </li>
-            );
-          })}
-          </ul>
-          : "no requests"}
-        {/* {friendRequests && friendRequests.length > 0
-          ? friendRequests.map((item) => (
-              <li key={item}>
-                {item.username}
-                <button onClick={() => handleAccept(user.id, item.id)}>
-                  {" "}
-                  Accept
-                </button>
-                <button onClick={() => handleReject(user.id, item.id)}>
-                  {" "}
-                  Reject{" "}
-                </button>
-              </li>
-            ))
-          : "No Requests"} */}
-      </div>
+        
 
-      <center>
-      <h2 id = "user-achievements">Unlocked Achievements:</h2>
-      <ul>
-        {unlockedAchievements && unlockedAchievements.length > 0 ? (
-          unlockedAchievements.map((achievement) => (
-            <li key={achievement.id}>
-              {achievement.achievementName}
-              <p>{achievement.criteria}</p>
-              <p>Points Requirement: {achievement.pointsRequirement}</p>
-              <img
-                src={achievement.imageURL}
-                alt={`Achievement ${achievement.id}`}
-              />
-            </li>
-          ))
-        ) : (
-          <li>No unlocked achievements yet.</li>
-        )}
-      </ul>
-      </center>
-    </div>
+          <h2>Friends: </h2>
+          {Object.keys(friends).length > 0 ? (
+            <ul>
+              {Object.entries(friends).map((friend) => {
+                let friendData = friend[1];
+                return (
+                  <li key={friendData.username}>
+                    {friendData.Friendship &&
+                    friendData.Friendship.accepted === true ? (
+                      <React.Fragment>
+                        {friendData.username}
+                        <button className="reject-button"
+                          onClick={() => deleteFriend(user.id, friendData.id)}
+                        >
+                          Delete Friend
+                        </button>
+                      </React.Fragment>
+                    ) : null}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            "No Friends"
+          )}
+          {/* </center> */}
+          <h2>Friend Requests: </h2>
+          {Object.keys(friendRequests).length > 0 ? (
+            <ul>
+              {Object.entries(friendRequests).map((request) => {
+                let friendData = request[1];
+                return (
+                  <li key={friendData.username}>
+                    {friendData.Friendship &&
+                    friendData.Friendship.accepted === false ? (
+                      <React.Fragment>
+                        {friendData.username}
+                        <button className="accept-button"
+                          onClick={() => handleAccept(user.id, friendData.id)}
+                        >
+                          Accept Friend
+                        </button>
+                        <button className="reject-button"
+                          onClick={() => handleReject(user.id, friendData.id)}
+                        >
+                          Delete Friend
+                        </button>
+                      </React.Fragment>
+                    ) : null}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            "No Requests"
+          )}
+        
+        </div>
     </div>
 
+    // </div>
+    // </div>
   );
 }
 

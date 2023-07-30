@@ -9,35 +9,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Set the height to fill the available viewport height */
-    /* background: linear-gradient(135deg, #f9f9f9, #34221b); */
+    height: 100vh; 
     background: linear-gradient(135deg, #c7e8ca, #b5e8d3);
 
   }
   
   #content-container {
-    background: linear-gradient(135deg, #f2945e, #e86633);
-    width: 800px; /* Set the desired width of the content container */
-    padding: 20px; /* Add padding to create space between content and the container's edges */
-    border-radius: 10px; /* Optional: Add rounded corners to the container */
-    /* You can also center the content vertically and horizontally if needed */
-    display: flex;
+    background-color: #f9ebd2;
+    width: 1200px; 
+    height:  600px;
+    padding: 20px; 
+    border-radius: 10px; 
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-left: 17px;
   }
   
-  #user-points{
-  }
 
-  #user-friends{
 
-  }
-
-  #user-requests{
-
-  }
-
-  #user-achievements{
-
-  }
