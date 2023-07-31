@@ -70,7 +70,7 @@ function Achievements({ userId, points }) {
             <div className="achievement-points">
               Points Requirement: <h2>{achievement.pointsRequirement}</h2>
             </div>
-            {achievement.isUnlocked ? (
+            {achievement.isUnlocked && points >= achievement.pointsRequirement ? (
               <p style={{ color: "#0fab3e" }}>Achievement already unlocked</p>
             ) : points >= achievement.pointsRequirement ? (
               <button
