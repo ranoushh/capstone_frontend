@@ -1,4 +1,5 @@
 ### Polyglot Palace 
+***
 
 Polyglot Palace is an immersive and engaging platform designed to help users master various languages through interactive quizzes and engaging challenges. Whether you're a beginner or looking to refine your language skills, our app offers a personalized learning experience tailored to your proficiency level.
 
