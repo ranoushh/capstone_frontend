@@ -37,6 +37,11 @@ Polyglot Palace is an immersive and engaging platform designed to help users mas
 - Express
 - DiceBear API
 
+### Dev Tools
+- Postico
+- Postman
+- Redux Dev Tools
+
 ### Future Updates 
 - Real-time chat with friends
 - More customizability options for users
