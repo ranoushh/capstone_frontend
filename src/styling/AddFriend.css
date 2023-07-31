@@ -17,16 +17,16 @@
 }
 
 .search-input {
-  padding: 8px;
+  padding: 18px;
   font-size: 16px;
-  border: 1px solid #000000;
+  border: 1px solid #2e9463;
   border-radius: 10px;
   width: 300px;
   margin-bottom: 8px;
 }
 
 .search-button {
-  margin-bottom: 0.5%;
+  margin-bottom: 2%;
   background-color: #5cb9b1;
   color: #fff;
   border: none;

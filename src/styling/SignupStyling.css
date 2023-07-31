@@ -33,7 +33,7 @@ body {
 }
 
 
-form {
+.signup-form {
     background: linear-gradient(135deg, #c7e8ca, #b5e8d3);
     width: 460px; /* Increase the width to accommodate wider textboxes */
     position: absolute;
@@ -60,7 +60,7 @@ form {
     margin-bottom: 1rem; /* Optional: Add some margin at the bottom */
 }
 
-form * {
+.signup-form * {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     color: #2e9463;
@@ -69,25 +69,25 @@ form * {
     border: none;
 }
 
-form h3 {
+.signup-form h3 {
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
 }
 
-label {
+.signup-label {
     display: block;
     margin-top: 30px;
     font-size: 16px;
     font-weight: 500;
 }
 
-input {
+.signup-input {
     display: block;
     height: 50px;
     width: 250px;
-    background-color: rgba(255, 255, 255, 0.07);
+    background-color: rgba(255, 255, 255, 0.468);
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;
@@ -96,7 +96,7 @@ input {
 }
 
 ::placeholder {
-    color: #e5e5e5;
+    color: #000000;
 }
 
 .signup-button {

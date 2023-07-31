@@ -21,19 +21,19 @@ export default function Login() {
 
   return (
     <div className="background">
-      <form onSubmit={handleSubmit} name="login">
+      <form className= "signup-form"onSubmit={handleSubmit} name="login">
         <div>
         <h1 style={{textAlign: 'center'}}>Login!</h1>
           <label htmlFor="email">
             <small>Email</small>
           </label>
-          <input className="input" name="email" type="text" placeholder="Enter email..." />
+          <input className="signup-input " name="email" type="text" placeholder="Enter email..." />
         </div>
         <div>
           <label htmlFor="password">
             <small>Password</small>
           </label>
-          <input className="input" name="password" type="password" placeholder="Enter password" />
+          <input className="signup-input " name="password" type="password" placeholder="Enter password..." />
         </div>
         <div>
           <button className="signup-button" type="submit">Log In</button>

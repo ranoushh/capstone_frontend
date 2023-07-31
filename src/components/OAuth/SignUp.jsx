@@ -22,25 +22,25 @@ export default function SignUp() {
 
   return (
     <div className="background">
-      <form onSubmit={handleSubmit} name="signup">
+      <form className= "signup-form" onSubmit={handleSubmit} name="signup">
         <div>
           <h1 style={{textAlign: 'center'}}>Sign Up Today!</h1>
-          <label htmlFor="email" placeHolder="signup...">
+          <label className="signup-label" htmlFor="email" placeHolder="signup...">
             <small>Email</small>
           </label>
-          <input className="input" name="email" type="text" placeholder="Enter email..."/>
+          <input className="signup-input " name="email" type="text" placeholder="Enter email..."/>
         </div>
         <div>
-          <label htmlFor="username">
+          <label className="signup-label" htmlFor="username">
             <small>Username</small>
           </label>
-          <input className="input" name="username" type="text" placeholder="Choose a username..."/>
+          <input className="signup-input " name="username" type="text" placeholder="Choose a username..."/>
         </div>
         <div>
-          <label htmlFor="password">
+          <label  className="signup-label" htmlFor="password">
             <small>Password</small>
           </label>
-          <input className="input" name="password" type="password"placeholder="Enter a password..." />
+          <input className="signup-input " name="password" type="password"placeholder="Enter a password..." />
         </div>
         
         <div className="signup-options" style={{display: 'contents'}}>
