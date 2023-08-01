@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+### Polyglot Palace 
+***
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Polyglot Palace is an immersive and engaging platform designed to help users master various languages through interactive quizzes and engaging challenges. Whether you're a beginner or looking to refine your language skills, our app offers a personalized learning experience tailored to your proficiency level.
 
-## Available Scripts
+### Features
+- OAuth & Local 
+- Lessons, Tests, Quizzes
+- Points, Achievements System
+- Add Friends
+- ChatBot 
 
-In the project directory, you can run:
+### User Stories 
+1. As a user, I want to be able to create a personalized profile so that I can track my language learning progress.
+2. As a user, I want to be able to take tests and quizzes to assess my progress and learn new vocabulary and grammar.
+3. As a user, I want to be able to add friends so that we can help each other learn languages.
+4. As a user, I want to be able to earn rewards for completing certain goals, such as unlocking achievement badges.
+5. As a user, I want to be able to translate any languages I want in the ChatBot.
+6. As a user, I want to be able to view a leaderboard of my friends and other users so that I can see how I'm progressing compared to others.
 
-### `npm start`
+### Frontend 
+- React
+- Redux
+- HTML
+- CSS
+- Javascript
+- OpenAI API
+- Axios
+- Particles BG
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Backend
+- Node.js
+- PostgreSQL
+- Sequelize
+- OAuth
+- Passport
+- Express
+- DiceBear API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Dev Tools
+- Postico
+- Postman
+- Redux Dev Tools
 
-### `npm test`
+### Future Updates 
+- Real-time chat with friends
+- More customizability options for users
+- Time tracking
+- Real-time competition among friends and strangers
+- Personalized comments and strategies for users to use
+- Site-wide translation
+- More languages for users to learn from
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Deployed With
+Netlify & Vercel
 
-### `npm run build`
+### Contributors
+Rana, Jiamin, Aminata, Nafisa
+@ranoushh
+@JiaminShi1226
+@acisse44
+@AliAngelinaaa
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🥳
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

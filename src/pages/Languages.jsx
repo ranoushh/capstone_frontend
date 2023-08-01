@@ -24,7 +24,7 @@ function Languages() {
   
 
   return (
-    <div className="language-container">
+    <div className="language-body">
       {/* <Navigation /> */}
       <h1 className="title">Languages</h1>
       <h2 className="subheading">Pick a language to learn from</h2>

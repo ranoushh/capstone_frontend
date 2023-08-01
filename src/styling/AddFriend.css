@@ -1,40 +1,43 @@
-/* AddFriend.css */
+
 
 .f-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 16px;
+  background: linear-gradient(135deg, #c7e8ca, #b5e8d3);
+  height: 1000px;
 }
 
 .search-field {
+  margin-top: 100px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .search-input {
-  padding: 8px;
+  padding: 18px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #2e9463;
+  border-radius: 10px;
   width: 300px;
   margin-bottom: 8px;
 }
 
 .search-button {
   margin-bottom: 2%;
-  background-color: #6ba86f;
+  background-color: #5cb9b1;
   color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
+  border-radius: 7px;
+  padding: 21px 25px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .search-button:hover {
-  background-color: #1b6244;
+  background-color: #41827c;
 }
 
 .add-friend {
@@ -56,6 +59,13 @@
   gap: 8px;
 }
 
+.f-form-content {
+  flex: 1; /* This will make the content fill the available space */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This will push the button to the right */
+}
+
 .f-username {
   font-size: 18px;
   font-weight: bold;
@@ -63,9 +73,9 @@
 }
 
 .f-button {
-  background-color: #6ba86f;
+  background-color: #5cb9b1;
   color: #fff;
-  margin-left: 70%;
+  /* margin-left: 53%; */
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
@@ -74,24 +84,38 @@
 }
 
 .f-button:hover {
-  background-color: #1b6244;
+  background-color: #41827c;
 }
 
 .reset-button {
-  background-color: #6ba86f;
+  background-color: #5cb9b1;
   color: #fff;
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .reset-button:hover {
-  background-color: #1b6244;
+  background-color: #41827c;
 }
 
 .no-users-found {
   margin-top: 16px;
   color: #777;
+}
+
+.success-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #41827c;
+  font-size: 18px;
+  font-weight: bold;
 }

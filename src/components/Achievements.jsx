@@ -37,7 +37,7 @@ function Achievements({ userId, points }) {
       }
 
       await axios.post(
-        `http://localhost:8080/api/achievements/${userId}/unlock/${achievementId}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/achievements/${userId}/unlock/${achievementId}`
       );
 
       await fetchAllAchievements();
@@ -48,8 +48,8 @@ function Achievements({ userId, points }) {
   };
 
   return (
-    <div className="achievement-body">
-      <h1 className="achievement-title">Achievement</h1>
+    <div className="achievement-body" >
+      <h1 className="achievement-title">Achievements</h1>
       <h2 className="achievement-user-info">Your points: {points} pts</h2>
       <div className="achievement-container">
         {allAchievements.map((achievement) => (
@@ -70,7 +70,7 @@ function Achievements({ userId, points }) {
             <div className="achievement-points">
               Points Requirement: <h2>{achievement.pointsRequirement}</h2>
             </div>
-            {achievement.isUnlocked ? (
+            {achievement.isUnlocked && points >= achievement.pointsRequirement ? (
               <p style={{ color: "#0fab3e" }}>Achievement already unlocked</p>
             ) : points >= achievement.pointsRequirement ? (
               <button

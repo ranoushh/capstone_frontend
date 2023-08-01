@@ -5,12 +5,14 @@ import {
   fetchAllUsersThunk,
   fetchFriendsThunk,
 } from "../../redux/usersCrud/users.actions";
+import { fetchAllAvatarsThunk } from "../../redux/avatars/avatars.actions";
 import { me } from "../../redux/user";
 import "../../styling/AddFriend.css";
 
 function AddFriend() {
   const user = useSelector((state) => state.user);
   const allUsers = useSelector((state) => state.usersCrud.allUsers);
+  const allAvatars = useSelector((state) => state.avatars.allAvatars);
   const [searchInput, setSearchInput] = useState("");
   const [findingUsers, setFindingUsers] = useState([]);
   const [isFriendRequestSent, setIsFriendRequestSent] = useState(false);
@@ -20,6 +22,7 @@ function AddFriend() {
     try {
       await dispatch(me());
       await dispatch(fetchAllUsersThunk());
+      await dispatch(fetchAllAvatarsThunk());
     } catch (error) {
       console.log("error fetching data " + error);
     }
@@ -48,11 +51,10 @@ function AddFriend() {
     setSearchInput("");
     setIsFriendRequestSent(false);
   }
-  
 
   return (
     <div className="f-container">
-      {!isFriendRequestSent && ( // Only show the search field if request not sent
+      {!isFriendRequestSent && (
         <div className="search-field">
           <input
             type="text"
@@ -76,14 +78,31 @@ function AddFriend() {
       ) : (
         <div className="add-friend">
           {findingUsers.length > 0 ? (
-            findingUsers.map((item) => (
-              <div className="f-form" key={item.id}>
-                <p className="f-username">{item.username}</p>
-                <button className="f-button" onClick={() => add(item.id)}>
-                  Add Friend
-                </button>
-              </div>
-            ))
+            findingUsers.map((item) => {
+              const itemAvatar = allAvatars.find(
+                (avatar) => parseInt(avatar.id) === item.avatarId
+              );
+
+              return (
+                <div className="f-form" key={item.id}>
+                  {itemAvatar && (
+                    <div>
+                      <img
+                        className="user-avatar"
+                        src={itemAvatar.imageURL}
+                        alt={`${item.username}'s avatar`}
+                      />
+                    </div>
+                  )}
+                  <div className="f-form-content">
+                  <p className="f-username">{item.username}</p>
+                  <button className="f-button" onClick={() => add(item.id)}>
+                    Add Friend
+                  </button>
+                </div>
+                </div>
+              );
+            })
           ) : (
             <p className="no-users-found">No User Found</p>
           )}
@@ -91,6 +110,58 @@ function AddFriend() {
       )}
     </div>
   );
+
+  // return (
+  //   <div className="f-container">
+  //     {!isFriendRequestSent && ( // Only show the search field if request not sent
+  //       <div className="search-field">
+  //         <input
+  //           type="text"
+  //           className="search-input"
+  //           placeholder="Search friend's user"
+  //           value={searchInput}
+  //           onChange={(e) => setSearchInput(e.target.value.toLowerCase())}
+  //         ></input>
+  //         <button className="search-button" onClick={handleSearch}>
+  //           Search
+  //         </button>
+  //       </div>
+  //     )}
+  //     {isFriendRequestSent ? (
+  //       <div>
+  //         <p className="success-message">Friend request sent!</p>
+  //         <button className="reset-button" onClick={handleReset}>
+  //           Search Again
+  //         </button>
+  //       </div>
+  //     ) : (
+  //       <div className="add-friend">
+  //         {findingUsers.length > 0 ? (
+  //           findingUsers.map((item) => (
+              
+  //             <div className="f-form" key={item.id}>
+  //               {itemAvatar && (
+  //               <div>
+  //                 <img
+  //                   className="user-avatar"
+  //                   src={itemAvatar.imageURL}
+  //                   alt={`${item.username}'s avatar`}
+  //                 />
+  //               </div>
+  //               )}
+  //               <p className="f-username">{item.username}</p>
+  //               <button className="f-button" onClick={() => add(item.id)}>
+  //                 Add Friend
+  //               </button>
+  //             </div>
+  //           ))
+  //         ) : (
+  //           <p className="no-users-found">No User Found</p>
+  //         )}
+  //       </div>
+  //     )}
+  //   </div>
+  // );
 }
 
 export default AddFriend;

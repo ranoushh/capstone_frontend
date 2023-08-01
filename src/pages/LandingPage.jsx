@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/LandingPage.css"
+import "../styling/LandingPage.css";
 import ParticlesBg from "particles-bg";
 
 export default function LandingPage() {
@@ -15,7 +15,7 @@ export default function LandingPage() {
           <div className="row">
             <div className="col-md-8 col-md-offset-2 intro-text">
               <h1>
-                Welcome to our language learning website!
+                Welcome to <br></br>Polyglot Palace!
                 <span></span>
               </h1>
               <p>Start your language learning journey today.</p>

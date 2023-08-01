@@ -14,7 +14,9 @@ export const fetchAllLanguagesThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCH_ALL_LANGUAGES_THUNK is firing");
-      const response = await axios.get("http://localhost:8080/api/languages");
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/languages`
+      );
       console.log("FETCH_ALL_LANGUAGES_THUNK completed");
       dispatch(fetchAllLanguages(response.data));
     } catch (error) {
@@ -37,7 +39,7 @@ export const fetchSingleLanguageThunk = (id) => {
     try {
       console.log("FETCH_SINGLE_LANGUAGE_THUNK is firing");
       const response = await axios.get(
-        `http://localhost:8080/api/languages/${id}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/languages/${id}`
       );
       console.log("FETCH_SINGLE_LANGUAGE_THUNK completed");
       dispatch(fetchSingleLanguage(response.data));

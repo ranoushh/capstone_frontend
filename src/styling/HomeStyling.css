@@ -1,15 +1,5 @@
-.homepage-container {
+.main-container {
   text-align: center;
-}
-
-.home-card{
-    background-color: #f7fcf4;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-  max-width: 50%;
-  margin: 0 auto;
 }
 
 /* Greeting heading */

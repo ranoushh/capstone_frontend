@@ -21,35 +21,43 @@ export default function SignUp() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name="signup">
+    <div className="background">
+      <form className= "signup-form" onSubmit={handleSubmit} name="signup">
         <div>
-          <label htmlFor="email">
+          <h1 style={{textAlign: 'center'}}>Sign Up Today!</h1>
+          <label className="signup-label" htmlFor="email" placeHolder="signup...">
             <small>Email</small>
           </label>
-          <input name="email" type="text" />
+          <input className="signup-input " name="email" type="text" placeholder="Enter email..."/>
         </div>
         <div>
-          <label htmlFor="username">
+          <label className="signup-label" htmlFor="username">
             <small>Username</small>
           </label>
-          <input name="username" type="text" />
+          <input className="signup-input " name="username" type="text" placeholder="Choose a username..."/>
         </div>
         <div>
-          <label htmlFor="password">
+          <label  className="signup-label" htmlFor="password">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input className="signup-input " name="password" type="password"placeholder="Enter a password..." />
         </div>
-        <div>
-          <button type="submit">Sign Up</button>
+        
+        <div className="signup-options" style={{display: 'contents'}}>
+        <div >
+          <button className="signup-button" type="submit">Sign Up</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
-      </form>
+        <br></br>
+  
 
       <div className="googleSignup">
-        <a href="http://localhost:8080/auth/google">Sign up with Google</a>
-      </div>    
+        <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google`}>
+          Sign up with Google
+        </a>
+      </div>
+      </div>
+      </form>
     </div>
   );
 }

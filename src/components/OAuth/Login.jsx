@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, me } from "../../redux/user";
 import UserHome from "./UserHome";
-import "../../styling/LoginStyling.css";
+import "../../styling/SignupStyling.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -20,29 +20,37 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit} name="login">
+    <div className="background">
+      <form className= "signup-form"onSubmit={handleSubmit} name="login">
         <div>
+        <h1 style={{textAlign: 'center'}}>Login!</h1>
           <label htmlFor="email">
             <small>Email</small>
           </label>
-          <input name="email" type="text" />
+          <input className="signup-input " name="email" type="text" placeholder="Enter email..." />
         </div>
         <div>
           <label htmlFor="password">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input className="signup-input " name="password" type="password" placeholder="Enter password..." />
         </div>
         <div>
-          <button type="submit">Log In</button>
+          <button className="signup-button" type="submit">Log In</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
-      </form>
+      
+        <br></br>
       {/* Move the "Log in with Google" link here */}
-      <div className="googleLogin">
-        <a href="http://localhost:8080/auth/google">Log in with Google</a>
+      <div className="signup-options" style={{display: 'contents'}}>
+      <div className="googleSignup">
+        <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google`}>
+          Log in with Google
+        </a>
       </div>
+      </div>
+    </form>
+
     </div>
   );
 }

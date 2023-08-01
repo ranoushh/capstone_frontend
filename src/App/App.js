@@ -30,7 +30,7 @@ import EditQuizQuestionPage from "../pages/Edit/EditQuizQuestionPage";
 import ChatBot from "../pages/ChatBot";
 import LandingPage from "../pages/LandingPage";
 
-const socket = io.connect(`http://localhost:8080`);
+// const socket = io.connect(`${process.env.REACT_APP_BACKEND_URL}`);
 
 function App() {
   const isLoggedIn = useSelector((state) => !!state.user.id);
@@ -56,65 +56,66 @@ function App() {
       <NavBar isLoggedIn={isLoggedIn} />
 
       <Routes>
-        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<UserHome />} />
 
-        <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />}>
-          <Route path="/home" element={<UserHome />} />
-          <Route path="/chatbot" element={<ChatBot />} />
-          {/* <Route path="/chat" element={<Chat socket={socket} />} /> */}
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/lesson/:lessonId" element={<SingleLesson />} />
-          <Route path="/languages" element={<Languages />} />
-          <Route path="/language/:languageId" element={<SingleLanguage />} />
-          <Route path="/quiz/:quizId" element={<SingleQuiz />} />
-          <Route path="/test/:testId" element={<SingleTest />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/achievements" element={<AchievementsPage />} />
-          <Route path="/addfriend" element={<AddFriend />} />
-          <Route
-            path="/language/:languageId/quiz/add"
-            element={<AddQuizPage />}
-          />
-          <Route
-            path="/language/:languageId/test/add"
-            element={<AddTestPage />}
-          />
-          <Route
-            path="/language/:languageId/lesson/add"
-            element={<AddLessonPage />}
-          />
-          <Route
-            path="/language/:languageId/quiz/edit/:id"
-            element={<EditQuizPage />}
-          />
-          <Route
-            path="/language/:languageId/test/edit/:id"
-            element={<EditTestPage />}
-          />
-          <Route
-            path="/language/:languageId/lesson/edit/:id"
-            element={<EditLessonPage />}
-          />
-          <Route
-            path="/test/:testId/testQuestion/add"
-            element={<AddTestQuestionPage />}
-          />
-          <Route
-            path="/quiz/:quizId/quizQuestion/add"
-            element={<AddQuizQuestionPage />}
-          />
-          <Route
-            path="/test/:testId/testQuestion/edit/:id"
-            element={<EditTestQuestionPage />}
-          />
-          <Route
-            path="/quiz/:quizId/quizQuestion/edit/:id"
-            element={<EditQuizQuestionPage />}
-          />
-          <Route path="/addfriend" element={<AddFriend />} />
-        </Route>
+        {/* <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />}> */}
+        <Route path="/home" element={<UserHome />} />
+        <Route path="/chatbot" element={<ChatBot />} />
+        {/* <Route path="/chat" element={<Chat socket={socket} />} /> */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/lesson/:lessonId" element={<SingleLesson />} />
+        <Route path="/languages" element={<Languages />} />
+        <Route path="/language/:languageId" element={<SingleLanguage />} />
+        <Route path="/quiz/:quizId" element={<SingleQuiz />} />
+        <Route path="/test/:testId" element={<SingleTest />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/achievements" element={<AchievementsPage />} />
+        <Route path="/addfriend" element={<AddFriend />} />
+        <Route
+          path="/language/:languageId/quiz/add"
+          element={<AddQuizPage />}
+        />
+        <Route
+          path="/language/:languageId/test/add"
+          element={<AddTestPage />}
+        />
+        <Route
+          path="/language/:languageId/lesson/add"
+          element={<AddLessonPage />}
+        />
+        <Route
+          path="/language/:languageId/quiz/edit/:id"
+          element={<EditQuizPage />}
+        />
+        <Route
+          path="/language/:languageId/test/edit/:id"
+          element={<EditTestPage />}
+        />
+        <Route
+          path="/language/:languageId/lesson/edit/:id"
+          element={<EditLessonPage />}
+        />
+        <Route
+          path="/test/:testId/testQuestion/add"
+          element={<AddTestQuestionPage />}
+        />
+        <Route
+          path="/quiz/:quizId/quizQuestion/add"
+          element={<AddQuizQuestionPage />}
+        />
+        <Route
+          path="/test/:testId/testQuestion/edit/:id"
+          element={<EditTestQuestionPage />}
+        />
+        <Route
+          path="/quiz/:quizId/quizQuestion/edit/:id"
+          element={<EditQuizQuestionPage />}
+        />
+        <Route path="/addfriend" element={<AddFriend />} />
+        {/* </Route> */}
       </Routes>
     </div>
   );
