@@ -27,7 +27,7 @@ const UserHome = () => {
 
   return (
     <div className="main-container">
-      <h1 id="home-greeting">Welcome, {username} !</h1>
+      <h1 id="home-greeting">Welcome, {username} </h1>
       <h4 className="app-name">PolyglotPalace</h4>
 
       <p className="description">
